@@ -1,0 +1,359 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: 'Source Sans Pro', sans-serif !important;
+    font-weight: 400;
+    background-color: #1a191f;
+}
+header {
+    display: block;
+    width: 100%;
+    z-index: 101;
+    background-color: #1a191f;
+    border-bottom: 1px solid #222028;
+}
+.container {
+    margin: auto 350px;
+}
+.header_content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+.header_nav {
+    display: flex;
+    padding-left: 0px;
+
+}
+.header_nav_item {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    padding: 20px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+    cursor: pointer;
+}
+.header_nav_item i {
+    font-size: 10px;
+    margin-left: 2px;
+}
+.header_nav_item:hover {
+    color:#ffbe00; /* Màu vàng */
+}
+
+.header_logo {
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+}
+
+.header_logo span {
+    color: #ffbe00; 
+}
+
+.button_dot i {
+    font-size: 20px;
+}
+
+
+.header_right {
+    display: flex;
+    align-items: center;
+
+}
+
+.header_lang {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.header_search_era {
+    border: 2px solid #cccccc4f;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: border-color 0.3s ease-in-out;
+    position: relative;
+}
+
+
+.header_search_era input {
+    height: 35px;
+    width: 215px;
+    border-radius: 8px;
+    background-color: #222028;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding-left: 10px;
+    font-size: 14px;
+    transition: 0.3s ease-in-out;
+}
+
+.header_search_era button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+}
+
+.header_search_era button i {
+    color: #fff;
+    font-size: 20px;
+}
+
+
+.header_lang_link {
+    color: #fff;
+    padding: 20px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+.header_lang_link i {
+    font-size: 10px;
+    margin-left: 2px;
+}
+
+.header_right_sighin {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #ffbe00; /* Viền vàng */
+    border-radius: 8px; /* Bo góc */
+    color: #fff; /* Chữ trắng */
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    font-size: 12px;
+}
+
+.header_right_sighin:hover {
+    background-color: #ffbe00; 
+    color: #1a191f;
+}
+
+.header_search_era:hover {
+    border-color: #ffbe00;
+}
+
+.header_button-right:hover i {
+    color:#ffbe00; 
+}
+.header_lang_link:hover {
+    color: #ffbe00;
+    transition: color 0.3s ease-in-out;
+}
+a.header_lang_link i:hover {
+    color: #ffbe00;
+    transition: color 0.3s ease-in-out;
+}
+.content {
+    margin-top: 10px;
+}
+.content_head {
+    background-color: #1a191f;
+    margin-bottom: 10px;
+    margin: auto 350px;
+    position: relative;
+    border-bottom: 1px solid #222028;
+    padding-top: 25px;
+    color: #fff;
+}
+.content_title {
+    font-weight: 100;
+    margin-top: 40px;
+}
+
+
+.nav_content {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    
+}
+
+.nav_content_item {
+    color: #ccc;
+    padding: 10px 28px 10px 0;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav_content_item:hover {
+    color: #ffbe00;
+    text-decoration: underline;
+}
+.tab_content {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 18px;
+}
+.movie_item {
+    width: calc((100% - 100px) / 6); 
+    box-sizing: border-box; 
+}
+.movie_item {
+    display: flex;
+    padding-right: 19px;
+}
+.item_cover {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.item_cover img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.item_play, .item_rate, .item_fav {
+    position: absolute;
+    z-index: 2;
+}
+
+.item_play {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color:#ffbe00;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 50%;
+    text-decoration: none;
+}
+.item_play i:hover {
+    background-color: white;
+    border-radius: 50%;
+    padding: 10px;
+}
+.item_rate {
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 190, 0, 0.9);
+    color: black;
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.item_fav {
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 6px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.item_fav i:hover {
+    color: #ffbe00;
+}
+
+.item_play, .item_fav {
+    opacity: 0;  
+    visibility: hidden; 
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.item_cover:hover .item_play,
+.item_cover:hover .item_fav {
+    opacity: 1;
+    visibility: visible;
+}
+/* Tạo lớp phủ mờ */
+.item_cover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0); /* Mặc định trong suốt */
+    transition: background 0.3s ease-in-out;
+}
+
+/* Khi hover vào item_cover, làm tối ảnh nền */
+.item_cover:hover::before {
+    background: rgba(0, 0, 0, 0.5); /* Màu đen với độ mờ 50% */
+}
+.item_title a {
+    color: #fff;
+    font-size: 17px;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-decoration: none;
+}
+.item_title a:hover {
+    color: #ffbe00;
+    transition: 0.3s ease-in-out;
+}
+.item_content {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.item_cata {
+    color: #ffbe00;
+    font-size: 14px;
+    font-family: 'Source Sans Pro', sans-serif;
+    cursor: pointer;
+}
+.item_cata:hover {
+    text-decoration: underline;
+}
+
+.home_title {
+    font-size: 30px;
+    color: white;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    padding-top: 45px ;
+    padding-bottom: 25px;
+    margin: auto 350px
+}
+
+.bold-text {
+    font-weight: 700;
+}   
+.swiper {
+    width: 1200px;
+    height: 350px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto !important;
+    height: 100%;
+    margin-right: 20px !important;
+}
+.swiper-button-prev, .swiper-button-next {
+   color: #ffffff !important;
+}
