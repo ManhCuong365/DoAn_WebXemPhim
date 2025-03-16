@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/homepage.css">
+    <title>Terminator</title>
+    <style>
+        section.movie {
+            flex: 1;
+            padding-top: 40px;
+            padding-bottom: 10px;
+        }
+
+        .title_movie h1 {
+            margin: auto 350px;
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 36px;
+        }
+
+        .container_movie {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            max-width: 1500px;
+            margin: auto 350px;
+            align-items: stretch;
+        }
+
+        .movie-info {
+            flex: 1;
+            min-width: 300px;
+            font-size: 14px;
+            height: 300px;
+            overflow: auto;
+        }
+
+        .movie-info h1 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #007BFF;
+        }
+
+        .movie-info p {
+            color: #f9ab00;
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 4px 0;
+            padding-bottom: 5px;
+
+        }
+
+        .movie-info p strong {
+            color: #fff;
+
+        }
+
+        .video-container {
+            flex: 1;
+            min-width: 600px;
+            height: 355px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="head">
+        <div class="container">
+            <div class="row">
+                <div class="header_content">
+                    <a href="test.html" class="header_logo">
+                        <span>MOVIE</span>ZONE
+                    </a>
+                    <ul class="header_nav">
+                        <li class="header_nav_item">
+                            Home
+                            <i class="ti ti-chevron-down"></i>
+                        </li>
+
+                        <li class="header_nav_item">
+                            <a style="text-decoration: none; color:#ffffff;" class="link_catalog>"
+                                href="catalag.html">Catalog</a>
+                            <i class="ti ti-chevron-down"></i>
+                        </li>
+
+                        <li class="header_nav_item">Pricing plan</li>
+
+                        <li class="header_nav_item">
+                            Page
+                            <i class="ti ti-chevron-down"></i>
+                        </li>
+
+                        <li class="header_nav_item">
+                            <a class="button_dot">
+                                <i class="ti ti-dots"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="header_right">
+                        <div class="header_search_era">
+                            <input class="header_search-right" type="text" placeholder="Search...">
+                            <button class="header_button-right" type="button">
+                                <i class="ti ti-search"></i>
+                            </button>
+                        </div>
+
+                        <div class="header_lang">
+                            <a class="header_lang_link">
+                                EN
+                                <i class="ti ti-chevron-down"></i>
+                            </a>
+                            <ul class="drop_menu_lang">
+
+                            </ul>
+                        </div>
+
+                        <div class="header_right_profile">
+                            <a class="header_right_sighin">
+                                <span>Nickname</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="movie">
+        <div class="title_movie">
+            <h1>Terminator</h1>
+        </div>
+        <div class="container_movie">
+            <div class="item_cover">
+                <img style="width: 240px; height: 345px;" class="swiper_slide_img"
+                    src="https://www.movieposters.com/cdn/shop/files/Terminator_480x.progressive.jpg?v=1730233995">
+                <span class="item_rate">9.5</span>
+                <button class="item_fav">
+                    <i class="ti ti-bookmark"></i>
+                </button>
+            </div>
+            <div class="movie-info">
+                <p><strong>Director:</strong> James Cameron</p>
+                <p><strong>Cast:</strong> Arnold Schwarzenegger, Linda Hamilton, Michael Biehn</p>
+                <p><strong>Genre:</strong> Action, Thriller</p>
+                <p><strong>Premiere:</strong> 2023</p>
+                <p><strong>Running Time:</strong> 128 min</p>
+                <p><strong>Country:</strong> USA</p>
+                <p style="max-width: 800px;">A cyborg assassin from the future attempts to find and kill a young woman
+                    who is destined to give birth
+                    to a warrior that will lead a resistance to save humankind from extinction.</p>
+            </div>
+            <div class="video-container">
+                <iframe width="1905" height="788" src="https://www.youtube.com/embed/nGrW-OR2uDk"
+                    title="THE TERMINATOR (1984) | Official Trailer | MGM" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">MOVIEZONE</div>
+            <div class="footer-copyright">© MOVIEZONE, 2020–2025<br>Create for history editor</div>
+            <div class="footer-links">
+                <a href="#">About Us</a>
+                <a href="#">Controls</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

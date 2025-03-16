@@ -2,10 +2,14 @@
     padding: 0;
     margin: 0;
 }
-body {
+body, html {
     font-family: 'Source Sans Pro', sans-serif !important;
     font-weight: 400;
     background-color: #1a191f;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 header {
     display: block;
@@ -140,7 +144,6 @@ header {
     transition: all 0.3s ease;
     font-size: 12px;
 }
-
 .header_right_sighin:hover {
     background-color: #ffbe00; 
     color: #1a191f;
@@ -356,4 +359,48 @@ a.header_lang_link i:hover {
 }
 .swiper-button-prev, .swiper-button-next {
    color: #ffffff !important;
+}
+
+footer {
+    background-color: #1a191f;
+    color: #fff;
+    padding: 20px 0;
+    border-top: 1px solid #222028;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.footer-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffbe00;
+}
+
+.footer-copyright {
+    font-size: 14px;
+    color: #ccc;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffbe00;
 }
