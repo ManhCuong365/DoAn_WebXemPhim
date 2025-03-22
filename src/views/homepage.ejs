@@ -216,439 +216,113 @@
         </div>
     </section>
 
-
     <section class="content">
         <div class="content_head">
-            <h2 class="content_title"> Recently update</h2>
+            <h2 class="content_title">Recently Update</h2>
             <ul class="nav_content">
-                <li class="nav_content_item">NEW</li>
-                <li class="nav_content_item">MOVIES</li>
-                <li class="nav_content_item">TV SHOWS</li>
-                <li class="nav_content_item">ANIME</li>
+                <li class="nav_content_item" onclick="filterMovies('new')">NEW</li>
+                <li class="nav_content_item" onclick="filterMovies('movies')">MOVIES</li>
+                <li class="nav_content_item" onclick="filterMovies('tvshows')">TV SHOWS</li>
+                <li class="nav_content_item" onclick="filterMovies('anime')">ANIME</li>
             </ul>
             <div class="border_below_nava"></div>
+
+
             <div class="container_tab_content">
-                <div class="tab_content">
-                    <div class="movie_item">
-                        <div class="all_item">
-                            <div class="item_cover">
-                                <img style="width: 187.67px; height: 276.53px "
-                                    src="https://www.movieposters.com/cdn/shop/files/Terminator_480x.progressive.jpg?v=1730233995">
-                                <a href="#" class="item_play">
-                                    <i class="ti ti-player-play-filled"></i>
-                                </a>
-                                <span class="item_rate">8.4</span>
-                                <button class="item_fav">
-                                    <i class="ti ti-bookmark"></i>
-                                </button>
-                            </div>
+                <div class="tab_content" id="movie-list">
+                    <!-- Danh sách phim sẽ hiển thị ở đây -->
 
-                            <div class="item_content">
-                                <h3 class="item_title">
-                                    <a href="#">Terminator</a>
-                                </h3>
-                                <span class="item_cata">Action</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="movie_item">
-                        <div class="all_item">
-                            <div class="item_cover">
-                                <img style="width: 187.67px; height: 276.53px "
-                                    src="https://www.movieposters.com/cdn/shop/files/ROMAN-HOLIDAY_480x.progressive.jpg?v=1730233162">
-                                <a href="#" class="item_play">
-                                    <i class="ti ti-player-play-filled"></i>
-                                </a>
-                                <span class="item_rate">9.5</span>
-                                <button class="item_fav">
-                                    <i class="ti ti-bookmark"></i>
-                                </button>
-                            </div>
-
-                            <div class="item_content">
-                                <h3 class="item_title">
-                                    <a href="#">Roman Holiday</a>
-                                </h3>
-                                <span class="item_cata">Comedy</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="movie_item">
-                        <div class="all_item">
-                            <div class="item_cover">
-                                <img style="width: 187.67px; height: 276.53px "
-                                    src="https://www.movieposters.com/cdn/shop/files/FIGHT-CLUB_480x.progressive.jpg?v=1730231824">
-                                <a href="#" class="item_play">
-                                    <i class="ti ti-player-play-filled"></i>
-                                </a>
-                                <span class="item_rate">6.7</span>
-                                <button class="item_fav">
-                                    <i class="ti ti-bookmark"></i>
-                                </button>
-                            </div>
-
-                            <div class="item_content">
-                                <h3 class="item_title">
-                                    <a href="#">Fight Club</a>
-                                </h3>
-                                <span class="item_cata">Action</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="movie_item">
-                        <div class="all_item">
-                            <div class="item_cover">
-                                <img style="width: 187.67px; height: 276.53px "
-                                    src="https://www.movieposters.com/cdn/shop/files/godzilla2_480x.progressive.jpg?v=1729789153">
-                                <a href="#" class="item_play">
-                                    <i class="ti ti-player-play-filled"></i>
-                                </a>
-                                <span class="item_rate">9.9</span>
-                                <button class="item_fav">
-                                    <i class="ti ti-bookmark"></i>
-                                </button>
-                            </div>
-
-                            <div class="item_content">
-                                <h3 class="item_title">
-                                    <a href="#">Godzilla Minus One</a>
-                                </h3>
-                                <span class="item_cata">Action</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="movie_item">
-                        <div class="all_item">
-                            <div class="item_cover">
-                                <img style="width: 187.67px; height: 276.53px "
-                                    src="https://www.movieposters.com/cdn/shop/products/inglourious-basterds-style4_37d01d94-318d-4840-a290-6fc5aa7b8072_480x.progressive.jpg?v=1615396029">
-                                <a href="#" class="item_play">
-                                    <i class="ti ti-player-play-filled"></i>
-                                </a>
-                                <span class="item_rate">7.7</span>
-                                <button class="item_fav">
-                                    <i class="ti ti-bookmark"></i>
-                                </button>
-                            </div>
-
-                            <div class="item_content">
-                                <h3 class="item_title">
-                                    <a href="#">Inglourious Basterds</a>
-                                </h3>
-                                <span class="item_cata">Action</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="movie_item">
-                        <div class="all_item">
-                            <div class="item_cover">
-                                <img style="width: 187.67px; height: 276.53px "
-                                    src="https://www.movieposters.com/cdn/shop/products/54385_480x.progressive.jpg?v=1639587311">
-                                <a href="#" class="item_play">
-                                    <i class="ti ti-player-play-filled"></i>
-                                </a>
-                                <span class="item_rate">7.1</span>
-                                <button class="item_fav">
-                                    <i class="ti ti-bookmark"></i>
-                                </button>
-                            </div>
-
-                            <div class="item_content">
-                                <h3 class="item_title">
-                                    <a href="#">Squid Game</a>
-                                </h3>
-                                <span class="item_cata">Comedy</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="movie_item">
-                        <div class="all_item">
-                            <div class="item_cover">
-                                <img style="width: 187.67px; height: 276.53px "
-                                    src="https://www.movieposters.com/cdn/shop/files/Terminator_480x.progressive.jpg?v=1730233995">
-                                <a href="#" class="item_play">
-                                    <i class="ti ti-player-play-filled"></i>
-                                </a>
-                                <span class="item_rate">8.4</span>
-                                <button class="item_fav">
-                                    <i class="ti ti-bookmark"></i>
-                                </button>
-                            </div>
-
-                            <div class="item_content">
-                                <h3 class="item_title">
-                                    <a href="#">Terminator</a>
-                                </h3>
-                                <span class="item_cata">Action</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="movie_item">
-                        <div class="all_item">
-                            <div class="item_cover">
-                                <img style="width: 187.67px; height: 276.53px "
-                                    src="https://www.movieposters.com/cdn/shop/files/ROMAN-HOLIDAY_480x.progressive.jpg?v=1730233162">
-                                <a href="#" class="item_play">
-                                    <i class="ti ti-player-play-filled"></i>
-                                </a>
-                                <span class="item_rate">9.5</span>
-                                <button class="item_fav">
-                                    <i class="ti ti-bookmark"></i>
-                                </button>
-                            </div>
-
-                            <div class="item_content">
-                                <h3 class="item_title">
-                                    <a href="#">Roman Holiday</a>
-                                </h3>
-                                <span class="item_cata">Comedy</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="movie_item">
-                        <div class="all_item">
-                            <div class="item_cover">
-                                <img style="width: 187.67px; height: 276.53px "
-                                    src="https://www.movieposters.com/cdn/shop/files/FIGHT-CLUB_480x.progressive.jpg?v=1730231824">
-                                <a href="#" class="item_play">
-                                    <i class="ti ti-player-play-filled"></i>
-                                </a>
-                                <span class="item_rate">6.7</span>
-                                <button class="item_fav">
-                                    <i class="ti ti-bookmark"></i>
-                                </button>
-                            </div>
-
-                            <div class="item_content">
-                                <h3 class="item_title">
-                                    <a href="#">Fight Club</a>
-                                </h3>
-                                <span class="item_cata">Action</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="movie_item">
-                        <div class="all_item">
-                            <div class="item_cover">
-                                <img style="width: 187.67px; height: 276.53px "
-                                    src="https://www.movieposters.com/cdn/shop/files/godzilla2_480x.progressive.jpg?v=1729789153">
-                                <a href="#" class="item_play">
-                                    <i class="ti ti-player-play-filled"></i>
-                                </a>
-                                <span class="item_rate">9.9</span>
-                                <button class="item_fav">
-                                    <i class="ti ti-bookmark"></i>
-                                </button>
-                            </div>
-
-                            <div class="item_content">
-                                <h3 class="item_title">
-                                    <a href="#">Godzilla Minus One</a>
-                                </h3>
-                                <span class="item_cata">Action</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="movie_item">
-                        <div class="all_item">
-                            <div class="item_cover">
-                                <img style="width: 187.67px; height: 276.53px "
-                                    src="https://www.movieposters.com/cdn/shop/products/inglourious-basterds-style4_37d01d94-318d-4840-a290-6fc5aa7b8072_480x.progressive.jpg?v=1615396029">
-                                <a href="#" class="item_play">
-                                    <i class="ti ti-player-play-filled"></i>
-                                </a>
-                                <span class="item_rate">7.7</span>
-                                <button class="item_fav">
-                                    <i class="ti ti-bookmark"></i>
-                                </button>
-                            </div>
-
-                            <div class="item_content">
-                                <h3 class="item_title">
-                                    <a href="#">Inglourious Basterds</a>
-                                </h3>
-                                <span class="item_cata">Action</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="movie_item">
-                        <div class="all_item">
-                            <div class="item_cover">
-                                <img style="width: 187.67px; height: 276.53px "
-                                    src="https://www.movieposters.com/cdn/shop/products/54385_480x.progressive.jpg?v=1639587311">
-                                <a href="#" class="item_play">
-                                    <i class="ti ti-player-play-filled"></i>
-                                </a>
-                                <span class="item_rate">7.1</span>
-                                <button class="item_fav">
-                                    <i class="ti ti-bookmark"></i>
-                                </button>
-                            </div>
-
-                            <div class="item_content">
-                                <h3 class="item_title">
-                                    <a href="#">Squid Game</a>
-                                </h3>
-                                <span class="item_cata">Comedy</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="movie_item">
-                        <div class="all_item">
-                            <div class="item_cover">
-                                <img style="width: 187.67px; height: 276.53px "
-                                    src="https://www.movieposters.com/cdn/shop/files/Terminator_480x.progressive.jpg?v=1730233995">
-                                <a href="#" class="item_play">
-                                    <i class="ti ti-player-play-filled"></i>
-                                </a>
-                                <span class="item_rate">8.4</span>
-                                <button class="item_fav">
-                                    <i class="ti ti-bookmark"></i>
-                                </button>
-                            </div>
-
-                            <div class="item_content">
-                                <h3 class="item_title">
-                                    <a href="#">Terminator</a>
-                                </h3>
-                                <span class="item_cata">Action</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="movie_item">
-                        <div class="all_item">
-                            <div class="item_cover">
-                                <img style="width: 187.67px; height: 276.53px "
-                                    src="https://www.movieposters.com/cdn/shop/files/ROMAN-HOLIDAY_480x.progressive.jpg?v=1730233162">
-                                <a href="#" class="item_play">
-                                    <i class="ti ti-player-play-filled"></i>
-                                </a>
-                                <span class="item_rate">9.5</span>
-                                <button class="item_fav">
-                                    <i class="ti ti-bookmark"></i>
-                                </button>
-                            </div>
-
-                            <div class="item_content">
-                                <h3 class="item_title">
-                                    <a href="#">Roman Holiday</a>
-                                </h3>
-                                <span class="item_cata">Comedy</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="movie_item">
-                        <div class="all_item">
-                            <div class="item_cover">
-                                <img style="width: 187.67px; height: 276.53px "
-                                    src="https://www.movieposters.com/cdn/shop/files/FIGHT-CLUB_480x.progressive.jpg?v=1730231824">
-                                <a href="#" class="item_play">
-                                    <i class="ti ti-player-play-filled"></i>
-                                </a>
-                                <span class="item_rate">6.7</span>
-                                <button class="item_fav">
-                                    <i class="ti ti-bookmark"></i>
-                                </button>
-                            </div>
-
-                            <div class="item_content">
-                                <h3 class="item_title">
-                                    <a href="#">Fight Club</a>
-                                </h3>
-                                <span class="item_cata">Action</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="movie_item">
-                        <div class="all_item">
-                            <div class="item_cover">
-                                <img style="width: 187.67px; height: 276.53px "
-                                    src="https://www.movieposters.com/cdn/shop/files/godzilla2_480x.progressive.jpg?v=1729789153">
-                                <a href="#" class="item_play">
-                                    <i class="ti ti-player-play-filled"></i>
-                                </a>
-                                <span class="item_rate">9.9</span>
-                                <button class="item_fav">
-                                    <i class="ti ti-bookmark"></i>
-                                </button>
-                            </div>
-
-                            <div class="item_content">
-                                <h3 class="item_title">
-                                    <a href="#">Godzilla Minus One</a>
-                                </h3>
-                                <span class="item_cata">Action</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="movie_item">
-                        <div class="all_item">
-                            <div class="item_cover">
-                                <img style="width: 187.67px; height: 276.53px "
-                                    src="https://www.movieposters.com/cdn/shop/products/inglourious-basterds-style4_37d01d94-318d-4840-a290-6fc5aa7b8072_480x.progressive.jpg?v=1615396029">
-                                <a href="#" class="item_play">
-                                    <i class="ti ti-player-play-filled"></i>
-                                </a>
-                                <span class="item_rate">7.7</span>
-                                <button class="item_fav">
-                                    <i class="ti ti-bookmark"></i>
-                                </button>
-                            </div>
-
-                            <div class="item_content">
-                                <h3 class="item_title">
-                                    <a href="#">Inglourious Basterds</a>
-                                </h3>
-                                <span class="item_cata">Action</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="movie_item">
-                        <div class="all_item">
-                            <div class="item_cover">
-                                <img style="width: 187.67px; height: 276.53px "
-                                    src="https://www.movieposters.com/cdn/shop/products/54385_480x.progressive.jpg?v=1639587311">
-                                <a href="#" class="item_play">
-                                    <i class="ti ti-player-play-filled"></i>
-                                </a>
-                                <span class="item_rate">7.1</span>
-                                <button class="item_fav">
-                                    <i class="ti ti-bookmark"></i>
-                                </button>
-                            </div>
-
-                            <div class="item_content">
-                                <h3 class="item_title">
-                                    <a href="#">Squid Game</a>
-                                </h3>
-                                <span class="item_cata">Comedy</span>
-                            </div>
-                        </div>
-                    </div>
+                    <script>
+                        const movies = {
+                            new: [
+                                { title: "Godzilla Minus One", rating: 9.9, genre: "Action", img: "https://www.movieposters.com/cdn/shop/files/godzilla2_480x.progressive.jpg?v=1729789153" },
+                                { title: "Squid Game", rating: 7.1, genre: "Comedy", img: "https://www.movieposters.com/cdn/shop/products/54385_480x.progressive.jpg?v=1639587311" },
+                                { title: "The Marvels", rating: 7.5, genre: "Action", img: "https://www.movieposters.com/cdn/shop/products/the-marvels_7ymnwaxs_480x.progressive.jpg?v=1677875711" },
+                                { title: "Oppenheimer", rating: 8.8, genre: "Biography", img: "https://www.movieposters.com/cdn/shop/files/oppenheimer_fwt2opqh_480x.progressive.jpg?v=1705953716" },
+                                { title: "Squid Game", rating: 7.1, genre: "Comedy", img: "https://www.movieposters.com/cdn/shop/products/54385_480x.progressive.jpg?v=1639587311" },
+                                { title: "Godzilla Minus One", rating: 9.9, genre: "Action", img: "https://www.movieposters.com/cdn/shop/files/godzilla2_480x.progressive.jpg?v=1729789153" },
+                                { title: "Godzilla Minus One", rating: 9.9, genre: "Action", img: "https://www.movieposters.com/cdn/shop/files/godzilla2_480x.progressive.jpg?v=1729789153" },
+                                { title: "Squid Game", rating: 7.1, genre: "Comedy", img: "https://www.movieposters.com/cdn/shop/products/54385_480x.progressive.jpg?v=1639587311" },
+                                { title: "The Marvels", rating: 7.5, genre: "Action", img: "https://www.movieposters.com/cdn/shop/products/the-marvels_7ymnwaxs_480x.progressive.jpg?v=1677875711" },
+                                { title: "Oppenheimer", rating: 8.8, genre: "Biography", img: "https://www.movieposters.com/cdn/shop/files/oppenheimer_fwt2opqh_480x.progressive.jpg?v=1705953716" },
+                                { title: "Squid Game", rating: 7.1, genre: "Comedy", img: "https://www.movieposters.com/cdn/shop/products/54385_480x.progressive.jpg?v=1639587311" },
+                                { title: "Godzilla Minus One", rating: 9.9, genre: "Action", img: "https://www.movieposters.com/cdn/shop/files/godzilla2_480x.progressive.jpg?v=1729789153" },
+                            ],
+                            movies: [
+                                { title: "Terminator", rating: 8.4, genre: "Action", img: "https://www.movieposters.com/cdn/shop/files/Terminator_480x.progressive.jpg?v=1730233995" },
+                                { title: "Fight Club", rating: 6.7, genre: "Action", img: "https://www.movieposters.com/cdn/shop/files/FIGHT-CLUB_480x.progressive.jpg?v=1730231824" },
+                                { title: "Inception", rating: 9.2, genre: "Sci-Fi", img: "https://www.movieposters.com/cdn/shop/files/inception.mpw.123395_9e0000d1-bc7f-400a-b488-15fa9e60a10c_480x.progressive.jpg?v=1708527589" },
+                                { title: "The Dark Knight", rating: 9.1, genre: "Action", img: "https://www.movieposters.com/cdn/shop/files/darkknight.building.24x36_20e90057-f673-4cc3-9ce7-7b0d3eeb7d83_480x.progressive.jpg?v=1707491191" },
+                                { title: "Terminator", rating: 8.4, genre: "Action", img: "https://www.movieposters.com/cdn/shop/files/Terminator_480x.progressive.jpg?v=1730233995" },
+                                { title: "Inception", rating: 9.2, genre: "Sci-Fi", img: "https://www.movieposters.com/cdn/shop/files/inception.mpw.123395_9e0000d1-bc7f-400a-b488-15fa9e60a10c_480x.progressive.jpg?v=1708527589" },
+                                { title: "Terminator", rating: 8.4, genre: "Action", img: "https://www.movieposters.com/cdn/shop/files/Terminator_480x.progressive.jpg?v=1730233995" },
+                                { title: "Fight Club", rating: 6.7, genre: "Action", img: "https://www.movieposters.com/cdn/shop/files/FIGHT-CLUB_480x.progressive.jpg?v=1730231824" },
+                                { title: "Inception", rating: 9.2, genre: "Sci-Fi", img: "https://www.movieposters.com/cdn/shop/files/inception.mpw.123395_9e0000d1-bc7f-400a-b488-15fa9e60a10c_480x.progressive.jpg?v=1708527589" },
+                                { title: "The Dark Knight", rating: 9.1, genre: "Action", img: "https://www.movieposters.com/cdn/shop/files/darkknight.building.24x36_20e90057-f673-4cc3-9ce7-7b0d3eeb7d83_480x.progressive.jpg?v=1707491191" },
+                                { title: "Terminator", rating: 8.4, genre: "Action", img: "https://www.movieposters.com/cdn/shop/files/Terminator_480x.progressive.jpg?v=1730233995" },
+                                { title: "Inception", rating: 9.2, genre: "Sci-Fi", img: "https://www.movieposters.com/cdn/shop/files/inception.mpw.123395_9e0000d1-bc7f-400a-b488-15fa9e60a10c_480x.progressive.jpg?v=1708527589" },
+                            ],
+                            tvshows: [
+                                { title: "Breaking Bad", rating: 9.5, genre: "Drama", img: "https://www.movieposters.com/cdn/shop/products/44ef51071fdc3f8a1e7eaed3b4368d6f_24b911eb-8477-4b60-aa70-a96806090da3_480x.progressive.jpg?v=1573652635" },
+                                { title: "Game of Thrones", rating: 8.7, genre: "Fantasy", img: "https://www.movieposters.com/cdn/shop/products/fbeeb788df4295f076aa72d15ea2bf43_221e2f9d-ed07-4fab-8969-aed16bff3c71_480x.progressive.jpg?v=1573587263" },
+                                { title: "Stranger Things", rating: 8.6, genre: "Sci-Fi", img: "https://www.movieposters.com/cdn/shop/files/ItemP5532_jpg_480x.progressive.jpg?v=1697202212" },
+                                { title: "The Witcher", rating: 7.9, genre: "Fantasy", img: "https://www.movieposters.com/cdn/shop/files/1228032_4402482_480x.progressive.jpg?v=1692129321" },
+                                { title: "Stranger Things", rating: 8.6, genre: "Sci-Fi", img: "https://www.movieposters.com/cdn/shop/files/ItemP5532_jpg_480x.progressive.jpg?v=1697202212" },
+                                { title: "Game of Thrones", rating: 8.7, genre: "Fantasy", img: "https://www.movieposters.com/cdn/shop/products/fbeeb788df4295f076aa72d15ea2bf43_221e2f9d-ed07-4fab-8969-aed16bff3c71_480x.progressive.jpg?v=1573587263" },
+                                { title: "Breaking Bad", rating: 9.5, genre: "Drama", img: "https://www.movieposters.com/cdn/shop/products/44ef51071fdc3f8a1e7eaed3b4368d6f_24b911eb-8477-4b60-aa70-a96806090da3_480x.progressive.jpg?v=1573652635" },
+                                { title: "Game of Thrones", rating: 8.7, genre: "Fantasy", img: "https://www.movieposters.com/cdn/shop/products/fbeeb788df4295f076aa72d15ea2bf43_221e2f9d-ed07-4fab-8969-aed16bff3c71_480x.progressive.jpg?v=1573587263" },
+                                { title: "Stranger Things", rating: 8.6, genre: "Sci-Fi", img: "https://www.movieposters.com/cdn/shop/files/ItemP5532_jpg_480x.progressive.jpg?v=1697202212" },
+                                { title: "The Witcher", rating: 7.9, genre: "Fantasy", img: "https://www.movieposters.com/cdn/shop/files/1228032_4402482_480x.progressive.jpg?v=1692129321" },
+                                { title: "Stranger Things", rating: 8.6, genre: "Sci-Fi", img: "https://www.movieposters.com/cdn/shop/files/ItemP5532_jpg_480x.progressive.jpg?v=1697202212" },
+                                { title: "Game of Thrones", rating: 8.7, genre: "Fantasy", img: "https://www.movieposters.com/cdn/shop/products/fbeeb788df4295f076aa72d15ea2bf43_221e2f9d-ed07-4fab-8969-aed16bff3c71_480x.progressive.jpg?v=1573587263" },
+                            ],
+                            anime: [
+                                { title: "Attack on Titan", rating: 9.2, genre: "Action", img: "https://www.movieposters.com/cdn/shop/products/attackontitan_480x.progressive.jpg?v=1620242810" },
+                                { title: "One Piece", rating: 8.9, genre: "Adventure", img: "https://www.movieposters.com/cdn/shop/files/m4374_1_480x.progressive.jpg?v=1682711112" },
+                                { title: "Demon Slayer", rating: 8.7, genre: "Action", img: "https://www.movieposters.com/cdn/shop/products/demonslayer_480x.progressive.jpg?v=1607464041" },
+                                { title: "Naruto", rating: 8.4, genre: "Adventure", img: "https://www.movieposters.com/cdn/shop/products/naruto_480x.progressive.jpg?v=1620242885" },
+                                { title: "Demon Slayer", rating: 8.7, genre: "Action", img: "https://www.movieposters.com/cdn/shop/products/demonslayer_480x.progressive.jpg?v=1607464041" },
+                                { title: "Attack on Titan", rating: 9.2, genre: "Action", img: "https://www.movieposters.com/cdn/shop/products/attackontitan_480x.progressive.jpg?v=1620242810" },
+                                { title: "Attack on Titan", rating: 9.2, genre: "Action", img: "https://www.movieposters.com/cdn/shop/products/attackontitan_480x.progressive.jpg?v=1620242810" },
+                                { title: "One Piece", rating: 8.9, genre: "Adventure", img: "https://www.movieposters.com/cdn/shop/files/m4374_1_480x.progressive.jpg?v=1682711112" },
+                                { title: "Demon Slayer", rating: 8.7, genre: "Action", img: "https://www.movieposters.com/cdn/shop/products/demonslayer_480x.progressive.jpg?v=1607464041" },
+                                { title: "Naruto", rating: 8.4, genre: "Adventure", img: "https://www.movieposters.com/cdn/shop/products/naruto_480x.progressive.jpg?v=1620242885" },
+                                { title: "Demon Slayer", rating: 8.7, genre: "Action", img: "https://www.movieposters.com/cdn/shop/products/demonslayer_480x.progressive.jpg?v=1607464041" },
+                                { title: "Attack on Titan", rating: 9.2, genre: "Action", img: "https://www.movieposters.com/cdn/shop/products/attackontitan_480x.progressive.jpg?v=1620242810" },
+                            ]
+                        };
                     
+                        function filterMovies(category) {
+                            const movieList = document.getElementById("movie-list");
+                            movieList.innerHTML = ""; 
+                    
+                            movies[category].forEach(movie => {
+                                const movieItem = document.createElement("div");
+                                movieItem.classList.add("movie_item");
+                                movieItem.innerHTML = `
+                                    <div class="movie_item">
+                                        <div class="all_item">
+                                            <div class="item_cover">
+                                                <img style="width: 187.67px; height: 276.53px" src="${movie.img}" alt="${movie.title}">
+                                                <a href="#" class="item_play">
+                                                    <i class="ti ti-player-play-filled"></i>
+                                                </a>
+                                                <span class="item_rate">${movie.rating}</span>
+                                                <button class="item_fav">
+                                                    <i class="ti ti-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+                                movieList.appendChild(movieItem);
+                            });
+                        }
+                    
+                        filterMovies('new');
+                    </script>
+                    
+
                 </div>
             </div>
         </div>
