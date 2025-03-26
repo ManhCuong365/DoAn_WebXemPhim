@@ -17,6 +17,10 @@ let initWebRoutes = (app) => {
         return res.render("movie_1");  // Render file movie_1.ejs
     });
 
+    router.get('/all_movies', (req, res) => {
+        return res.render("all_movies");  // Render file movie_1.ejs
+    });
+
     return app.use("/", router);
 };
 

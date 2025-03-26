@@ -25,7 +25,7 @@
                         </li>
 
                         <li class="header_nav_item">
-                            <a style="text-decoration: none; color:#ffffff;" class="link_catalog>" href="catalag.html">Catalog</a>
+                            <a style="text-decoration: none; color:#ffffff;" class="link_catalog>" href="#">Catalog</a>
                             <i class="ti ti-chevron-down"></i>
                         </li>
 
@@ -62,7 +62,7 @@
                         </div>
 
                         <div class="header_right_profile">
-                            <a class="header_right_sighin">
+                            <a href="#" class="header_right_sighin">
                                 <span>Nickname</span>
                             </a>
                         </div>
@@ -216,6 +216,7 @@
         </div>
     </section>
 
+
     <section class="content">
         <div class="content_head">
             <h2 class="content_title">Recently Update</h2>
@@ -239,11 +240,11 @@
                                 { title: "Squid Game", rating: 7.1, genre: "Comedy", img: "https://www.movieposters.com/cdn/shop/products/54385_480x.progressive.jpg?v=1639587311" },
                                 { title: "The Marvels", rating: 7.5, genre: "Action", img: "https://www.movieposters.com/cdn/shop/products/the-marvels_7ymnwaxs_480x.progressive.jpg?v=1677875711" },
                                 { title: "Oppenheimer", rating: 8.8, genre: "Biography", img: "https://www.movieposters.com/cdn/shop/files/oppenheimer_fwt2opqh_480x.progressive.jpg?v=1705953716" },
-                                { title: "Squid Game", rating: 7.1, genre: "Comedy", img: "https://www.movieposters.com/cdn/shop/products/54385_480x.progressive.jpg?v=1639587311" },
-                                { title: "Godzilla Minus One", rating: 9.9, genre: "Action", img: "https://www.movieposters.com/cdn/shop/files/godzilla2_480x.progressive.jpg?v=1729789153" },
-                                { title: "Godzilla Minus One", rating: 9.9, genre: "Action", img: "https://www.movieposters.com/cdn/shop/files/godzilla2_480x.progressive.jpg?v=1729789153" },
-                                { title: "Squid Game", rating: 7.1, genre: "Comedy", img: "https://www.movieposters.com/cdn/shop/products/54385_480x.progressive.jpg?v=1639587311" },
-                                { title: "The Marvels", rating: 7.5, genre: "Action", img: "https://www.movieposters.com/cdn/shop/products/the-marvels_7ymnwaxs_480x.progressive.jpg?v=1677875711" },
+                                { title: "Kraven the Hunter", rating: 7.8, genre: "Comedy", img: "https://www.movieposters.com/cdn/shop/files/gVecRfAE8OYKR6B3p7uOZT0mFfL_480x.progressive.jpg?v=1739393751" },
+                                { title: "Godzilla vs Kong", rating: 9.5, genre: "Action", img: "https://www.movieposters.com/cdn/shop/products/157656993_470693760632379_2302540402385766130_n_480x.progressive.jpg?v=1615329345" },
+                                { title: "Matrix Resurrections", rating: 9.9, genre: "Action", img: "https://www.movieposters.com/cdn/shop/products/the-matrix-resurrections_ufnqeyn9_480x.progressive.jpg?v=1640208300" },
+                                { title: "Deadpool & Wolverine", rating: 7.1, genre: "Comedy", img: "https://www.movieposters.com/cdn/shop/files/ItemR85879_jpg_480x.progressive.jpg?v=1741204835" },
+                                { title: "Amateur", rating: 8.5, genre: "Action", img: "https://www.movieposters.com/cdn/shop/files/the-amateur_copk42xa_480x.progressive.jpg?v=1732221643" },
                                 { title: "Oppenheimer", rating: 8.8, genre: "Biography", img: "https://www.movieposters.com/cdn/shop/files/oppenheimer_fwt2opqh_480x.progressive.jpg?v=1705953716" },
                                 { title: "Squid Game", rating: 7.1, genre: "Comedy", img: "https://www.movieposters.com/cdn/shop/products/54385_480x.progressive.jpg?v=1639587311" },
                                 { title: "Godzilla Minus One", rating: 9.9, genre: "Action", img: "https://www.movieposters.com/cdn/shop/files/godzilla2_480x.progressive.jpg?v=1729789153" },
@@ -291,11 +292,11 @@
                                 { title: "Attack on Titan", rating: 9.2, genre: "Action", img: "https://www.movieposters.com/cdn/shop/products/attackontitan_480x.progressive.jpg?v=1620242810" },
                             ]
                         };
-                    
+
                         function filterMovies(category) {
                             const movieList = document.getElementById("movie-list");
-                            movieList.innerHTML = ""; 
-                    
+                            movieList.innerHTML = "";
+
                             movies[category].forEach(movie => {
                                 const movieItem = document.createElement("div");
                                 movieItem.classList.add("movie_item");
@@ -318,15 +319,29 @@
                                 movieList.appendChild(movieItem);
                             });
                         }
-                    
+
                         filterMovies('new');
                     </script>
-                    
+
 
                 </div>
             </div>
         </div>
+
+        <div class="link_view_all">
+            <a href="/all_movies" class="view_all">
+                <span> VIEW ALL</span>
+            </a>
+        </div>
+        <div class="up_to_top">
+            <button id="backToTop" onclick="scrollToTop()">
+                <i class="ti ti-chevron-up"></i>
+
+            </button>
+        </div>
+
     </section>
+
 
     <footer>
         <div class="footer-container">
@@ -356,6 +371,21 @@
                 prevEl: '.swiper-button-prev',
             },
         });
+
+
+        window.onscroll = function () {
+            var btn = document.getElementById("backToTop");
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
     </script>
 
 

@@ -7,9 +7,13 @@ let getTestPage = (req, res) => {
 let getMoviePage = (req, res) => {
     return res.render('movie_1.ejs');
 };
+let getAllMovie = (req, res) => {
+    return res.render('all_movies.ejs');
+};
 
 module.exports = {
     getHomPage: getHomPage,
     getTestPage: getTestPage,
-    getMoviePage: getMoviePage
+    getMoviePage: getMoviePage,
+    getAllMovie: getAllMovie,
 }
