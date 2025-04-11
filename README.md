@@ -31,8 +31,7 @@ Tạo file `.env` dựa trên `.env.example` và cập nhật thông tin databas
 ```
 DB_HOST=localhost
 DB_USER=root
-DB_PASSWORD=yourpassword
-DB_NAME=webxemphim
+DB_NAME=doan_test
 ```
 
 ### 4. Chạy Dự Án
@@ -56,6 +55,5 @@ Mặc định, server sẽ chạy trên `http://localhost:3000/`.
 
 ## Ghi Chú Khác
 - Dự án đang trong quá trình phát triển.
-- Nếu bạn muốn đóng góp code, vui lòng mở Pull Request.
-- Báo cáo lỗi hoặc đề xuất tính năng mới tại phần Issues.
+
 
