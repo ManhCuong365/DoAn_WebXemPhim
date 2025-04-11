@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import viewEngine from "./config/viewEngines";
 import initWebRoutes from './route/web';
+import connectDB from "./config/connectDB";
 import path from "path";  // Thêm module path
 require('dotenv').config();
 
@@ -19,6 +20,8 @@ viewEngine(app);
 
 // Khởi tạo các routes
 initWebRoutes(app);
+
+connectDB();
 
 let port = process.env.PORT;
 
