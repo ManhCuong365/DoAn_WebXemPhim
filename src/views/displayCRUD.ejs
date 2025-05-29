@@ -1,0 +1,101 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get CRUD</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f9fa;
+        }
+        table {
+            border-collapse: collapse;
+            width: 70%;
+            margin: 40px auto;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px 16px;
+            text-align: center;
+        }
+        th {
+            background: #007bff;
+            color: #fff;
+            font-weight: bold;
+        }
+        tr:hover {
+            background: #f1f3f5;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+            color: #007bff;
+        }
+        .btn-edit {
+            background-color: orange;
+            border: none;
+            outline: none;
+            height: 25px;
+            width: 60px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 15px;
+            text-decoration: none;
+
+        }
+        .btn-delete {
+            background-color: red;
+            border: none;
+            outline: none;
+            height: 25px;
+            width: 60px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 15px;
+            text-decoration: none;
+        }
+        .btn-edit:hover, .btn-delete:hover {
+            opacity: 0.8;
+        }
+        .btn-edit,.btn-delete {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Tên người dùng</th>
+            <th>Email</th>
+            <th>Mật Khẩu</th>
+            <th>Hành động</th>
+        </tr>
+        <% for(let i=0; i < dataTable.length; i++) { %>
+            <tr>
+                <td>
+                    <%= dataTable[i].id %>
+                </td>
+                <td>
+                    <%= dataTable[i].username %>
+                </td>
+                <td>
+                    <%= dataTable[i].email %>
+                </td>
+                <td>
+                    <%= dataTable[i].password %>
+                </td>
+                <td>
+                    <a href="/edit-crud?id=<%= dataTable[i].id %>" class="btn-edit" type="button">Sửa</a>
+                    <a class="btn-delete" type="button">Xóa</a>
+                </td>
+            </tr>
+            <% } %>
+    </table>
+</body>
+
+</html>

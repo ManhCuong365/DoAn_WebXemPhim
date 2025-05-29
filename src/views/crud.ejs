@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Đăng ký</title>
+    <link rel="stylesheet" href="/css/sigh_in.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="register-container">
+                <div class="register-box">
+                    <form class="register-form" action="/post-crud" method="post">
+                        <h2>Đăng ký</h2>
+                        <label> Tên người dùng</label>
+                        <input type="text" name="username" placeholder="Tên người dùng" required>
+                        <label> Email</label>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <label> Mật Khẩu</label>
+                        <input type="password" name="password" placeholder="Mật khẩu" required>
+                        <label> Nhập lại mật Khẩu</label>
+                        <input type="password" name="confirm_password" placeholder="Nhập lại mật khẩu" required>
+                        <button type="submit">Đăng ký</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

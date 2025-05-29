@@ -5,12 +5,18 @@ let router = express.Router();
 
 let initWebRoutes = (app) => {
     router.get('/', homController.getHomPage);
-
+    router.get('/crud', homController.getCRUD);
+    router.post('/post-crud', homController.postCRUD);
     router.get('/test1', homController.getTestPage);
+    router.get('/get-crud', homController.displayGetCRUD);
+    router.get('/edit-crud', homController.getEditCRUD);
+    router.post('/put-crud', homController.putCRUD);
+
 
     router.get('/buimanhcuong', (req, res) => {
         return res.send('Hello world with buimanhcuong');
     });
+
 
     // Thêm route cho movie_1
     router.get('/movie_1', (req, res) => {

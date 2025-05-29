@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Edit user</title>
+    <link rel="stylesheet" href="/css/sigh_in.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="register-container">
+                <div class="register-box">
+                    <form class="register-form" action="/put-crud" method="post">
+                        <h2>Sửa thông tin người dùng</h2>
+                        <label> Tên người dùng</label>
+                        <input type="text" name="username" placeholder="Tên người dùng" required value="<%= user.username %>">
+                        <label> Mật Khẩu</label>
+                        <input type="password" name="password" placeholder="Mật khẩu" required value="<%= user.password %>">
+                        <input name="id" type="text" hidden value="<%= user.id %>">
+                        <button type="submit">Cập nhật</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
