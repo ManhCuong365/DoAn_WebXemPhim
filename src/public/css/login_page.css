@@ -1,0 +1,278 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: url(/css/login_background.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+section {
+    width: 100%;
+    max-width: 450px;
+}
+
+.container {
+    background-color: #1a191f;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+}
+
+.title_login {
+    color: white;
+    text-align: center;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo a {
+    text-decoration: none;
+}
+
+.logo span:first-child {
+    color: #ffbe00;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.logo span:last-child {
+    color: #7e7d7d;
+    font-size: 32px;
+    font-weight: 300;
+}
+
+h2 {
+    color: #7e7d7d;
+    margin-bottom: 35px;
+    text-align: left;
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.header_logo {
+    text-decoration: none;
+}
+
+span {
+    color: #ffbe00;
+
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input_title {
+    color: white;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #ffbe00;
+    outline: none;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 13px;
+}
+/* Ẩn checkbox mặc định */
+.remember input[type="checkbox"] {
+    display: none;
+}
+
+/* Tạo checkbox mới */
+.remember label {
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 15px;
+    user-select: none;
+    line-height: 21px;
+}
+
+/* Hình vuông checkbox */
+.remember label:before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 17px;
+    height: 17px;
+    border: 2px solid #ffbe00;
+    border-radius: 4px;
+    background: transparent;
+    transition: background 0.2s;
+}
+
+/* Dấu tick khi checked */
+.remember input[type="checkbox"]:checked + label:after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    width: 9px;
+    height: 5px;
+    border-left: 2px solid #ffbe00;
+    border-bottom: 2px solid #ffbe00;
+    transform: rotate(-45deg);
+}
+.remember {
+    display: flex;
+    align-items: center;
+    color: white;
+    position: relative;
+    gap:8px
+}
+
+.remember input {
+    margin-right: 8px;
+}
+
+.forgot-password {
+    color: #ffbe00;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+button[type="submit"] {
+    background-color: transparent;
+    border: 2px solid #ffbe00;
+    color: white;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #ffbe00;
+    color: black;
+}
+
+.create-account {
+    text-align: center;
+    color: white;
+    font-size: 14px;
+}
+
+.create-account a {
+    color: #ffbe00;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.create-account a:hover {
+    text-decoration: underline;
+}
+
+.google-signin {
+    background-color: transparent;
+    color: white;
+    border: 2px solid #ffbe00;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, border 0.3s;
+    margin-bottom: 20px;
+}
+
+.google-signin:hover {
+    background-color: #ffbe00;
+    color: black;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #1a191f;
+    color: #fff;
+    padding: 20px 0;
+    border-top: 1px solid #222028;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffbe00;
+}
+
+.footer-copyright {
+    font-size: 12px;
+    color: #ccc;
+    margin-right: 580px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffbe00;
+}
+

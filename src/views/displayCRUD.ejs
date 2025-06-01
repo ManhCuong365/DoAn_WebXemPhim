@@ -88,10 +88,10 @@
                 </td>
                 <td>
                     <%= dataTable[i].password %>
-                </td>
+                </td>   
                 <td>
                     <a href="/edit-crud?id=<%= dataTable[i].id %>" class="btn-edit" type="button">Sửa</a>
-                    <a class="btn-delete" type="button">Xóa</a>
+                    <a href="/delete-crud?id=<%= dataTable[i].id %>" class="btn-delete" type="button">Xóa</a>
                 </td>
             </tr>
             <% } %>

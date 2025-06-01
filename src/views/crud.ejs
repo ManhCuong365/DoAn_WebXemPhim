@@ -3,32 +3,51 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Đăng ký</title>
-    <link rel="stylesheet" href="/css/sigh_in.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOVIE ZONE - Create Account</title>
+    <link rel="stylesheet" href="/css/login_page.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="register-container">
-                <div class="register-box">
-                    <form class="register-form" action="/post-crud" method="post">
-                        <h2>Đăng ký</h2>
-                        <label> Tên người dùng</label>
-                        <input type="text" name="username" placeholder="Tên người dùng" required>
-                        <label> Email</label>
-                        <input type="email" name="email" placeholder="Email" required>
-                        <label> Mật Khẩu</label>
-                        <input type="password" name="password" placeholder="Mật khẩu" required>
-                        <label> Nhập lại mật Khẩu</label>
-                        <input type="password" name="confirm_password" placeholder="Nhập lại mật khẩu" required>
-                        <button type="submit">Đăng ký</button>
-                    </form>
-                </div>
+    <section>
+        <div class="container">
+            <a href="/" class="header_logo">
+                <h2 class="title_login">
+                    <span>MOVIE</span>ZONE
+                </h2>
+            </a>
+
+            <form class="register-form" action="/post-crud" method="post">
+                <label for="username" class="input_title">Username</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="email" class="input_title">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password" class="input_title">Password</label>
+                <input type="password" id="password" name="password" required>
+
+                <button style="margin-top: 15px;" type="submit">Register</button>
+            </form>
+
+            <p class="create-account">Already have an account? <a href="/login_page">Log in</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">MOVIEZONE</div>
+            <div class="footer-copyright">© MOVIEZONE, 2020–2025<br> Create by <span style="color: #ffbe00;">
+                    ManhCuong</span></div>
+            <div class="footer-links">
+                <a href="#">About Us</a>
+                <a href="#">Controls</a>
+                <a href="#">Privacy Policy</a>
             </div>
         </div>
-    </div>
+    </footer>
+
+
 </body>
 
 </html>

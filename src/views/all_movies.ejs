@@ -25,8 +25,7 @@
                         </li>
 
                         <li class="header_nav_item">
-                            <a style="text-decoration: none; color:#ffffff;" class="link_catalog>"
-                                href="#">Catalog</a>
+                            <a style="text-decoration: none; color:#ffffff;" class="link_catalog>" href="#">Catalog</a>
                             <i class="ti ti-chevron-down"></i>
                         </li>
 
@@ -63,8 +62,10 @@
                         </div>
 
                         <div class="header_right_profile">
-                            <a class="header_right_sighin">
-                                <span>Nickname</span>
+                            <a href="<%= user ? 'javascript:void(0)' : '/login_page' %>" class="header_right_sighin">
+                                <span>
+                                    <%= user ? user.username : 'Nickname' %>
+                                </span>
                             </a>
                         </div>
                     </div>
@@ -193,7 +194,7 @@
                             </div>
                         </div>
                     </div>
-                
+
                     <!-- Movie 5 -->
                     <div class="movie_item">
                         <div class="all_item">
@@ -216,7 +217,7 @@
                             </div>
                         </div>
                     </div>
-                
+
                     <!-- Movie 6 -->
                     <div class="movie_item">
                         <div class="all_item">

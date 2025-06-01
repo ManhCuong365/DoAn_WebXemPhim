@@ -62,8 +62,10 @@
                         </div>
 
                         <div class="header_right_profile">
-                            <a href="#" class="header_right_sighin">
-                                <span>Nickname</span>
+                            <a href="<%= user ? 'javascript:void(0)' : '/login_page' %>" class="header_right_sighin">
+                                <span>
+                                    <%= user ? user.username : 'Nickname' %>
+                                </span>
                             </a>
                         </div>
                     </div>

@@ -17,6 +17,7 @@
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.21.2",
+    "express-session": "^1.18.1",
     "mysql2": "^3.14.0",
     "react-multi-carousel": "^2.8.5",
     "sequelize": "^6.37.7"

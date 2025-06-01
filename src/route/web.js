@@ -11,6 +11,9 @@ let initWebRoutes = (app) => {
     router.get('/get-crud', homController.displayGetCRUD);
     router.get('/edit-crud', homController.getEditCRUD);
     router.post('/put-crud', homController.putCRUD);
+    router.get('/delete-crud', homController.deleteCRUD);
+    router.post('/login', homController.postLogin);
+
 
 
     router.get('/buimanhcuong', (req, res) => {
@@ -20,11 +23,14 @@ let initWebRoutes = (app) => {
 
     // Thêm route cho movie_1
     router.get('/movie_1', (req, res) => {
-        return res.render("movie_1");  // Render file movie_1.ejs
+        return res.render("movie_1");
     });
 
-    router.get('/all_movies', (req, res) => {
-        return res.render("all_movies");  // Render file movie_1.ejs
+    router.get('/all_movies', homController.getAllMovie);
+
+    // Thêm route cho login_page
+    router.get('/login_page', (req, res) => {
+        return res.render("login_page");
     });
 
     return app.use("/", router);

@@ -151,6 +151,14 @@ header {
     transition: all 0.3s ease;
     font-size: 12px;
 }
+.header_right_sighin span {
+    display: inline-block;
+    max-width: 85px;      /* Giới hạn chiều rộng tối đa */
+    white-space: nowrap;   /* Không xuống dòng */
+    overflow: hidden;      /* Ẩn phần vượt quá */
+    text-overflow: ellipsis; /* Hiện dấu ... */
+    vertical-align: middle;
+}
 .header_right_sighin:hover {
     background-color: #ffbe00; 
     color: #1a191f;
