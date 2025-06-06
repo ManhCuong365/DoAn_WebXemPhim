@@ -19,8 +19,8 @@ let initWebRoutes = (app) => {
     router.post('/login', homController.postLogin);
     router.get('/logout', homController.logout);
     router.get('/displayMovie', homController.displayGetMovie);
-    router.get('/get-movie', homController.displayGetMovie);
-    router.get('/edit_movie', homController.getEditMovie);
+    router.get('/get-movie', homController.getMovie);
+    router.post('/post-movie', homController.postMovie);
 
 
 

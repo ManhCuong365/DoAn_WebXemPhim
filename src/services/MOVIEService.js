@@ -1,18 +1,21 @@
 import db from '../models/index.js';
 
 
-let createMovie = async (data) => {
+let createNewMovie = async (data) => {
     try {
         await db.Movie.create({
             title: data.title,
             rating: data.rating,
             actors: data.actors,
             category: data.category,
+            description: data.description,
+            img: data.img,
+            videoUrl: data.videoUrl,
             status: data.status,
         });
-        return true;
-    } catch (e) {
-        throw e;
+        console.log('Tạo phim thành công!');
+    } catch (error) {
+        console.log('Lỗi khi tạo phim:', error);
     }
 };
 
@@ -32,6 +35,6 @@ let getAllMovies = () => {
 // Thêm các hàm update, delete, getById nếu cần
 
 module.exports = {
-    createMovie: createMovie,
+    createNewMovie: createNewMovie,
     getAllMovies: getAllMovies,
 };

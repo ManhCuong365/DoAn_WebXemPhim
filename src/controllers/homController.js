@@ -98,6 +98,10 @@ let logout = (req, res) => {
     });
 };
 
+let getMovie = (req, res) => {
+    return res.render('createMovie.ejs');
+}
+
 // Hàm để hiển thị trang chi tiết phim
 let displayGetMovie = async(req, res) => {
     let data = await MOVIEService.getAllMovies();
@@ -105,8 +109,11 @@ let displayGetMovie = async(req, res) => {
         dataTable: data,
     });
 }
-let getEditMovie = async (req, res) => {
-    return res.render('editMovie.ejs');
+// Hàm để xử lý tạo phim mới
+let postMovie = async (req, res) => {
+    await MOVIEService.createNewMovie(req.body);
+    let movies = await MOVIEService.getAllMovies();
+    return res.render('displayMovie.ejs', { user: req.session.user || null, dataTable: movies });
 }
 
 module.exports = {
@@ -124,6 +131,7 @@ module.exports = {
     deleteCRUD: deleteCRUD,
     postLogin: postLogin,
     logout: logout,
+    getMovie: getMovie,
+    postMovie: postMovie,
     displayGetMovie: displayGetMovie,
-    getEditMovie: getEditMovie,
 }

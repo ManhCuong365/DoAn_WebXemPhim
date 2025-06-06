@@ -25,6 +25,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true,
       },
+      description: {
+        type: Sequelize.TEXT, // Mô tả phim (chuỗi dài)
+        allowNull: true,
+      },
       img: {
         type: Sequelize.STRING, // Đường dẫn đến ảnh đại diện của phim
         allowNull: true,
