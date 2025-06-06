@@ -22,6 +22,23 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull: true,
       },
+      category: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      img: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      videoUrl: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      status: {
+        type: DataTypes.ENUM('active', 'inactive'), // Chỉ nhận 2 giá trị này
+        allowNull: false,
+        defaultValue: 'active', // Mặc định là 'active'
+      }
     },
     {
       sequelize,

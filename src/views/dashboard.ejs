@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MotChill Admin Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">MOVIE<span style="color: #ffbe00;">ZONE</span></div>
+      <nav>
+        <ul>
+          <li style="background-color: #1d1f33;"><a href="/dashboard">DASHBOARD</a></li>
+          <li><a href="/displayCRUD">MOVIE</a></li>
+          <li><a href="director.html">DIRECTOR</a></li>
+          <li><a href="dienvien.html">ACTOR</a></li>
+
+          <li class="active has-dropdown" id="userMenu">
+            <div class="dropdown-toggle">
+              <a href="/get-crud">USER</a>
+              <i class="fa-solid fa-chevron-down chevron-icon"></i>
+            </div>
+            <ul class="dropdown">
+              <li><a href="#">Sửa người dùng</a></li>
+            </ul>
+          </li>
+          <li>CATEGORY</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-content">
+      <header class="main-header">
+                <p style="color: white;">Dashboard</p>
+                <div style="color: white;" class="admin">
+                    <i class="fa-solid fa-user-shield" style="margin-right:6px;"></i> ManhCuong
+                </div>
+            </header>
+
+      <section class="overview">
+        <div class="card yellow">
+          <h3>0</h3>
+          <p>Đơn hàng mới</p>
+          <a href="#">Xem thêm ➤</a>
+        </div>
+        <div class="card red">
+          <h3>0</h3>
+          <p>Phim mới</p>
+          <a href="#">Xem thêm ➤</a>
+        </div>
+        <div class="card blue">
+          <h3>0/27</h3>
+          <p>User mới/Tổng số user</p>
+          <a href="#">Xem thêm ➤</a>
+        </div>
+        <div class="card green">
+          <h3>0/84</h3>
+          <p>Bài viết mới/Tổng số bài</p>
+          <a href="#">Xem thêm ➤</a>
+        </div>
+      </section>
+
+      <section class="charts">
+        <div class="chart-box">
+          <h4>Lượt xem</h4>
+          <div class="chart-placeholder">[ Biểu đồ lượt xem ]</div>
+        </div>
+        <div class="chart-box">
+          <h4>Doanh thu</h4>
+          <div class="chart-placeholder">[ Biểu đồ doanh thu ]</div>
+        </div>
+      </section>
+
+      <section class="tables">
+        <div class="table-box">
+          <h4>Đơn hàng mới nhất</h4>
+          <table>
+            <tr>
+              <th>Order ID</th>
+              <th>Phim</th>
+              <th>Trạng thái</th>
+              <th>Giá tiền</th>
+            </tr>
+            <!-- Dữ liệu sẽ được thêm bằng backend -->
+          </table>
+        </div>
+        <div class="table-box">
+          <h4>User mới nhất</h4>
+          <table>
+            <tr>
+              <th>Họ tên</th>
+              <th>Email</th>
+              <th>Số điện thoại</th>
+            </tr>
+            <!-- Dữ liệu sẽ được thêm bằng backend -->
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var userMenu = document.getElementById('userMenu');
+            userMenu.addEventListener('click', function (e) {
+                e.stopPropagation();
+                this.classList.toggle('open');
+            });
+            // Đóng dropdown khi click ra ngoài
+            document.addEventListener('click', function () {
+                userMenu.classList.remove('open');
+            });
+        });
+    </script>
+</body>
+
+</html>

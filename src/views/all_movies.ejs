@@ -61,12 +61,23 @@
                             </ul>
                         </div>
 
-                        <div class="header_right_profile">
-                            <a href="<%= user ? 'javascript:void(0)' : '/login_page' %>" class="header_right_sighin">
+                        <div class="header_right_profile" style="position: relative;">
+                            <a href="<%= user ? 'javascript:void(0)' : '/login_page' %>" class="header_right_sighin"
+                                id="profileDropdownBtn">
                                 <span>
                                     <%= user ? user.username : 'Nickname' %>
                                 </span>
+                                <% if (user) { %>
+                                    <i class="ti ti-chevron-down"></i>
+                                    <% } %>
                             </a>
+                            <% if (user) { %>
+                                <ul class="dropdown_menu"
+                                    style="position: absolute; right: 0; top: 100%; background: #222; border-radius: 6px; min-width: 120px; z-index: 10;">
+                                    <li style="padding: 10px 16px; color: #fff; cursor: pointer;">PROFILE</li>
+                                    <li><a href="/logout" style="color: #fff; display: block; padding: 10px 16px;">LOGOUT</a></li>
+                                </ul>
+                                <% } %>
                         </div>
                     </div>
                 </div>

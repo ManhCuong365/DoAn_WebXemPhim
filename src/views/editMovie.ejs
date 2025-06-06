@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách phim</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/add_movie.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">MOVIE<span style="color: #ffbe00;">ZONE</span></div>
+            <nav>
+                <ul>
+                    <li><a href="/dashboard">DASHBOARD</a></li>
+                    <li style="background-color: #1d1f33;"><a href="/displayMovie">MOVIE</a></li>
+                    <li><a href="director.html">DIRECTOR</a></li>
+                    <li><a href="dienvien.html">ACTOR</a></li>
+
+                    <li class="active has-dropdown" id="userMenu">
+                        <div class="dropdown-toggle">
+                            <a href="/get-crud">USER</a>
+                            <i class="fa-solid fa-chevron-down chevron-icon"></i>
+                        </div>
+                    </li>
+                    <li>CATEGORY</li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <p style="color: white;">Add new item</p>
+                <div style="color: white;" class="admin">
+                    <i class="fa-solid fa-user-shield" style="margin-right:6px;"></i> ManhCuong
+                </div>
+            </header>
+            <div class="content-wrapper">
+                <form>
+                    <div style="display: flex; gap: 16px;">
+                        <input type="text" class="form-input" placeholder="Title" style="flex:2;">
+                        <div class="custom-select" style="flex:1;">
+                            <select class="form-input">
+                                <option>FullHD</option>
+                                <option>HD</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <input type="text" class="form-input" placeholder="Age" style="flex:1;">
+                    </div>
+
+                    <div style="display: flex; gap: 16px; margin-top: 16px;">
+                        <textarea class="form-input" placeholder="Description" style="flex:2;"></textarea>
+                        <input type="text" class="form-input" placeholder="Choose genre" style="flex:1;">
+                    </div>
+
+                    <div style="display: flex; gap: 16px; margin-top: 16px;">
+                        <div class="upload-area" style="flex:1;"
+                            onclick="document.getElementById('coverInput').click()">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <span>Upload cover</span>
+                            <input id="coverInput" type="file" accept="image/*" style="display:none;">
+                        </div>
+                        <input type="text" class="form-input" placeholder="Link to the background (1920x1280)"
+                            style="flex:2;">
+                    </div>
+
+                    <div style="display: flex; gap: 16px; margin-top: 16px;">
+                        <div class="custom-select" style="flex:1;">
+                            <select class="form-input">
+                                <option>Choose director</option>
+                                <option>Christopher Nolan</option>
+                                <option>Quentin Tarantino</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="custom-select" style="flex:1;">
+                            <select class="form-input">
+                                <option>Choose country</option>
+                                <option>United States</option>
+                                <option>Vietnam</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 16px; margin-top: 16px;">
+                        <div class="custom-select" style="flex:1;">
+                            <select class="form-input">
+                                <option>Choose actors</option>
+                                <option>John Doe</option>
+                                <option>Jane Smith</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 16px;">
+                        <span style="color:#aaa;">Item type:</span>
+                    </div>
+
+                    <div style="margin-top: 16px;">
+                        <div class="upload-area" onclick="document.getElementById('videoInput').click()">
+                            <i class="fa-solid fa-video"></i>
+                            <span>Upload video</span>
+                            <input id="videoInput" type="file" accept="video/*" style="display:none;">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="publish-btn">PUBLISH</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+</body>
+
+
+</html>

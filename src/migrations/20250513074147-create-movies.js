@@ -21,6 +21,23 @@ module.exports = {
         type: Sequelize.TEXT, // Danh sách diễn viên (chuỗi dài)20
         allowNull: true,
       },
+      category: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      img: {
+        type: Sequelize.STRING, // Đường dẫn đến ảnh đại diện của phim
+        allowNull: true,
+      },
+      videoUrl:{
+        type: Sequelize.STRING, // Đường dẫn đến video của phim
+        allowNull: true,
+      },
+      status: {
+        type: Sequelize.ENUM('active', 'inactive'),
+        allowNull: false,
+        defaultValue: 'active',
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

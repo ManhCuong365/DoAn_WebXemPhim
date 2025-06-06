@@ -1,101 +1,87 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get CRUD</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f8f9fa;
-        }
-        table {
-            border-collapse: collapse;
-            width: 70%;
-            margin: 40px auto;
-            background: #fff;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-        th, td {
-            border: 1px solid #dee2e6;
-            padding: 12px 16px;
-            text-align: center;
-        }
-        th {
-            background: #007bff;
-            color: #fff;
-            font-weight: bold;
-        }
-        tr:hover {
-            background: #f1f3f5;
-        }
-        h2 {
-            text-align: center;
-            margin-top: 30px;
-            color: #007bff;
-        }
-        .btn-edit {
-            background-color: orange;
-            border: none;
-            outline: none;
-            height: 25px;
-            width: 60px;
-            cursor: pointer;
-            border-radius: 8px;
-            font-size: 15px;
-            text-decoration: none;
-
-        }
-        .btn-delete {
-            background-color: red;
-            border: none;
-            outline: none;
-            height: 25px;
-            width: 60px;
-            cursor: pointer;
-            border-radius: 8px;
-            font-size: 15px;
-            text-decoration: none;
-        }
-        .btn-edit:hover, .btn-delete:hover {
-            opacity: 0.8;
-        }
-        .btn-edit,.btn-delete {
-            display: inline-block;
-        }
-    </style>
+    <title>Danh sách người dùng</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
 <body>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Tên người dùng</th>
-            <th>Email</th>
-            <th>Mật Khẩu</th>
-            <th>Hành động</th>
-        </tr>
-        <% for(let i=0; i < dataTable.length; i++) { %>
-            <tr>
-                <td>
-                    <%= dataTable[i].id %>
-                </td>
-                <td>
-                    <%= dataTable[i].username %>
-                </td>
-                <td>
-                    <%= dataTable[i].email %>
-                </td>
-                <td>
-                    <%= dataTable[i].password %>
-                </td>   
-                <td>
-                    <a href="/edit-crud?id=<%= dataTable[i].id %>" class="btn-edit" type="button">Sửa</a>
-                    <a href="/delete-crud?id=<%= dataTable[i].id %>" class="btn-delete" type="button">Xóa</a>
-                </td>
-            </tr>
-            <% } %>
-    </table>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">MOVIE<span style="color: #ffbe00;">ZONE</span></div>
+            <nav>
+                <ul>
+                    <li><a href="/dashboard">DASHBOARD</a></li>
+                    <li><a href="/displayMovie">MOVIE</a></li>
+                    <li><a href="director.html">DIRECTOR</a></li>
+                    <li><a href="dienvien.html">ACTOR</a></li>
+                    <li class="active"><a href="/get-crud">USER</a></li>
+                    <li><a href="#">CATEGORY</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <p style="color: white;">User</p>
+                <div style="color: white;" class="admin">
+                    <i class="fa-solid fa-user-shield" style="margin-right:6px;"></i> ManhCuong
+                </div>
+            </header>
+            <div class="table-box">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="colu">ID</th>
+                            <th class="colu">USERNAME</th>
+                            <th class="colu">EMAIL</th>
+                            <th class="colu">PASSWORD</th>
+                            <th class="colu">CREATE DATE</th>
+                            <th class="colu">UPDATE TIME</th>
+                            <th class="colu">ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(let i=0; i < dataTable.length; i++) { %>
+                            <tr>
+                                <td>
+                                    <%= i + 1 %>
+                                </td>
+                                <td>
+                                    <%= dataTable[i].username %>
+                                </td>
+                                <td style="text-align: left;">
+                                    <%= dataTable[i].email %>
+                                </td>
+                                <td>
+                                    <%= dataTable[i].password %>
+                                </td>
+                                <td>
+                                    <%= new Date(dataTable[i].createdAt).toLocaleDateString('de-DE') %>
+                                </td>
+                                <td style="text-align: left;">
+                                    <%= new Date(dataTable[i].updatedAt).toLocaleDateString('de-DE') %>
+                                </td>
+                                <td>
+                                    <a href="/edit-crud?id=<%= dataTable[i].id %>" class="btn-edit" title="Sửa">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <a href="/delete-crud?id=<%= dataTable[i].id %>" class="btn-delete" title="Xóa"
+                                        onclick="return confirm('Bạn có chắc muốn xóa?')">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
 </body>
 
 </html>

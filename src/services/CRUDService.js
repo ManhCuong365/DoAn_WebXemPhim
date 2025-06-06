@@ -12,6 +12,8 @@ let createNewUser = async (data) => {
         console.log('Lỗi khi tạo người dùng:', error);
     }
 }
+
+
 let getAllUser = () => {
     return new Promise((resolve, reject) => {
         try {
@@ -24,6 +26,7 @@ let getAllUser = () => {
         }
     })
 }
+
 let getUserInfoById = (id) => {
     return new Promise(async(resole, reject) => {
         try{
@@ -44,6 +47,7 @@ let getUserInfoById = (id) => {
     })
         
 }
+
 let updateUserData = (data) => {
     return new Promise(async(resolve, reject) => {
         try{
@@ -67,6 +71,7 @@ let updateUserData = (data) => {
         }
     })
 }
+
 let deleteUserById = (userId) => {
     return new Promise ( async(resolve, reject) => {
 // x <-- y

@@ -163,6 +163,25 @@ header {
     background-color: #ffbe00; 
     color: #1a191f;
 }
+.header_right_profile:hover .dropdown_menu {
+    display: block !important;
+}
+.dropdown_menu {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: #222028;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.dropdown_menu li {
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+.dropdown_menu li:hover {
+    color: #ffbe00;
+}
 
 .header_search_era:hover {
     border-color: #ffbe00;
@@ -193,6 +212,7 @@ a.header_lang_link i:hover {
 .content_title {
     font-weight: 100;
     margin-top: 40px;
+    margin-bottom: 25px;
 }
 
 
