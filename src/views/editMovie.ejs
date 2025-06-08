@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Movie</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">MOVIE<span style="color: #ffbe00;">ZONE</span></div>
+      <nav>
+        <ul>
+          <li class="side_bar">
+            <a href="/dashboard">
+              <i class="fa-solid fa-table-cells-large"></i>
+              <span>DASHBOARD</span>
+            </a>
+          </li>
+          <li class="side_bar">
+            <a href="/displayMovie">
+              <i class="fa-solid fa-film"></i>
+              <span>MOVIE</span>
+            </a>
+          </li>
+          <li class="side_bar">
+            <a href="director.html">
+              <i class="fa-solid fa-user-tie"></i>
+              <span>DIRECTOR</span>
+            </a>
+          </li>
+          <li class="side_bar">
+            <a href="dienvien.html">
+              <i class="fa-solid fa-users"></i>
+              <span>ACTOR</span>
+            </a>
+          </li>
+          <li class="side_bar active">
+            <a href="/get-crud">
+              <i class="fa-solid fa-user"></i>
+              <span>USER</span>
+            </a>
+          </li>
+          <li class="side_bar">
+            <a href="#">
+              <i class="fa-solid fa-tags"></i>
+              <span>CATEGORY</span>
+            </a>
+          </li>
+          <li class="side_bar"><a href="/">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span>BACK TO SITE</span>
+            </a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-content">
+      <header class="main-header">
+        <p style="color: white;">Edit Movie</p>
+        <div style="color: white;" class="admin">
+          <i class="fa-solid fa-user-shield" style="margin-right:6px;"></i> ManhCuong
+        </div>
+      </header>
+      <div class="content-wrapper">
+        <form action="/put-movie" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="id" value="<%= movie.id %>">
+          <input name="title" value="<%= movie.title %>">
+          <input name="rating" value="<%= movie.rating %>">
+          <input name="category" value="<%= movie.category %>">
+          <input name="actors" value="<%= movie.actors %>">
+          <select name="status">
+            <option value="active" <%=movie.status==='active' ? 'selected' : '' %>>Active</option>
+            <option value="inactive" <%=movie.status==='inactive' ? 'selected' : '' %>>Inactive</option>
+          </select>
+          <!-- ... các trường khác ... -->
+          <button type="submit">Cập nhật</button>
+        </form>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>

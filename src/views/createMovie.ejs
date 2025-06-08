@@ -16,23 +16,51 @@
             <div class="logo">MOVIE<span style="color: #ffbe00;">ZONE</span></div>
             <nav>
                 <ul>
-                    <li><a href="/dashboard">DASHBOARD</a></li>
-                    <li style="background-color: #1d1f33;"><a href="/displayMovie">MOVIE</a></li>
-                    <li><a href="director.html">DIRECTOR</a></li>
-                    <li><a href="dienvien.html">ACTOR</a></li>
-
-                    <li class="active has-dropdown" id="userMenu">
-                        <div class="dropdown-toggle">
-                            <a href="/get-crud">USER</a>
-                            <i class="fa-solid fa-chevron-down chevron-icon"></i>
-                        </div>
+                    <li class="side_bar">
+                        <a href="/dashboard">
+                            <i class="fa-solid fa-table-cells-large"></i>
+                            <span>DASHBOARD</span>
+                        </a>
                     </li>
-                    <li>CATEGORY</li>
+                    <li class="side_bar">
+                        <a href="/displayMovie">
+                            <i class="fa-solid fa-film"></i>
+                            <span>MOVIE</span>
+                        </a>
+                    </li>
+                    <li class="side_bar">
+                        <a href="director.html">
+                            <i class="fa-solid fa-user-tie"></i>
+                            <span>DIRECTOR</span>
+                        </a>
+                    </li>
+                    <li class="side_bar">
+                        <a href="dienvien.html">
+                            <i class="fa-solid fa-users"></i>
+                            <span>ACTOR</span>
+                        </a>
+                    </li>
+                    <li class="side_bar active">
+                        <a href="/get-crud">
+                            <i class="fa-solid fa-user"></i>
+                            <span>USER</span>
+                        </a>
+                    </li>
+                    <li class="side_bar">
+                        <a href="#">
+                            <i class="fa-solid fa-tags"></i>
+                            <span>CATEGORY</span>
+                        </a>
+                    </li>
+                    <li class="side_bar"><a href="/">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span>BACK TO SITE</span>
+                        </a></li>
                 </ul>
             </nav>
         </aside>
 
-        
+
         <main class="main-content">
             <header class="main-header">
                 <p style="color: white;">Add new item</p>
@@ -41,22 +69,16 @@
                 </div>
             </header>
             <div class="content-wrapper">
-                <form>
+                <form action="/post-movie" method="post" enctype="multipart/form-data">
                     <div style="display: flex; gap: 16px;">
-                        <input type="text" class="form-input" placeholder="Title" style="flex:2;">
-                        <div class="custom-select" style="flex:1;">
-                            <select class="form-input">
-                                <option>FullHD</option>
-                                <option>HD</option>
-                            </select>
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </div>
-                        <input type="text" class="form-input" placeholder="Age" style="flex:1;">
+                        <input name="title" type="text" class="form-input" placeholder="Title" style="flex:2;">
+                        <input name="rating" type="text" class="form-input" placeholder="Rating" style="flex:1;">
                     </div>
 
                     <div style="display: flex; gap: 16px; margin-top: 16px;">
-                        <textarea class="form-input" placeholder="Description" style="flex:2;"></textarea>
-                        <input type="text" class="form-input" placeholder="Choose genre" style="flex:1;">
+                        <textarea name="description" class="form-input" placeholder="Description"
+                            style="flex:2;"></textarea>
+                        <input name="category" type="text" class="form-input" placeholder="Category" style="flex:1;">
                     </div>
 
                     <div style="display: flex; gap: 16px; margin-top: 16px;">
@@ -64,51 +86,35 @@
                             onclick="document.getElementById('coverInput').click()">
                             <i class="fa-solid fa-cloud-arrow-up"></i>
                             <span>Upload cover</span>
-                            <input id="coverInput" type="file" accept="image/*" style="display:none;">
+                            <input name="imgFile" id="coverInput" type="file" accept="image/*" style="display:none;">
                         </div>
-                        <input type="text" class="form-input" placeholder="Link to the background (1920x1280)"
-                            style="flex:2;">
+                        <input name="imgUrl" type="text" class="form-input"
+                            placeholder="Link to the background (1920x1280)" style="flex:2;">
                     </div>
 
                     <div style="display: flex; gap: 16px; margin-top: 16px;">
                         <div class="custom-select" style="flex:1;">
-                            <select class="form-input">
-                                <option>Choose director</option>
-                                <option>Christopher Nolan</option>
-                                <option>Quentin Tarantino</option>
+                            <select name="actors" class="form-input">
+                                <option value="">Choose actors</option>
+                                <option value="John">John Doe</option>
+                                <option value="Jane">Jane Smith</option>
                             </select>
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                         <div class="custom-select" style="flex:1;">
-                            <select class="form-input">
-                                <option>Choose country</option>
-                                <option>United States</option>
-                                <option>Vietnam</option>
+                            <select name="status" class="form-input">
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
                             </select>
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
-                    </div>
-
-                    <div style="display: flex; gap: 16px; margin-top: 16px;">
-                        <div class="custom-select" style="flex:1;">
-                            <select class="form-input">
-                                <option>Choose actors</option>
-                                <option>John Doe</option>
-                                <option>Jane Smith</option>
-                            </select>
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </div>
-                    </div>
-
-                    <div style="margin-top: 16px;">
-                        <span style="color:#aaa;">Item type:</span>
                     </div>
 
                     <div style="margin-top: 16px;">
                         <div class="upload-area" onclick="document.getElementById('videoInput').click()">
                             <i class="fa-solid fa-video"></i>
                             <span>Upload video</span>
-                            <input id="videoInput" type="file" accept="video/*" style="display:none;">
+                            <input name="videoUrl" id="videoInput" type="file" accept="video/*" style="display:none;">
                         </div>
                     </div>
 

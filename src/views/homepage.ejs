@@ -241,7 +241,7 @@
             <div class="container_tab_content">
                 <div class="tab_content" id="movie-list">
                     <% if (moviesNew && moviesNew.length> 0) { %>
-                        <% moviesNew.forEach(function(movie) { %>
+                        <% moviesNew.slice(0, 18).forEach(function(movie) { %>
                             <div class="movie_item">
                                 <div class="all_item">
                                     <div class="item_cover">

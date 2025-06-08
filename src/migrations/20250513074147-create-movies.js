@@ -15,7 +15,7 @@ module.exports = {
       },
       rating: {
         type: Sequelize.FLOAT, // Đánh giá phim (số thập phân)
-        allowNull: true,
+        allowNull: false,
       },
       actors: {
         type: Sequelize.TEXT, // Danh sách diễn viên (chuỗi dài)20
@@ -23,7 +23,7 @@ module.exports = {
       },
       category: {
         type: Sequelize.STRING,
-        allowNull: true,
+        allowNull: false,
       },
       description: {
         type: Sequelize.TEXT, // Mô tả phim (chuỗi dài)
@@ -32,6 +32,7 @@ module.exports = {
       img: {
         type: Sequelize.STRING, // Đường dẫn đến ảnh đại diện của phim
         allowNull: true,
+        defaultValue: null, // Giá trị mặc định nếu không có ảnh
       },
       videoUrl:{
         type: Sequelize.STRING, // Đường dẫn đến video của phim
@@ -39,7 +40,7 @@ module.exports = {
       },
       status: {
         type: Sequelize.ENUM('active', 'inactive'),
-        allowNull: false,
+        allowNull: true,
         defaultValue: 'active',
       },
       createdAt: {

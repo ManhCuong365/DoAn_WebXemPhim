@@ -1,3 +1,4 @@
+import { up } from '../migrations/20250513074147-create-movies.js';
 import db from '../models/index.js';
 
 
@@ -31,10 +32,65 @@ let getAllMovies = () => {
     });
 };
 
+let getMovieById = (movieId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let movie = await db.Movie.findOne({
+                where: { id: movieId },
+                raw: true,
+            });
+            if (movie) {
+                resolve(movie);
+            } else {
+                resolve({});
+            }
+        } catch (e) {
+            reject(e);
+        }
+    });
+};
+
+let updateMovieById = async (data) => {
+    await db.Movie.update(
+        {
+            title: data.title,
+            description: data.description,
+            img: data.img,
+            videoUrl: data.videoUrl,
+            actors: data.actors,
+            rating: data.rating,
+            category: data.category,
+            status: data.status
+        },
+        { where: { id: data.id } }
+    );
+};
+
+
+let deleteMovieById = async (movieId) => {
+    return new Promise(async(resolve, reject) => {
+        try {
+            let movie = await db.Movie.findOne({
+                where: { id: movieId },
+            });
+            if (movie) {
+                await movie.destroy();
+            } 
+
+            resolve();
+        } catch (e) {
+            reject(e);
+        }
+    }
+    );
+}
 
 // Thêm các hàm update, delete, getById nếu cần
 
 module.exports = {
     createNewMovie: createNewMovie,
     getAllMovies: getAllMovies,
+    deleteMovieById: deleteMovieById,
+    getMovieById: getMovieById,
+    updateMovieById: updateMovieById,
 };

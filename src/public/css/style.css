@@ -109,7 +109,6 @@ a {
   background-color: white;
   padding: 15px;
   border-radius: 8px;
-  height: 200px;
 }
 
 .chart-placeholder {
@@ -409,11 +408,152 @@ a {
   display: block;
 }
 .has-dropdown .chevron-icon {
-  margin-left: auto;      /* Đẩy icon ra xa chữ User */
+  margin-left: auto;      
   transition: transform 0.2s;
-  position: static;       /* Không dùng absolute nữa */
+  position: static;      
   pointer-events: none;
 }
 .has-dropdown.open .chevron-icon {
   transform: rotate(180deg);
+}
+/* Status tag style */
+.status-tag {
+  padding: 3px 8px;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-block;
+}
+.status-tag.inactive {
+  background: #e74c3c; /* đỏ */
+}
+.status-tag.active {
+  background: #27ae60; /* xanh lá cây */
+}
+
+.white-text {
+  color: #fff;
+}
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.overview {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: #2a2c3c;
+  padding: 20px;
+  border-radius: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  font-size: 15px;
+  color: #aaa;
+}
+
+.value {
+  font-size: 2.2rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+.positive {
+  color: #1ecb83;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.negative {
+  color: #ff4d4f;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.icon-yellow {
+  color: #ffbe00;
+  font-size: 2.2rem;
+}
+
+.tables {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.table-card table {
+  width: 100%;
+  margin-top: 12px;
+  border-collapse: collapse;
+}
+
+.table-card th,
+.table-card td {
+  text-align: left;
+  padding: 8px;
+}
+
+.table-card thead {
+  color: #aaa;
+  font-weight: 500;
+}
+
+.table-card tbody {
+  color: #fff;
+}
+
+.rating {
+  color: #ffbe00;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffbe00;
+  font-size: 1.2rem;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.view-btn {
+  background: #23232d;
+  border: none;
+  color: #fff;
+  padding: 4px 16px;
+  border-radius: 6px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+.side_bar {
+  display: flex;
+  align-items: center;
+
+}
+.side_bar span {
+  margin-left: 8px;
 }

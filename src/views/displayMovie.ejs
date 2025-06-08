@@ -15,18 +15,46 @@
       <div class="logo">MOVIE<span style="color: #ffbe00;">ZONE</span></div>
       <nav>
         <ul>
-          <li><a href="/dashboard">DASHBOARD</a></li>
-          <li style="background-color: #1d1f33;"><a href="/displayMovie">MOVIE</a></li>
-          <li><a href="director.html">DIRECTOR</a></li>
-          <li><a href="dienvien.html">ACTOR</a></li>
-
-          <li class="active has-dropdown" id="userMenu">
-            <div class="dropdown-toggle">
-              <a href="/get-crud">USER</a>
-              <i class="fa-solid fa-chevron-down chevron-icon"></i>
-            </div>
+          <li class="side_bar">
+            <a href="/dashboard">
+              <i class="fa-solid fa-table-cells-large"></i>
+              <span>DASHBOARD</span>
+            </a>
           </li>
-          <li>CATEGORY</li>
+          <li class="side_bar">
+            <a href="/displayMovie">
+              <i class="fa-solid fa-film"></i>
+              <span>MOVIE</span>
+            </a>
+          </li>
+          <li class="side_bar">
+            <a href="director.html">
+              <i class="fa-solid fa-user-tie"></i>
+              <span>DIRECTOR</span>
+            </a>
+          </li>
+          <li class="side_bar">
+            <a href="dienvien.html">
+              <i class="fa-solid fa-users"></i>
+              <span>ACTOR</span>
+            </a>
+          </li>
+          <li class="side_bar active">
+            <a href="/get-crud">
+              <i class="fa-solid fa-user"></i>
+              <span>USER</span>
+            </a>
+          </li>
+          <li class="side_bar">
+            <a href="#">
+              <i class="fa-solid fa-tags"></i>
+              <span>CATEGORY</span>
+            </a>
+          </li>
+          <li class="side_bar"><a href="/">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span>BACK TO SITE</span>
+            </a></li>
         </ul>
       </nav>
     </aside>
@@ -52,6 +80,7 @@
               <th>RATING</th>
               <th>CATEGORY</th>
               <th>ACTOR</th>
+              <th>STATUS</th> <!-- Thêm dòng này -->
               <th>CREATED AT</th>
               <th>ACTION</th>
             </tr>
@@ -62,12 +91,13 @@
               <% dataTable.forEach(function(movie, idx) { %>
                 <tr>
                   <td>
-                    <%= movie.id %>
+                    <%= idx + 1 %>
                   </td>
                   <td>
                     <%= movie.title %>
                   </td>
                   <td>
+                    <i style="margin-right: 4px; color: #ffbe00;" class="fa-solid fa-star"></i>
                     <%= movie.rating %>
                   </td>
                   <td>
@@ -83,21 +113,29 @@
                     <%= movie.actors %>
                   </td>
                   <td>
-                    <%= movie.createdAt ? movie.createdAt.getFullYear() : '' %>
+                    <% if (movie.status==='active' ) { %>
+                      <span class="status-tag active">Active</span>
+                      <% } else if (movie.status==='inactive' ) { %>
+                        <span class="status-tag inactive">Inactive</span>
+                        <% } %>
+                  </td>
+                  <td style="text-align: center;">
+                    <%= movie.createdAt ? new Date(movie.createdAt).toLocaleDateString('de-DE') : '' %>
                   </td>
                   <td>
-                    <button class="btn-edit" type="button" title="Sửa">
+                    <a href="/edit-movie?id=<%= movie.id %>" class="btn-edit" type="button" title="Sửa">
                       <i class="fa-solid fa-pen-to-square"></i>
-                    </button>
-                    <button class="btn-delete" type="button" title="Xóa">
+                    </a>
+                    <a href="/delete-movie?id=<%= movie.id %>" class="btn-delete" type="button" title="Xóa"
+                      onclick="return confirm('Bạn có chắc muốn xóa?')">
                       <i class="fa-solid fa-trash"></i>
-                    </button>
+                    </a>
                   </td>
                 </tr>
                 <% }) %>
                   <% } else { %>
                     <tr>
-                      <td colspan="7">Không có dữ liệu phim</td>
+                      <td colspan="8">Không có dữ liệu phim</td>
                     </tr>
                     <% } %>
           </tbody>
@@ -107,4 +145,5 @@
   </div>
 
 </body>
+
 </html>

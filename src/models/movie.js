@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       rating: {
         type: DataTypes.FLOAT,
-        allowNull: true,
+        allowNull: false,
       },
       actors: {
         type: DataTypes.TEXT,
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       category: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
       },
       description: {
         type: DataTypes.TEXT,
@@ -33,6 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       img: {
         type: DataTypes.STRING,
         allowNull: true,
+        defaultValue: null, // Giá trị mặc định nếu không có ảnh
       },
       videoUrl: {
         type: DataTypes.STRING,
@@ -40,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       status: {
         type: DataTypes.ENUM('active', 'inactive'), // Chỉ nhận 2 giá trị này
-        allowNull: false,
+        allowNull: true,
         defaultValue: 'active', // Mặc định là 'active'
       }
     },

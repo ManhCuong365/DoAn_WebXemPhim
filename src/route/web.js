@@ -1,7 +1,10 @@
 import express from "express";
 import homController from "../controllers/homController";
+import multer from 'multer';
+
 
 let router = express.Router();
+let upload = multer({ dest: 'uploads/' });
 
 let initWebRoutes = (app) => {
     router.get('/', homController.getHomPage);
@@ -20,7 +23,16 @@ let initWebRoutes = (app) => {
     router.get('/logout', homController.logout);
     router.get('/displayMovie', homController.displayGetMovie);
     router.get('/get-movie', homController.getMovie);
-    router.post('/post-movie', homController.postMovie);
+    router.post('/post-movie', upload.fields([
+      { name: 'imgFile', maxCount: 1 },
+      { name: 'videoUrl', maxCount: 1 }
+    ]), homController.postMovie);
+    router.get('/edit-movie',homController.getEditMovie);
+    router.post('/put-movie', upload.fields([
+  { name: 'imgFile', maxCount: 1 },
+  { name: 'videoUrl', maxCount: 1 }
+]), homController.putMovie);
+    router.get('/delete-movie', homController.deleteMovie);
 
 
 

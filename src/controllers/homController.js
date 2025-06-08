@@ -1,6 +1,7 @@
 import db from '../models/index.js';
 import CRUDService from '../services/CRUDservice.js';
 import MOVIEService from '../services/MOVIEservice.js';
+import { Op } from 'sequelize';
 
 let getHomPage = async (req, res) => {
     let movies = await MOVIEService.getAllMovies();
@@ -15,12 +16,56 @@ let getMoviePage = (req, res) => {
 let getLoginPage = (req, res) => {
     return res.render('login_page.ejs');
 }
-let getDashboardPage = (req, res) => {
-    return res.render('dashboard.ejs');
+let getDashboardPage = async (req, res) => {
+    // Lấy top items (ví dụ: top 5 phim rating cao nhất)
+    let topItems = await db.Movie.findAll({
+        order: [['rating', 'DESC']],
+        limit: 5,
+        raw: true
+    });
+
+    // Lấy latest items (phim mới nhất)
+    let latestItems = await db.Movie.findAll({
+        order: [['createdAt', 'DESC']],
+        limit: 5,
+        raw: true
+    });
+
+    // Lấy latest users
+    let latestUsers = await db.User.findAll({
+        order: [['createdAt', 'DESC']],
+        limit: 5,
+        raw: true
+    });
+
+    let now = new Date();
+    let startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+
+    let usersThisMonth = await db.User.count({
+        where: {
+            createdAt: { [Op.gte]: startOfMonth }
+        }
+    });
+
+    let itemsAddedThisMonth = await db.Movie.count({
+        where: {
+            createdAt: { [Op.gte]: startOfMonth }
+        }
+    });
+
+    res.render('dashboard.ejs', {
+        topItems,
+        latestItems,
+        latestUsers,
+        usersThisMonth,
+        itemsAddedThisMonth,
+        // latestReviews
+    });
 };
 
-let viewAllMovies = (req, res) => {
-    return res.render('all_movies.ejs', { user: req.session.user || null });
+let viewAllMovies = async (req, res) => {
+    let movies = await db.Movie.findAll({ raw: true });
+    res.render('all_movies.ejs', { movies, user: req.session.user || null });
 }
 
 // Hàm để lấy trang CRUD
@@ -36,7 +81,7 @@ let postCRUD = async (req, res) => {
 }
 
 // Hàm để hiển thị danh sách người dùng
-let displayGetCRUD = async (req, res) => {  
+let displayGetCRUD = async (req, res) => {
     let data = await CRUDService.getAllUser();
     return res.render('displayCRUD.ejs', {
         dataTable: data,
@@ -53,7 +98,7 @@ let getEditCRUD = async (req, res) => {
         });
     }
     else {
-         return res.send('User not found');
+        return res.send('User not found');
     }
 }
 
@@ -103,7 +148,7 @@ let getMovie = (req, res) => {
 }
 
 // Hàm để hiển thị trang chi tiết phim
-let displayGetMovie = async(req, res) => {
+let displayGetMovie = async (req, res) => {
     let data = await MOVIEService.getAllMovies();
     return res.render('displayMovie.ejs', {
         dataTable: data,
@@ -111,9 +156,58 @@ let displayGetMovie = async(req, res) => {
 }
 // Hàm để xử lý tạo phim mới
 let postMovie = async (req, res) => {
-    await MOVIEService.createNewMovie(req.body);
-    let movies = await MOVIEService.getAllMovies();
-    return res.render('displayMovie.ejs', { user: req.session.user || null, dataTable: movies });
+    let imgFile = req.files['imgFile'] ? req.files['imgFile'][0].filename : null;
+    let videoFile = req.files['videoUrl'] ? req.files['videoUrl'][0].filename : null;
+    let { title, description, imgUrl, actors, rating, category, status } = req.body;
+
+    await MOVIEService.createNewMovie({
+        title,
+        description,
+        img: imgFile || imgUrl,
+        videoUrl: videoFile,
+        actors,
+        rating,
+        category,
+        status
+    });
+    return res.redirect('/displayMovie');
+};
+
+let getEditMovie = async (req, res) => {
+    let movieId = req.query.id;
+    if (movieId) {
+        let movieData = await MOVIEService.getMovieById(movieId);
+        return res.render('editMovie.ejs', {
+            movie: movieData,
+        });
+    } else {
+        return res.send('Movie not found');
+    }
+}
+
+let putMovie = async (req, res) => {
+    let imgFile = req.files['imgFile'] ? req.files['imgFile'][0].filename : null;
+    let videoFile = req.files['videoUrl'] ? req.files['videoUrl'][0].filename : null;
+    let { id, title, description, imgUrl, actors, rating, category, status } = req.body;
+
+    await MOVIEService.updateMovieById({
+        id,
+        title,
+        description,
+        img: imgFile || imgUrl,
+        videoUrl: videoFile,
+        actors,
+        rating,
+        category,
+        status
+    });
+    return res.redirect('/displayMovie');
+};
+
+let deleteMovie = async (req, res) => {
+    let id = req.query.id;
+    await MOVIEService.deleteMovieById(id);
+    return res.redirect('/displayMovie');
 }
 
 module.exports = {
@@ -134,4 +228,7 @@ module.exports = {
     getMovie: getMovie,
     postMovie: postMovie,
     displayGetMovie: displayGetMovie,
+    getEditMovie: getEditMovie,
+    putMovie: putMovie,
+    deleteMovie: deleteMovie,
 }

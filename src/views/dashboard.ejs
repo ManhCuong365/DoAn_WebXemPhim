@@ -2,12 +2,11 @@
 <html lang="vi">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MotChill Admin Dashboard</title>
-  <link rel="stylesheet" href="/css/style.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MovieZone Admin Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 </head>
 
 <body>
@@ -17,21 +16,46 @@
       <div class="logo">MOVIE<span style="color: #ffbe00;">ZONE</span></div>
       <nav>
         <ul>
-          <li style="background-color: #1d1f33;"><a href="/dashboard">DASHBOARD</a></li>
-          <li><a href="/displayCRUD">MOVIE</a></li>
-          <li><a href="director.html">DIRECTOR</a></li>
-          <li><a href="dienvien.html">ACTOR</a></li>
-
-          <li class="active has-dropdown" id="userMenu">
-            <div class="dropdown-toggle">
-              <a href="/get-crud">USER</a>
-              <i class="fa-solid fa-chevron-down chevron-icon"></i>
-            </div>
-            <ul class="dropdown">
-              <li><a href="#">Sửa người dùng</a></li>
-            </ul>
+          <li class="side_bar">
+            <a href="/dashboard">
+              <i class="fa-solid fa-table-cells-large"></i>
+              <span>DASHBOARD</span>
+            </a>
           </li>
-          <li>CATEGORY</li>
+          <li class="side_bar">
+            <a href="/displayMovie">
+              <i class="fa-solid fa-film"></i>
+              <span>MOVIE</span>
+            </a>
+          </li>
+          <li class="side_bar">
+            <a href="director.html">
+              <i class="fa-solid fa-user-tie"></i>
+              <span>DIRECTOR</span>
+            </a>
+          </li>
+          <li class="side_bar">
+            <a href="dienvien.html">
+              <i class="fa-solid fa-users"></i>
+              <span>ACTOR</span>
+            </a>
+          </li>
+          <li class="side_bar active">
+            <a href="/get-crud">
+              <i class="fa-solid fa-user"></i>
+              <span>USER</span>
+            </a>
+          </li>
+          <li class="side_bar">
+            <a href="#">
+              <i class="fa-solid fa-tags"></i>
+              <span>CATEGORY</span>
+            </a>
+          </li>
+          <li class="side_bar"><a href="/">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>BACK TO SITE</span>
+          </a></li>
         </ul>
       </nav>
     </aside>
@@ -39,87 +63,239 @@
     <!-- Main -->
     <main class="main-content">
       <header class="main-header">
-                <p style="color: white;">Dashboard</p>
-                <div style="color: white;" class="admin">
-                    <i class="fa-solid fa-user-shield" style="margin-right:6px;"></i> ManhCuong
-                </div>
-            </header>
+        <p class="white-text">Dashboard</p>
+        <div class="admin white-text">
+          <i style="margin-right: 6px;" class="fa-solid fa-user-shield"></i> ManhCuong
+        </div>
+      </header>
 
+      <!-- Summary cards -->
       <section class="overview">
-        <div class="card yellow">
-          <h3>0</h3>
-          <p>Đơn hàng mới</p>
-          <a href="#">Xem thêm ➤</a>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="label">Users this month</div>
+              <div class="value"><%= usersThisMonth %></div>
+            </div>
+            <i class="fa-solid fa-gem icon-yellow"></i>
+          </div>
         </div>
-        <div class="card red">
-          <h3>0</h3>
-          <p>Phim mới</p>
-          <a href="#">Xem thêm ➤</a>
+        <div class="card">  
+          <div class="card-header">
+            <div>
+              <div class="label">Items added this month</div>
+              <div class="value"><%= itemsAddedThisMonth %></div>
+            </div>
+            <i class="fa-solid fa-film icon-yellow"></i>
+          </div>
         </div>
-        <div class="card blue">
-          <h3>0/27</h3>
-          <p>User mới/Tổng số user</p>
-          <a href="#">Xem thêm ➤</a>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="label">Views this month</div>
+              <div class="value">509 573 <span class="positive">+3.1%</span></div>
+            </div>
+            <i class="fa-solid fa-eye icon-yellow"></i>
+          </div>
         </div>
-        <div class="card green">
-          <h3>0/84</h3>
-          <p>Bài viết mới/Tổng số bài</p>
-          <a href="#">Xem thêm ➤</a>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="label">Reviews this month</div>
+              <div class="value">642 <span class="positive">+8</span></div>
+            </div>
+            <i class="fa-solid fa-star icon-yellow"></i>
+          </div>
         </div>
       </section>
 
-      <section class="charts">
-        <div class="chart-box">
-          <h4>Lượt xem</h4>
-          <div class="chart-placeholder">[ Biểu đồ lượt xem ]</div>
+      <!-- Tables -->
+      <section class="tables">
+        <div class="card table-card">
+          <div class="table-header">
+            <div class="title"><i class="fa-solid fa-trophy"></i> Top items</div>
+            <div class="actions">
+              <button class="icon-btn"><i class="fa-solid fa-rotate-right"></i></button>
+              <a href="/displayMovie" class="view-btn">View All</a>
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>TITLE</th>
+                <th>CATEGORY</th>
+                <th>RATING</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (topItems && topItems.length> 0) { %>
+                <% topItems.forEach(function(item) { %>
+                  <tr>
+                    <td>
+                      <%= item.id %>
+                    </td>
+                    <td>
+                      <%= item.title %>
+                    </td>
+                    <td>
+                      <%= item.category %>
+                    </td>
+                    <td><span class="rating">
+                        <%= item.rating %>
+                      </span></td>
+                  </tr>
+                  <% }) %>
+                    <% } else { %>
+                      <tr>
+                        <td colspan="4">Không có dữ liệu</td>
+                      </tr>
+                      <% } %>
+            </tbody>
+          </table>
         </div>
-        <div class="chart-box">
-          <h4>Doanh thu</h4>
-          <div class="chart-placeholder">[ Biểu đồ doanh thu ]</div>
+
+        <div class="card table-card">
+          <div class="table-header">
+            <div class="title"><i class="fa-solid fa-film"></i> Latest items</div>
+            <div class="actions">
+              <button class="icon-btn"><i class="fa-solid fa-rotate-right"></i></button>
+              <a href="/displayMovie" class="view-btn">View All</a>
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>ITEM</th>
+                <th>CATEGORY</th>
+                <th>RATING</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (latestItems && latestItems.length> 0) { %>
+                <% latestItems.forEach(function(item) { %>
+                  <tr>
+                    <td>
+                      <%= item.id %>
+                    </td>
+                    <td>
+                      <%= item.title %>
+                    </td>
+                    <td>
+                      <%= item.category %>
+                    </td>
+                    <td><span class="rating">
+                        <%= item.rating %>
+                      </span></td>
+                  </tr>
+                  <% }) %>
+                    <% } else { %>
+                      <tr>
+                        <td colspan="4">Không có dữ liệu</td>
+                      </tr>
+                      <% } %>
+            </tbody>
+          </table>
         </div>
       </section>
 
       <section class="tables">
-        <div class="table-box">
-          <h4>Đơn hàng mới nhất</h4>
+        <div class="card table-card">
+          <div class="table-header">
+            <div class="title"><i class="fa-solid fa-users"></i> Latest users</div>
+            <div class="actions">
+              <button class="icon-btn"><i class="fa-solid fa-rotate-right"></i></button>
+              <a href="/get-crud" class="view-btn">View All</a>
+            </div>
+          </div>
           <table>
-            <tr>
-              <th>Order ID</th>
-              <th>Phim</th>
-              <th>Trạng thái</th>
-              <th>Giá tiền</th>
-            </tr>
-            <!-- Dữ liệu sẽ được thêm bằng backend -->
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>EMAIL</th>
+                <th>USERNAME</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (latestUsers && latestUsers.length> 0) { %>
+                <% latestUsers.forEach(function(user) { %>
+                  <tr>
+                    <td>
+                      <%= user.id %>
+                    </td>
+                    <td>
+                      <%= user.email %>
+                    </td>
+                    <td>
+                      <%= user.username %>
+                    </td>
+                  </tr>
+                  <% }) %>
+                    <% } else { %>
+                      <tr>
+                        <td colspan="4">Không có dữ liệu</td>
+                      </tr>
+                      <% } %>
+            </tbody>
           </table>
         </div>
-        <div class="table-box">
-          <h4>User mới nhất</h4>
+
+        <div class="card table-card">
+          <div class="table-header">
+            <div class="title"><i class="fa-solid fa-star"></i> Latest reviews</div>
+            <div class="actions">
+              <button class="icon-btn"><i class="fa-solid fa-rotate-right"></i></button>
+              <button class="view-btn">View All</button>
+            </div>
+          </div>
           <table>
-            <tr>
-              <th>Họ tên</th>
-              <th>Email</th>
-              <th>Số điện thoại</th>
-            </tr>
-            <!-- Dữ liệu sẽ được thêm bằng backend -->
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>ITEM</th>
+                <th>AUTHOR</th>
+                <th>RATING</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>824</td>
+                <td>I Dream in Another Language</td>
+                <td>Eliza Josceline</td>
+                <td><span class="rating">7.2</span></td>
+              </tr>
+              <tr>
+                <td>602</td>
+                <td>Benched</td>
+                <td>Ketut</td>
+                <td><span class="rating">6.3</span></td>
+              </tr>
+              <tr>
+                <td>538</td>
+                <td>Whitney</td>
+                <td>Brian Cranston</td>
+                <td><span class="rating">8.4</span></td>
+              </tr>
+              <tr>
+                <td>129</td>
+                <td>Blindspotting</td>
+                <td>Quang</td>
+                <td><span class="rating">9.0</span></td>
+              </tr>
+              <tr>
+                <td>360</td>
+                <td>Another</td>
+                <td>Jackson Brown</td>
+                <td><span class="rating">7.7</span></td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </section>
     </main>
   </div>
 
-  <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var userMenu = document.getElementById('userMenu');
-            userMenu.addEventListener('click', function (e) {
-                e.stopPropagation();
-                this.classList.toggle('open');
-            });
-            // Đóng dropdown khi click ra ngoài
-            document.addEventListener('click', function () {
-                userMenu.classList.remove('open');
-            });
-        });
-    </script>
 </body>
 
 </html>
