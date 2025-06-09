@@ -1,6 +1,7 @@
 import db from '../models/index.js';
 import CRUDService from '../services/CRUDservice.js';
 import MOVIEService from '../services/MOVIEservice.js';
+import MOVIEFService from '../services/MOVIEFService.js';
 import { Op } from 'sequelize';
 
 let getHomPage = async (req, res) => {
@@ -65,7 +66,17 @@ let getDashboardPage = async (req, res) => {
 
 let viewAllMovies = async (req, res) => {
     let movies = await db.Movie.findAll({ raw: true });
-    res.render('all_movies.ejs', { movies, user: req.session.user || null });
+    let favoriteMovieIds = [];
+    if (req.session.user) {
+        let user = await db.User.findOne({ where: { email: req.session.user.email } });
+        let favs = await db.Favorite.findAll({ where: { userId: user.id }, raw: true });
+        favoriteMovieIds = favs.map(f => f.movieId);
+    }
+    res.render('all_movies.ejs', {
+        movies,
+        user: req.session.user || null,
+        favoriteMovieIds
+    });
 }
 
 // Hàm để lấy trang CRUD
@@ -158,17 +169,20 @@ let displayGetMovie = async (req, res) => {
 let postMovie = async (req, res) => {
     let imgFile = req.files['imgFile'] ? req.files['imgFile'][0].filename : null;
     let videoFile = req.files['videoUrl'] ? req.files['videoUrl'][0].filename : null;
-    let { title, description, imgUrl, actors, rating, category, status } = req.body;
+    let { title, description, imgUrl, director, actors, rating, category, status, year, youtubeUrl } = req.body; // thêm youtubeUrl
 
     await MOVIEService.createNewMovie({
         title,
         description,
         img: imgFile || imgUrl,
         videoUrl: videoFile,
+        director,
         actors,
         rating,
         category,
-        status
+        status,
+        year,
+        youtubeUrl
     });
     return res.redirect('/displayMovie');
 };
@@ -188,7 +202,7 @@ let getEditMovie = async (req, res) => {
 let putMovie = async (req, res) => {
     let imgFile = req.files['imgFile'] ? req.files['imgFile'][0].filename : null;
     let videoFile = req.files['videoUrl'] ? req.files['videoUrl'][0].filename : null;
-    let { id, title, description, imgUrl, actors, rating, category, status } = req.body;
+    let { id, title, description, imgUrl, director, actors, rating, category, year, status } = req.body;
 
     await MOVIEService.updateMovieById({
         id,
@@ -196,9 +210,11 @@ let putMovie = async (req, res) => {
         description,
         img: imgFile || imgUrl,
         videoUrl: videoFile,
+        director,
         actors,
         rating,
         category,
+        year,
         status
     });
     return res.redirect('/displayMovie');
@@ -209,6 +225,38 @@ let deleteMovie = async (req, res) => {
     await MOVIEService.deleteMovieById(id);
     return res.redirect('/displayMovie');
 }
+
+let getMovieDetail = async (req, res) => {
+    let id = req.query.id;
+    let movie = await db.Movie.findOne({ where: { id }, raw: true });
+    // Nếu có bảng comment, lấy thêm comment ở đây
+    // let comments = await db.Comment.findAll({ where: { movieId: id }, raw: true });
+    res.render('movie_1.ejs', {
+        movie,
+        // comments,
+        user: req.session.user || null
+    });
+};
+
+let addFavorite = async (req, res) => {
+    if (!req.session.user) {
+        return res.send('Bạn cần đăng nhập để thực hiện thao tác này.');
+    }
+    let user = await db.User.findOne({ where: { email: req.session.user.email } });
+    let { movieId } = req.body;
+    let result = await MOVIEFService.addFavorite(user.id, movieId);
+    return res.json(result);
+};
+
+let removeFavorite = async (req, res) => {
+    if (!req.session.user) {
+        return res.send('Bạn cần đăng nhập để thực hiện thao tác này.');
+    }
+    let user = await db.User.findOne({ where: { email: req.session.user.email } });
+    let { movieId } = req.body;
+    let result = await MOVIEFService.removeFavorite(user.id, movieId);
+    return res.json(result);
+};
 
 module.exports = {
     getHomPage: getHomPage,
@@ -231,4 +279,7 @@ module.exports = {
     getEditMovie: getEditMovie,
     putMovie: putMovie,
     deleteMovie: deleteMovie,
+    getMovieDetail: getMovieDetail,
+    addFavorite: addFavorite,
+    removeFavorite: removeFavorite,
 }

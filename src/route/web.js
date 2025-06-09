@@ -24,16 +24,17 @@ let initWebRoutes = (app) => {
     router.get('/displayMovie', homController.displayGetMovie);
     router.get('/get-movie', homController.getMovie);
     router.post('/post-movie', upload.fields([
-      { name: 'imgFile', maxCount: 1 },
-      { name: 'videoUrl', maxCount: 1 }
+        { name: 'imgFile', maxCount: 1 },
+        { name: 'videoUrl', maxCount: 1 }
     ]), homController.postMovie);
-    router.get('/edit-movie',homController.getEditMovie);
+    router.get('/edit-movie', homController.getEditMovie);
     router.post('/put-movie', upload.fields([
-  { name: 'imgFile', maxCount: 1 },
-  { name: 'videoUrl', maxCount: 1 }
-]), homController.putMovie);
+        { name: 'imgFile', maxCount: 1 },
+        { name: 'videoUrl', maxCount: 1 }
+    ]), homController.putMovie);
     router.get('/delete-movie', homController.deleteMovie);
-
+    router.post('/favorite/add', homController.addFavorite);
+    router.post('/favorite/remove', homController.removeFavorite);
 
 
     router.get('/buimanhcuong', (req, res) => {
@@ -50,7 +51,7 @@ let initWebRoutes = (app) => {
     router.get('/login_page', (req, res) => {
         return res.render("login_page");
     });
-    
+    router.get('/movie_detail', homController.getMovieDetail);
 
     return app.use("/", router);
 };

@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
     <link rel="stylesheet" type="text/css" href="/css/homepage.css">
     <link rel="stylesheet" type="text/css" href="/css/movie_1.css">
-    <title>Terminator</title>
+    <!-- Tiêu đề -->
+    <title>
+        <%= movie.title %>
+    </title>
     <style>
 
     </style>
@@ -78,7 +81,8 @@
                                 <ul class="dropdown_menu"
                                     style="position: absolute; right: 0; top: 100%; background: #222; border-radius: 6px; min-width: 120px; z-index: 10;">
                                     <li style="padding: 10px 16px; color: #fff; cursor: pointer;">PROFILE</li>
-                                    <li><a href="/logout" style="color: #fff; display: block; padding: 10px 16px;">LOGOUT</a></li>
+                                    <li><a href="/logout"
+                                            style="color: #fff; display: block; padding: 10px 16px;">LOGOUT</a></li>
                                 </ul>
                                 <% } %>
                         </div>
@@ -87,11 +91,13 @@
             </div>
         </div>
     </header>
-    
+
     <section class="movie">
         <div class="title_and_button">
             <div class="title_movie">
-                <h1>Terminator</h1>
+                <h1>
+                    <%= movie.title %>
+                </h1>
             </div>
             <div class="back_link_movie">
                 <a class="back_home" href="/">
@@ -101,37 +107,100 @@
         </div>
         <div class="container_movie">
             <div class="item_cover">
-                <img style="width: 240px; height: 345px;" class="swiper_slide_img"
-                    src="https://www.movieposters.com/cdn/shop/files/Terminator_480x.progressive.jpg?v=1730233995">
-                <span class="item_rate">9.5</span>
+                <img style="width: 240px; height: 345px;" class="swiper_slide_img" src="<%= movie.img %>">
+                <span class="item_rate">
+                    <%= movie.rating %>
+                </span>
                 <button class="item_fav">
                     <i class="ti ti-bookmark"></i>
                 </button>
             </div>
             <div class="movie-info">
-                <p><strong>Director:</strong> James Cameron</p>
-                <p><strong>Cast:</strong> Arnold Schwarzenegger, Linda Hamilton, Michael Biehn</p>
-                <p><strong>Genre:</strong> Action, Thriller</p>
-                <p><strong>Premiere:</strong> 2023</p>
-                <p><strong>Running Time:</strong> 128 min</p>
-                <p><strong>Country:</strong> USA</p>
-                <p style="max-width: 800px;">A cyborg assassin from the future attempts to find and kill a young woman
-                    who is destined to give birth
-                    to a warrior that will lead a resistance to save humankind from extinction.</p>
+                <p><strong>Director:</strong>
+                    <%= movie.director %>
+                </p>
+                <p><strong>Cast:</strong>
+                    <%= movie.actors %>
+                </p>
+                <p><strong>Genre:</strong>
+                    <%= movie.category %>
+                </p>
+                <p><strong>Running Time:</strong>
+                    <%= movie.runningTime %> min
+                </p>
+                <p><strong>Year:</strong>
+                    <%= movie.year %>
+                </p>
+                <div style="overflow: hidden; outline: none;" class="item-description">
+                    <div class="srcollable">
+                        <p class="des-con" style="max-width: 800px; color:white">
+                            <%= movie.description %>
+                        </p>
+                    </div>
+                </div>
             </div>
             <div class="video-container">
-                <iframe width="1905" height="788" src="https://www.youtube.com/embed/nGrW-OR2uDk"
-                    title="THE TERMINATOR (1984) | Official Trailer | MGM" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <!-- Nếu có videoUrl -->
+                
+                <% if (movie.youtubeUrl) { %>
+
+                    <iframe width="1905" height="788" src="<%= movie.youtubeUrl %>" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                    <% } %>
             </div>
         </div>
     </section>
 
+    <section class="discover">
+        <h2>Discover</h2>
+
+        <div class="comments-and-recommendations">
+            <div class="comments-section">
+                <div class="comment">
+                    <div class="comment-header">
+                        <span class="user-name">John Doe</span>
+                    </div>
+                    <div class="comment-header1">
+                        <span class="comment-date"> 20.08.2023, 17:03 </span>
+                    </div>
+                </div>
+                <div class="comment-content">
+                    <p class="user-comment">There are many variations of passages of Lorem Ipsum available, but the
+                        majority have suffered alteration in some form, by injected humour, or randomised words which
+                        don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need
+                        to be sure there isn't anything embarrassing hidden in the middle of text...</p>
+                </div>
+
+                <form class="comment-form">
+                    <div class="add-comment">
+                        <textarea class="sign_text" placeholder="Add comment"></textarea>
+                        <button type="button" class="send-btn">SEND</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="recommendations-section">
+                <h3>You may also like...</h3>
+                <div class="recommended-movies">
+                    <div class="movie-card">
+                        <img src="https://via.placeholder.com/100x150" alt="Movie">
+                        <p><strong>I Dream in Another Land</strong><br><span>Action, Thriller</span></p>
+                    </div>
+                    <!-- Thêm các movie-card khác tương tự -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <footer>
         <div class="footer-container">
-            <div class="footer-logo">MOVIEZONE</div>
-            <div class="footer-copyright">© MOVIEZONE, 2020–2025<br>Create for history editor</div>
+            <div class="footer-logo">MOVIE<span style="color: white;">ZONE</span></div>
+            <div class="footer-copyright">© MOVIEZONE, 2020–2025<br> Create by <span style="color: #ffbe00;"> ManhCuong
+                </span></div>
             <div class="footer-links">
                 <a href="#">About Us</a>
                 <a href="#">Controls</a>

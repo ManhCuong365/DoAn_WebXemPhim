@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-    <title>Document</title>
+    <title>MovieZone homepage</title>
 </head>
 
 <body>
@@ -32,15 +32,29 @@
 
                         <li class="header_nav_item">Pricing plan</li>
 
-                        <li class="header_nav_item">
-                            Page
+                        <li class="header_nav_item has-dropdown">
+                            Pages
                             <i class="ti ti-chevron-down"></i>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="#">Actor</a></li>
+                                <li><a href="#">Contacts</a></li>
+                                <li><a href="#">Help center</a></li>
+                                <li><a href="#">Privacy policy</a></li>
+                                <li><a href="/dashboard">Admin pages</a></li>
+                            </ul>
                         </li>
 
-                        <li class="header_nav_item">
+                        <li class="header_nav_item has-dropdown">
                             <a class="button_dot">
                                 <i class="ti ti-dots"></i>
                             </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/login_page">Sign in</a></li>
+                                <li><a href="/crud">Sign up</a></li>
+                                <li><a href="#">404 Page</a></li>
+                            </ul>
                         </li>
                     </ul>
 
@@ -97,7 +111,7 @@
                     <div class="item_cover">
                         <img style="width: 220px; height: 354px;" class="swiper_slide_img"
                             src="https://www.movieposters.com/cdn/shop/files/Terminator_480x.progressive.jpg?v=1730233995">
-                        <a href="/movie_1" class="item_play">
+                        <a href="#" class="item_play">
                             <i class="ti ti-player-play-filled"></i>
                         </a>
                         <span class="item_rate">9.5</span>
@@ -245,14 +259,14 @@
                             <div class="movie_item">
                                 <div class="all_item">
                                     <div class="item_cover">
-                                        <img style="width: 187.67px; height: 276.53px"
-                                            src="<%= movie.img || '/default.jpg' %>" alt="<%= movie.title %>">
-                                        <a href="#" class="item_play">
-                                            <i class="ti ti-player-play-filled"></i>
+                                        <a href="/movie_detail?id=<%= movie.id %>">
+                                            <img style="width: 187.67px; height: 276.53px"
+                                                src="<%= movie.img || '/default.jpg' %>" alt="<%= movie.title %>">
+                                            <span class="item_play">
+                                                <i class="ti ti-player-play-filled"></i>
+                                            </span>
                                         </a>
-                                        <span class="item_rate">
-                                            <%= movie.rating %>
-                                        </span>
+                                        <span class="item_rate"><%= movie.rating %></span>
                                         <button class="item_fav">
                                             <i class="ti ti-bookmark"></i>
                                         </button>
@@ -287,8 +301,9 @@
 
     <footer>
         <div class="footer-container">
-            <div class="footer-logo">MOVIEZONE</div>
-            <div class="footer-copyright">© MOVIEZONE, 2020–2025<br>Create for history editor</div>
+            <div class="footer-logo">MOVIE<span style="color: white;">ZONE</span></div>
+            <div class="footer-copyright">© MOVIEZONE, 2020–2025<br> Create by <span style="color: #ffbe00;"> ManhCuong
+                </span></div>
             <div class="footer-links">
                 <a href="#">About Us</a>
                 <a href="#">Controls</a>

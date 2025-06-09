@@ -17,6 +17,10 @@ module.exports = {
         type: Sequelize.FLOAT, // Đánh giá phim (số thập phân)
         allowNull: false,
       },
+      director: {
+        type: Sequelize.STRING, // Tên đạo diễn
+        allowNull: true, // Có thể để trống nếu không có thông tin
+      },
       actors: {
         type: Sequelize.TEXT, // Danh sách diễn viên (chuỗi dài)20
         allowNull: true,
@@ -24,6 +28,10 @@ module.exports = {
       category: {
         type: Sequelize.STRING,
         allowNull: false,
+      },
+      year: {
+        type: Sequelize.INTEGER, // Năm phát hành phim
+        allowNull: true, // Có thể để trống nếu không có thông tin
       },
       description: {
         type: Sequelize.TEXT, // Mô tả phim (chuỗi dài)
@@ -36,6 +44,10 @@ module.exports = {
       },
       videoUrl:{
         type: Sequelize.STRING, // Đường dẫn đến video của phim
+        allowNull: true,
+      },
+      youtubeUrl: {
+        type: Sequelize.STRING, // Đường dẫn đến video trên YouTube
         allowNull: true,
       },
       status: {

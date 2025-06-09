@@ -73,6 +73,7 @@
                     <div style="display: flex; gap: 16px;">
                         <input name="title" type="text" class="form-input" placeholder="Title" style="flex:2;">
                         <input name="rating" type="text" class="form-input" placeholder="Rating" style="flex:1;">
+                        <input name="year" type="text" class="form-input" placeholder="Year" style="flex:1;">
                     </div>
 
                     <div style="display: flex; gap: 16px; margin-top: 16px;">
@@ -93,14 +94,10 @@
                     </div>
 
                     <div style="display: flex; gap: 16px; margin-top: 16px;">
-                        <div class="custom-select" style="flex:1;">
-                            <select name="actors" class="form-input">
-                                <option value="">Choose actors</option>
-                                <option value="John">John Doe</option>
-                                <option value="Jane">Jane Smith</option>
-                            </select>
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </div>
+                        <input name="actors" type="text" class="form-input" placeholder="Actors"
+                            style="flex:1;">
+                            <input name="director" type="text" class="form-input" placeholder="Director"
+                            style="flex:1;">
                         <div class="custom-select" style="flex:1;">
                             <select name="status" class="form-input">
                                 <option value="active">Active</option>
@@ -116,6 +113,10 @@
                             <span>Upload video</span>
                             <input name="videoUrl" id="videoInput" type="file" accept="video/*" style="display:none;">
                         </div>
+                    </div>
+                    
+                    <div style="margin-top: 16px;">
+                        <input name="youtubeUrl" type="text" class="form-input" placeholder="Hoặc dán link YouTube trailer tại đây">
                     </div>
 
                     <div class="form-actions">

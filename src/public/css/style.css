@@ -44,8 +44,10 @@ a {
   border-radius: 4px;
 }
 
-.sidebar nav ul li:hover {
-  background-color: #1d1f33;
+.side_bar a:hover {
+  color: #ffbe00;
+  transition: all 0.3s ease;
+
 }
 
 /* Main content */
@@ -61,7 +63,7 @@ a {
 }
 .main-header p {
   font-size: 27px;
-  color: #bfc9da;
+  color: #ffffff;
   margin-bottom: 20px;
   font-weight: 600;
 }
@@ -433,7 +435,7 @@ a {
 }
 
 .white-text {
-  color: #fff;
+  color:white;
 }
 .main-content {
   flex: 1;
@@ -556,4 +558,7 @@ a {
 }
 .side_bar span {
   margin-left: 8px;
+}
+.side_bar i span {
+  font-weight: 600;
 }

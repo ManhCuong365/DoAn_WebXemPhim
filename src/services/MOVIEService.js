@@ -8,10 +8,13 @@ let createNewMovie = async (data) => {
             title: data.title,
             rating: data.rating,
             actors: data.actors,
+            director: data.director,
+            year: data.year,
             category: data.category,
             description: data.description,
             img: data.img,
             videoUrl: data.videoUrl,
+            youtubeUrl: data.youtubeUrl,
             status: data.status,
         });
         console.log('Tạo phim thành công!');
@@ -57,6 +60,9 @@ let updateMovieById = async (data) => {
             description: data.description,
             img: data.img,
             videoUrl: data.videoUrl,
+            youtubeUrl: data.youtubeUrl,
+            director: data.director,
+            year: data.year,
             actors: data.actors,
             rating: data.rating,
             category: data.category,

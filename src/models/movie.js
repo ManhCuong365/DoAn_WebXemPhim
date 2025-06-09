@@ -4,7 +4,7 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Movie extends Model {
     static associate(models) {
-      // Định nghĩa quan hệ nếu cần
+      Movie.belongsToMany(models.User, { through: 'Favorite', foreignKey: 'movieId' });
     }
   }
 
@@ -18,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.FLOAT,
         allowNull: false,
       },
+      director: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       actors: {
         type: DataTypes.TEXT,
         allowNull: true,
@@ -26,16 +30,24 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      year: {
+        type: DataTypes.INTEGER,
+        allowNull: true, // Có thể để trống nếu không có thông tin
+      },
       description: {
         type: DataTypes.TEXT,
         allowNull: true,
-      },  
+      },
       img: {
         type: DataTypes.STRING,
         allowNull: true,
         defaultValue: null, // Giá trị mặc định nếu không có ảnh
       },
       videoUrl: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      youtubeUrl: {
         type: DataTypes.STRING,
         allowNull: true,
       },
