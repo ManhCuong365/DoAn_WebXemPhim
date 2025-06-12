@@ -96,8 +96,10 @@
         <div class="card">
           <div class="card-header">
             <div>
-              <div class="label">Views this month</div>
-              <div class="value">509 573 <span class="positive">+3.1%</span></div>
+              <div class="label">Comments this month</div>
+              <div class="value">
+                <%= commentsThisMonth %>
+              </div>
             </div>
             <i class="fa-solid fa-eye icon-yellow"></i>
           </div>
@@ -121,7 +123,7 @@
           <div class="table-header">
             <div class="title"><i class="fa-solid fa-trophy"></i> Top items</div>
             <div class="actions">
-              <button class="icon-btn"><i class="fa-solid fa-rotate-right"></i></button>
+              <a href="/dashboard" class="icon-btn"><i class="fa-solid fa-rotate-right"></i></a>
               <a href="/displayMovie" class="view-btn">View All</a>
             </div>
           </div>
@@ -165,7 +167,7 @@
           <div class="table-header">
             <div class="title"><i class="fa-solid fa-film"></i> Latest items</div>
             <div class="actions">
-              <button class="icon-btn"><i class="fa-solid fa-rotate-right"></i></button>
+              <a href="/dashboard" class="icon-btn"><i class="fa-solid fa-rotate-right"></i></a>
               <a href="/displayMovie" class="view-btn">View All</a>
             </div>
           </div>
@@ -211,7 +213,7 @@
           <div class="table-header">
             <div class="title"><i class="fa-solid fa-users"></i> Latest users</div>
             <div class="actions">
-              <button class="icon-btn"><i class="fa-solid fa-rotate-right"></i></button>
+              <a href="/dashboard" class="icon-btn"><i class="fa-solid fa-rotate-right"></i></a>
               <a href="/get-crud" class="view-btn">View All</a>
             </div>
           </div>
@@ -251,8 +253,8 @@
           <div class="table-header">
             <div class="title"><i class="fa-solid fa-star"></i> Latest favorite</div>
             <div class="actions">
-              <button class="icon-btn"><i class="fa-solid fa-rotate-right"></i></button>
-              <button class="view-btn">View All</button>
+              <a href="/dashboard" class="icon-btn"><i class="fa-solid fa-rotate-right"></i></a>
+              <a href="/displayComment" class="view-btn">View All</a>
             </div>
           </div>
           <table>

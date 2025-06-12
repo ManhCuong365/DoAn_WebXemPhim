@@ -61,12 +61,14 @@ a {
   justify-content: space-between;
   margin-bottom: 19px;
 }
+
 .main-header p {
   font-size: 27px;
   color: #ffffff;
   margin-bottom: 20px;
   font-weight: 600;
 }
+
 .overview {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -95,10 +97,21 @@ a {
   text-decoration: none;
 }
 
-.card.yellow { background-color: #f1c40f; }
-.card.red { background-color: #e74c3c; }
-.card.blue { background-color: #3498db; }
-.card.green { background-color: #2ecc71; }
+.card.yellow {
+  background-color: #f1c40f;
+}
+
+.card.red {
+  background-color: #e74c3c;
+}
+
+.card.blue {
+  background-color: #3498db;
+}
+
+.card.green {
+  background-color: #2ecc71;
+}
 
 .charts {
   display: grid;
@@ -140,7 +153,8 @@ a {
 .table-box table {
   width: 100%;
   border-collapse: separate;
-  border-spacing: 0 10px; /* tạo khoảng cách giữa các dòng */
+  border-spacing: 0 10px;
+  /* tạo khoảng cách giữa các dòng */
   background: transparent;
 }
 
@@ -155,7 +169,7 @@ a {
 
 .table-box tbody tr:hover td {
   background: #23243a;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
 }
 
 .table-box tbody tr {
@@ -177,7 +191,8 @@ a {
   background: #23243a;
 }
 
-.table-box th, .table-box td {
+.table-box th,
+.table-box td {
   border: none;
   padding: 14px 16px;
   font-size: 15px;
@@ -189,12 +204,14 @@ a {
   text-align: left !important;
   color: white !important;
 }
+
 .table-box tbody tr:hover td {
   background: #23243a;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
 }
 
-.table-box td:first-child, .table-box th:first-child {
+.table-box td:first-child,
+.table-box th:first-child {
   color: #fff;
   background: #23243a;
   font-weight: bold;
@@ -214,7 +231,8 @@ a {
 }
 
 
-.table-box td:last-child, .table-box th:last-child {
+.table-box td:last-child,
+.table-box th:last-child {
   border-radius: 0 8px 8px 0;
 }
 
@@ -232,9 +250,11 @@ a {
   font-size: 16px;
   transition: background 0.2s;
 }
+
 .table-box .btn-edit:hover {
   background: #0db8de;
 }
+
 .table-box .btn-delete {
   background: red;
   color: #fff;
@@ -248,30 +268,37 @@ a {
   font-size: 16px;
   transition: background 0.2s;
 }
+
 .table-box .btn-delete:hover {
   background: #e74c3c;
 }
 
-.main-header, .actions {
+.main-header,
+.actions {
   padding-left: 15px;
 }
+
 .actions {
   margin-bottom: 10px;
 }
 
 .actions .btn {
-  background-color: #0db8de;
+  background-color: transparent;
   color: white;
-  border: none;
+  border-radius: 8px;
+  border: 2px solid #ffbe00;
   padding: 8px 14px;
   margin-right: 10px;
   border-radius: 5px;
+  font-weight: 500;
   cursor: pointer;
   font-size: 14px;
+  transition: all 0.3s ease-in-out;
 }
 
 .actions .btn:hover {
-  background-color: #0aa7c6;
+  background-color: #ffbe00;
+  color: black;
 }
 
 .badge {
@@ -288,8 +315,8 @@ a {
 
 .tag {
   display: inline-block;
-  background: #3498db;
-  color: #fff;
+  background: #ffbe00;
+  color: black;
   padding: 3px 8px;
   margin: 2px 4px 2px 0;
   border-radius: 5px;
@@ -297,15 +324,15 @@ a {
   font-weight: 500;
 }
 
-
-
 .modal {
   display: none;
   position: fixed;
   z-index: 1000;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.4);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
   align-items: center;
   justify-content: center;
 }
@@ -316,9 +343,9 @@ a {
   border-radius: 10px;
   width: 700px;
   max-width: 90%;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
   position: relative;
-  
+
 }
 
 .modal-content h3 {
@@ -369,11 +396,12 @@ a {
 
 .has-dropdown {
   position: relative;
-  display: block; /* Sửa lại từ flex thành block */
+  display: block;
+  /* Sửa lại từ flex thành block */
   align-items: unset;
 }
 
-.has-dropdown > .dropdown {
+.has-dropdown>.dropdown {
   display: none;
   position: static;
   background: #23243a;
@@ -384,18 +412,22 @@ a {
   box-shadow: none;
 }
 
-.has-dropdown.open > .dropdown {
+.has-dropdown.open>.dropdown {
   display: block;
 }
+
 .has-dropdown .dropdown-toggle {
   display: flex;
   align-items: center;
   cursor: pointer;
   position: relative;
-  justify-content: space-between; /* Thêm dòng này */
-  width: 100%;                   /* Đảm bảo chiếm hết chiều ngang menu */
+  justify-content: space-between;
+  /* Thêm dòng này */
+  width: 100%;
+  /* Đảm bảo chiếm hết chiều ngang menu */
 }
-.has-dropdown > .dropdown li {
+
+.has-dropdown>.dropdown li {
   padding: 10px 16px;
   color: #fff;
   cursor: pointer;
@@ -404,20 +436,23 @@ a {
 }
 
 
-.has-dropdown > .dropdown a {
+.has-dropdown>.dropdown a {
   color: #fff;
   text-decoration: none;
   display: block;
 }
+
 .has-dropdown .chevron-icon {
-  margin-left: auto;      
+  margin-left: auto;
   transition: transform 0.2s;
-  position: static;      
+  position: static;
   pointer-events: none;
 }
+
 .has-dropdown.open .chevron-icon {
   transform: rotate(180deg);
 }
+
 /* Status tag style */
 .status-tag {
   padding: 3px 8px;
@@ -427,16 +462,21 @@ a {
   font-weight: 500;
   display: inline-block;
 }
+
 .status-tag.inactive {
-  background: #e74c3c; /* đỏ */
+  background: #e74c3c;
+  /* đỏ */
 }
+
 .status-tag.active {
-  background: #27ae60; /* xanh lá cây */
+  background: #27ae60;
+  /* xanh lá cây */
 }
 
 .white-text {
-  color:white;
+  color: white;
 }
+
 .main-content {
   flex: 1;
   padding: 20px;
@@ -551,14 +591,17 @@ a {
   margin-left: 8px;
   cursor: pointer;
 }
+
 .side_bar {
   display: flex;
   align-items: center;
 
 }
+
 .side_bar span {
   margin-left: 8px;
 }
+
 .side_bar i span {
   font-weight: 600;
 }

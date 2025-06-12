@@ -19,6 +19,8 @@ app.use(session({
 }));
 // Cấu hình Express để phục vụ file tĩnh từ thư mục 'public'
 app.use(express.static(path.join(__dirname, 'public')));
+// Cấu hình Express để phục vụ file tĩnh từ thư mục 'uploads'
+app.use('/uploads', express.static('uploads'));
 
 // Cấu hình body-parser
 app.use(bodyParser.json());

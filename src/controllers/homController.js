@@ -5,9 +5,9 @@ import MOVIEFService from '../services/MOVIEFService.js';
 import COMService from '../services/COMService.js';
 import { Op } from 'sequelize';
 
+// 1. Trang chủ và Dashboard
 let getHomPage = async (req, res) => {
     let movies = await MOVIEService.getAllMovies();
-    movies = movies.sort(() => Math.random() - 0.5);
     let favoriteMovieIds = [];
     if (req.session.user) {
         let user = await db.User.findOne({ where: { email: req.session.user.email } });
@@ -20,13 +20,6 @@ let getHomPage = async (req, res) => {
         favoriteMovieIds
     });
 };
-let getMoviePage = (req, res) => {
-    return res.render('movie_1.ejs', { user: req.session.user || null });
-};
-let getLoginPage = (req, res) => {
-    // Luôn truyền error và success (nếu không có thì để null)
-    return res.render('login_page.ejs', { error: null, success: null });
-}
 let getDashboardPage = async (req, res) => {
     let topItems = await db.Movie.findAll({
         order: [['rating', 'DESC']],
@@ -46,12 +39,12 @@ let getDashboardPage = async (req, res) => {
         raw: true
     });
 
-    let latestFavorite = await db.Favorite.findAll({
+    let latestFavorite = await db.Comment.findAll({
         order: [['createdAt', 'DESC']],
         limit: 5,
         include: [
-            { model: db.Movie, attributes: ['title', 'rating'] },
-            { model: db.User, attributes: ['username', 'email'] }
+            { model: db.Movie, attributes: ['title'] },
+            { model: db.User, attributes: ['username'] }
         ],
         raw: true,
         nest: true
@@ -77,6 +70,11 @@ let getDashboardPage = async (req, res) => {
             createdAt: { [Op.gte]: startOfMonth }
         }
     });
+    let commentsThisMonth = await db.Comment.count({
+        where: {
+            createdAt: { [Op.gte]: startOfMonth }
+        }
+    });
 
 
     res.render('dashboard.ejs', {
@@ -87,9 +85,12 @@ let getDashboardPage = async (req, res) => {
         itemsAddedThisMonth,
         latestFavorite,
         favoritesThisMonth,
+        commentsThisMonth
     });
 };
 
+
+// 2. Phim (Movie))
 let viewAllMovies = async (req, res) => {
     let movies = await db.Movie.findAll({ raw: true });
     let favoriteMovieIds = [];
@@ -104,7 +105,18 @@ let viewAllMovies = async (req, res) => {
         favoriteMovieIds
     });
 }
-
+let getMoviePage = (req, res) => {
+    return res.render('movie_1.ejs', { user: req.session.user || null });
+};
+let getMovie = (req, res) => {
+    return res.render('createMovie.ejs');
+}
+let displayGetMovie = async (req, res) => {
+    let data = await MOVIEService.getAllMovies();
+    return res.render('displayMovie.ejs', {
+        dataTable: data,
+    });
+}
 let getRecommendMovies = async (req, res) => {
     let movies = await MOVIEFService.getAllMovies();
     return res.render('movie_1.ejs', {
@@ -112,107 +124,31 @@ let getRecommendMovies = async (req, res) => {
         user: req.session.user || null
     });
 }
-
-// Hàm để lấy trang CRUD
-let getCRUD = (req, res) => {
-    return res.render('crud.ejs');
-};
-// Hàm để xử lý đăng ký người dùng
-let postCRUD = async (req, res) => {
-    await CRUDService.createNewUser(req.body);
-    req.session.user = { username: req.body.username, email: req.body.email };
-    let movies = await MOVIEService.getAllMovies();
-
-    // Thêm đoạn này để lấy favoriteMovieIds
-    let favoriteMovieIds = [];
-    if (req.session.user) {
-        let user = await db.User.findOne({ where: { email: req.session.user.email } });
-        let favs = await db.Favorite.findAll({ where: { userId: user.id }, raw: true });
-        favoriteMovieIds = favs.map(f => f.movieId);
-    }
-
-    return res.render('homepage.ejs', {
-        user: req.session.user,
-        moviesNew: movies,
-        favoriteMovieIds // truyền vào view
-    });
-}
-
-// Hàm để hiển thị danh sách người dùng
-let displayGetCRUD = async (req, res) => {
-    let data = await CRUDService.getAllUser();
-    return res.render('displayCRUD.ejs', {
-        dataTable: data,
-    });
-}
-
-// Hàm để lấy trang chỉnh sửa người dùng
-let getEditCRUD = async (req, res) => {
-    let userId = req.query.id;
-    if (userId) {
-        let userData = await CRUDService.getUserInfoById(userId);
-        return res.render('editCRUD.ejs', {
-            user: userData,
-        });
-    }
-    else {
-        return res.send('User not found');
-    }
-}
-
-// Hàm để cập nhật thông tin người dùng
-let putCRUD = async (req, res) => {
-    let data = req.body;
-    let allUser = await CRUDService.updateUserData(data);
-    return res.render('displayCRUD.ejs', {
-        dataTable: allUser,
-    })
-
-}
-
-// Hàm để xóa người dùng theo ID
-let deleteCRUD = async (req, res) => {
+let getMovieDetail = async (req, res) => {
     let id = req.query.id;
-    if (id) {
-        await CRUDService.deleteUserById(id);
-        return res.send('Delete user succeed!');
-    }
-    else {
-        return res.send('User not found');
-    }
-}
-
-// Hàm để xử lý đăng nhập
-let postLogin = async (req, res) => {
-    let { email, password } = req.body;
-    let user = await CRUDService.checkLogin(email, password);
-    if (user) {
-        req.session.user = { username: user.username, email: user.email };
-        return res.redirect('/');
-    } else {
-        return res.render('login_page.ejs', { error: 'Wrong email or password', success: null, user: null });
-    }
-};
-
-// Hàm để xử lý đăng xuất
-let logout = (req, res) => {
-    req.session.destroy(() => {
-        res.redirect('/');
+    let movie = await db.Movie.findOne({ where: { id }, raw: true });
+    let movies = await db.Movie.findAll({
+        where: { id: { [db.Sequelize.Op.ne]: id } },
+        raw: true,
+        limit: 6,
+    });
+    // Lấy bình luận và user
+    let comments = await db.Comment.findAll({
+        where: { movieId: id },
+        include: [{ model: db.User, attributes: ['username'] }],
+        order: [['createdAt', 'DESC']],
+        raw: true
+    });
+    res.render('movie_1.ejs', {
+        movie,
+        movies,
+        user: req.session.user || null,
+        comments
     });
 };
 
-let getMovie = (req, res) => {
-    return res.render('createMovie.ejs');
-}
 
-// Hàm để hiển thị trang chi tiết phim
-let displayGetMovie = async (req, res) => {
-    let data = await MOVIEService.getAllMovies();
-    return res.render('displayMovie.ejs', {
-        dataTable: data,
-    });
-}
-// Hàm để xử lý tạo phim mới
+// 3. CRUD phim
 let postMovie = async (req, res) => {
     let imgFile = req.files['imgFile'] ? req.files['imgFile'][0].filename : null;
     let videoFile = req.files['videoUrl'] ? req.files['videoUrl'][0].filename : null;
@@ -273,28 +209,93 @@ let deleteMovie = async (req, res) => {
     return res.redirect('/displayMovie');
 }
 
-let getMovieDetail = async (req, res) => {
+
+// 4. CRUD người dùng
+let getCRUD = (req, res) => {
+    return res.render('crud.ejs');
+};
+
+let postCRUD = async (req, res) => {
+    await CRUDService.createNewUser(req.body);
+    req.session.user = { username: req.body.username, email: req.body.email };
+    let movies = await MOVIEService.getAllMovies();
+
+    let favoriteMovieIds = [];
+    if (req.session.user) {
+        let user = await db.User.findOne({ where: { email: req.session.user.email } });
+        let favs = await db.Favorite.findAll({ where: { userId: user.id }, raw: true });
+        favoriteMovieIds = favs.map(f => f.movieId);
+    }
+
+    return res.render('homepage.ejs', {
+        user: req.session.user,
+        moviesNew: movies,
+        favoriteMovieIds // truyền vào view
+    });
+}
+
+let displayGetCRUD = async (req, res) => {
+    let data = await CRUDService.getAllUser();
+    return res.render('displayCRUD.ejs', {
+        dataTable: data,
+    });
+}
+
+let getEditCRUD = async (req, res) => {
+    let userId = req.query.id;
+    if (userId) {
+        let userData = await CRUDService.getUserInfoById(userId);
+        return res.render('editCRUD.ejs', {
+            user: userData,
+        });
+    }
+    else {
+        return res.send('User not found');
+    }
+}
+
+let putCRUD = async (req, res) => {
+    let data = req.body;
+    let allUser = await CRUDService.updateUserData(data);
+    return res.render('displayCRUD.ejs', {
+        dataTable: allUser,
+    })
+
+}
+let deleteCRUD = async (req, res) => {
     let id = req.query.id;
-    let movie = await db.Movie.findOne({ where: { id }, raw: true });
-    let movies = await db.Movie.findAll({
-        where: { id: { [db.Sequelize.Op.ne]: id } },
-        raw: true,
-        limit: 6,
-    });
-    // Lấy bình luận và user
-    let comments = await db.Comment.findAll({
-        where: { movieId: id },
-        include: [{ model: db.User, attributes: ['username'] }],
-        order: [['createdAt', 'DESC']],
-        raw: true
-    });
-    res.render('movie_1.ejs', {
-        movie,
-        movies,
-        user: req.session.user || null,
-        comments
+    if (id) {
+        await CRUDService.deleteUserById(id);
+        return res.send('Delete user succeed!');
+    }
+    else {
+        return res.send('User not found');
+    }
+}
+
+// 5. Đăng nhập và đăng xuất
+let postLogin = async (req, res) => {
+    let { email, password } = req.body;
+    let user = await CRUDService.checkLogin(email, password);
+    if (user) {
+        req.session.user = { username: user.username, email: user.email };
+        return res.redirect('/');
+    } else {
+        return res.render('login_page.ejs', { error: 'Wrong email or password', success: null, user: null });
+    }
+};
+
+let getLoginPage = (req, res) => {
+    return res.render('login_page.ejs', { error: null, success: null });
+}
+let logout = (req, res) => {
+    req.session.destroy(() => {
+        res.redirect('/');
     });
 };
+
+
+// 6. Thêm và xóa phim yêu thích
 let addFavorite = async (req, res) => {
     if (!req.session.user) {
         return res.send('Bạn cần đăng nhập để thực hiện thao tác này.');
@@ -391,6 +392,8 @@ let removeFavoriteAll = async (req, res) => {
     });
 };
 
+
+// 7. Bình luận
 let postComment = async (req, res) => {
     if (!req.session.user) {
         return res.redirect('/login_page');
@@ -415,11 +418,9 @@ let displayComment = async (req, res) => {
     });
     res.render('display_comment.ejs', { dataTable: data });
 };
-// Xóa comment
 let deleteComment = async (req, res) => {
     let id = req.query.id;
     await COMService.deleteCommentById(id);
-    // Sau khi xóa, load lại trang quản lý comment
     let data = await db.Comment.findAll({
         include: [
             { model: db.User, attributes: ['username'] },

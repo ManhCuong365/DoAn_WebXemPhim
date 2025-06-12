@@ -35,11 +35,20 @@
                             <i class="ti ti-chevron-down"></i>
                         </li>
 
-                        <li class="header_nav_item">Pricing plan</li>
+                        <li class="header_nav_item">Contacts</li>
 
                         <li class="header_nav_item">
-                            Page
+                            Pages
                             <i class="ti ti-chevron-down"></i>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="#">Actor</a></li>
+                                <li><a href="#">Contacts</a></li>
+                                <li><a href="#">Help center</a></li>
+                                <li><a href="#">Privacy policy</a></li>
+                                <li><a href="/dashboard">Admin pages</a></li>
+                            </ul>
                         </li>
 
                         <li class="header_nav_item">
@@ -59,18 +68,15 @@
 
                         <div class="header_lang">
                             <a class="header_lang_link">
-                                EN
-                                <i class="ti ti-chevron-down"></i>
                             </a>
-                            <ul class="drop_menu_lang">
 
-                            </ul>
                         </div>
 
-                        <div class="header_right_profile" style="position: relative;">
+                        <div class="header_right_profile header_profile has-dropdown"
+                            style="position: relative; display: inline-block;">
                             <a href="<%= user ? 'javascript:void(0)' : '/login_page' %>" class="header_right_sighin"
                                 id="profileDropdownBtn">
-                                <span>
+                                <span style="text-overflow: ellipsis; white-space: nowarp; overflow: hidden;">
                                     <%= user ? user.username : 'Nickname' %>
                                 </span>
                                 <% if (user) { %>
@@ -78,11 +84,9 @@
                                     <% } %>
                             </a>
                             <% if (user) { %>
-                                <ul class="dropdown_menu"
-                                    style="position: absolute; right: 0; top: 100%; background: #222; border-radius: 6px; min-width: 120px; z-index: 10;">
-                                    <li style="padding: 10px 16px; color: #fff; cursor: pointer;">PROFILE</li>
-                                    <li><a href="/logout"
-                                            style="color: #fff; display: block; padding: 10px 16px;">LOGOUT</a></li>
+                                <ul class="dropdown_menu">
+                                    <li><a href='#'>PROFILE </a></li>
+                                    <li><a href="/logout">LOGOUT</a></li>
                                 </ul>
                                 <% } %>
                         </div>
@@ -107,7 +111,8 @@
         </div>
         <div class="container_movie">
             <div class="item_cover">
-                <img style="width: 240px; height: 345px;" class="swiper_slide_img" src="<%= movie.img %>">
+                <img style="width: 240px; height: 345px;" class="swiper_slide_img"
+                    src="<%= movie.img && (movie.img.startsWith('http') ? movie.img : '/uploads/' + movie.img) %>">
                 <span class="item_rate">
                     <%= movie.rating %>
                 </span>
@@ -139,17 +144,20 @@
                     </div>
                 </div>
             </div>
+
             <div class="video-container">
-                <!-- Nếu có videoUrl -->
-
                 <% if (movie.youtubeUrl) { %>
-
                     <iframe width="1905" height="788" src="<%= movie.youtubeUrl %>" title="YouTube video player"
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen>
                     </iframe>
-                    <% } %>
+                    <% } else if (movie.videoUrl) { %>
+                        <video width="600" height="355" controls>
+                            <source src="/uploads/<%= movie.videoUrl %>" type="video/mp4">
+                            Trình duyệt của bạn không hỗ trợ video.
+                        </video>
+                        <% } %>
             </div>
         </div>
     </section>

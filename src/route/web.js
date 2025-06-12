@@ -38,20 +38,12 @@ let initWebRoutes = (app) => {
     router.post('/all_movies/favorite/remove', homController.removeFavoriteAll);
     router.post('/comment', homController.postComment);
     router.get('/displayComment', homController.displayComment);
-    router.get('/comment/delete', homController.deleteComment); 
+    router.get('/comment/delete', homController.deleteComment);
 
-
-    router.get('/buimanhcuong', (req, res) => {
-        return res.send('Hello world with buimanhcuong');
-    });
-
-
-    // Thêm route cho movie_1
     router.get('/movie_1', (req, res) => {
         return res.render("movie_1");
     });
 
-    // Thêm route cho login_page
     router.get('/login_page', homController.getLoginPage);
     router.get('/movie_detail', homController.getMovieDetail);
 
