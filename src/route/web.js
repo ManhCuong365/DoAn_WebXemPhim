@@ -11,7 +11,6 @@ let initWebRoutes = (app) => {
     router.get('/all_movies', homController.viewAllMovies);
     router.get('/crud', homController.getCRUD);
     router.post('/post-crud', homController.postCRUD);
-    router.get('/test1', homController.getTestPage);
     router.get('/movie_1', homController.getMoviePage);
     router.get('/dashboard', homController.getDashboardPage);
     router.get('/displayCRUD', homController.displayGetCRUD);
@@ -35,6 +34,11 @@ let initWebRoutes = (app) => {
     router.get('/delete-movie', homController.deleteMovie);
     router.post('/favorite/add', homController.addFavorite);
     router.post('/favorite/remove', homController.removeFavorite);
+    router.post('/all_movies/favorite/add', homController.addFavoriteAll);
+    router.post('/all_movies/favorite/remove', homController.removeFavoriteAll);
+    router.post('/comment', homController.postComment);
+    router.get('/displayComment', homController.displayComment);
+    router.get('/comment/delete', homController.deleteComment); 
 
 
     router.get('/buimanhcuong', (req, res) => {
@@ -48,9 +52,7 @@ let initWebRoutes = (app) => {
     });
 
     // Thêm route cho login_page
-    router.get('/login_page', (req, res) => {
-        return res.render("login_page");
-    });
+    router.get('/login_page', homController.getLoginPage);
     router.get('/movie_detail', homController.getMovieDetail);
 
     return app.use("/", router);

@@ -138,6 +138,111 @@ header {
 }
 
 .header_right_sighin {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: 6px;
+    transition: background 0.2s;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+}
+.header_right_sighin:hover,
+.header_profile.has-dropdown:hover .header_right_sighin {
+    background: #23232b;
+    color: #ffbe00;
+}
+
+.header_profile .dropdown_menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 110%;
+    background: #23232b;
+    min-width: 140px;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    z-index: 1000;
+    padding: 8px 0;
+    list-style: none;
+}
+
+.header_profile.has-dropdown:hover .dropdown_menu,
+.header_profile.has-dropdown:focus-within .dropdown_menu {
+    display: block;
+}
+
+.header_profile .dropdown_menu li a {
+    display: block;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    border-left: 3px solid transparent;
+    border-radius: 0 6px 6px 0;
+}
+
+.header_profile .dropdown_menu li a:hover {
+    background: #ffbe00;
+    color: #181824;
+    border-left: 3px solid #ffbe00;
+    font-weight: bold;
+}
+
+.header_search_era {
+    border: 2px solid #cccccc4f;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: border-color 0.3s ease-in-out;
+    position: relative;
+}
+
+
+.header_search_era input {
+    height: 35px;
+    width: 215px !important; 
+    border-radius: 8px;
+    background-color: #222028;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding-left: 10px;
+    font-size: 14px;
+    transition: 0.3s ease-in-out;
+}
+
+.header_search_era button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+}
+
+.header_search_era button i {
+    color: #fff;
+    font-size: 20px;
+}
+
+
+.header_lang_link {
+    color: #fff;
+    padding: 20px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+.header_lang_link i {
+    font-size: 10px;
+    margin-left: 2px;
+}
+
+.header_right_sighin {
     display: inline-block;
     padding: 10px 20px;
     border: 2px solid #ffbe00; /* Viền vàng */
@@ -320,10 +425,17 @@ a.header_lang_link i:hover {
     right: 10px;
     background: rgba(0, 0, 0, 0.5);
     color: white;
-    padding: 8px;
+    padding: 6px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
+}
+.item_fav i {
+    font-size: 20px;
+    color: white;
+    transition: color 0.3s ease-in-out;
+    width: 50px;
+    height: 50px;
 }
 .item_fav i:hover {
     color: #ffbe00;
@@ -584,4 +696,53 @@ footer {
 .header_nav_item.has-dropdown:hover .dropdown-menu,
 .header_nav_item.has-dropdown:focus-within .dropdown-menu {
     display: block;
+}
+
+.popup-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    background: #181824;
+    color: #fff;
+    padding: 32px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    min-width: 320px;
+    max-width: 90vw;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid #222;
+    animation: fadeIn 0.3s;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -60%);}
+    to { opacity: 1; transform: translate(-50%, -50%);}
+}
+.popup-alert .popup-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #ffbe00;
+}
+.popup-alert .popup-btns {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+.popup-alert .popup-btn {
+    padding: 8px 24px;
+    border-radius: 6px;
+    border: 1px solid #ffbe00;
+    background: transparent;
+    color: #ffbe00;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.popup-alert .popup-btn:hover {
+    background: #ffbe00;
+    color: #181824;
 }

@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Danh sách người dùng</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Danh sách bình luận</title>
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
@@ -61,7 +61,7 @@
         <!-- Main Content -->
         <main class="main-content">
             <header class="main-header">
-                <p style="color: white;">User</p>
+                <p style="color: white;">Comment</p>
                 <div style="color: white;" class="admin">
                     <i class="fa-solid fa-user-shield" style="margin-right:6px;"></i> ManhCuong
                 </div>
@@ -70,13 +70,13 @@
                 <table>
                     <thead>
                         <tr>
-                            <th class="colu">ID</th>
-                            <th class="colu">USERNAME</th>
-                            <th class="colu">EMAIL</th>
-                            <th class="colu">PASSWORD</th>
-                            <th class="colu">CREATE DATE</th>
-                            <th class="colu">UPDATE TIME</th>
-                            <th class="colu">ACTION</th>
+                            <th>ID</th>
+                            <th>USERNAME</th>
+                            <th>MOVIE</th>
+                            <th>CONTENT</th>
+                            <th>CREATE DATE</th>
+                            <th>ACTION</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -86,32 +86,26 @@
                                     <%= i + 1 %>
                                 </td>
                                 <td>
-                                    <%= dataTable[i].username %>
+                                    <%= dataTable[i]['User.username'] || dataTable[i].username || 'N/A' %>
                                 </td>
                                 <td style="text-align: left;">
-                                    <%= dataTable[i].email %>
-                                </td>
-                                <td>
-                                    <%= dataTable[i].password %>
-                                </td>
-                                <td>
-                                    <%= new Date(dataTable[i].createdAt).toLocaleDateString('de-DE') %>
+                                    <%= dataTable[i]['Movie.title'] || dataTable[i].movieTitle || 'N/A' %>
                                 </td>
                                 <td style="text-align: left;">
-                                    <%= new Date(dataTable[i].updatedAt).toLocaleDateString('de-DE') %>
+                                    <%= dataTable[i].content %>
                                 </td>
                                 <td>
-                                    <a href="/edit-crud?id=<%= dataTable[i].id %>" class="btn-edit" title="Sửa">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a href="/delete-crud?id=<%= dataTable[i].id %>" class="btn-delete" title="Xóa"
-                                        onclick="return confirm('Bạn có chắc muốn xóa?')">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
+                                    <%= new Date(dataTable[i].createdAt).toLocaleDateString('vi-VN') %>
+                                </td>
+                                <td style="text-align: left;">
+                                    <a href="/comment/delete?id=<%= dataTable[i].id %>" class="btn btn-delete"
+                                        onclick="return confirm('Bạn chắc chắn muốn xóa bình luận này?')">
+                                    <i class="fa-solid fa-trash"></i></a>
                                 </td>
                             </tr>
                             <% } %>
                     </tbody>
+
                 </table>
             </div>
         </main>

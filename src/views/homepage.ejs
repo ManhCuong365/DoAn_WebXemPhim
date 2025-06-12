@@ -53,7 +53,6 @@
                             <ul class="dropdown-menu">
                                 <li><a href="/login_page">Sign in</a></li>
                                 <li><a href="/crud">Sign up</a></li>
-                                <li><a href="#">404 Page</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -76,7 +75,7 @@
                             </ul>
                         </div>
 
-                        <div class="header_right_profile" style="position: relative;">
+                        <div class="header_right_profile header_profile has-dropdown" style="position: relative; display: inline-block;">
                             <a href="<%= user ? 'javascript:void(0)' : '/login_page' %>" class="header_right_sighin"
                                 id="profileDropdownBtn">
                                 <span>
@@ -87,14 +86,13 @@
                                     <% } %>
                             </a>
                             <% if (user) { %>
-                                <ul class="dropdown_menu"
-                                    style="position: absolute; right: 0; top: 100%; background: #222; border-radius: 6px; min-width: 120px; z-index: 10;">
-                                    <li style="padding: 10px 16px; color: #fff; cursor: pointer;">PROFILE</li>
-                                    <li><a href="/logout"
-                                            style="color: #fff; display: block; padding: 10px 16px;">LOGOUT</a></li>
+                                <ul class="dropdown_menu">
+                                    <li><a href='#'>PROFILE </a></li>
+                                    <li><a href="/logout">LOGOUT</a></li>
                                 </ul>
                                 <% } %>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -107,137 +105,33 @@
         </div>
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="item_cover">
-                        <img style="width: 220px; height: 354px;" class="swiper_slide_img"
-                            src="https://www.movieposters.com/cdn/shop/files/Terminator_480x.progressive.jpg?v=1730233995">
-                        <a href="#" class="item_play">
-                            <i class="ti ti-player-play-filled"></i>
-                        </a>
-                        <span class="item_rate">9.5</span>
-                        <button class="item_fav">
-                            <i class="ti ti-bookmark"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="item_cover">
-                        <img style="width: 222px; height: 350px;" class="swiper_slide_img"
-                            src="https://www.movieposters.com/cdn/shop/files/ROMAN-HOLIDAY_480x.progressive.jpg?v=1730233162">
-                        <a href="#" class="item_play">
-                            <i class="ti ti-player-play-filled"></i>
-                        </a>
-                        <span class="item_rate">8.7</span>
-                        <button class="item_fav">
-                            <i class="ti ti-bookmark"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="item_cover">
-                        <img style="width: 222px; height: 350px;" class="swiper_slide_img"
-                            src="https://www.movieposters.com/cdn/shop/files/FIGHT-CLUB_480x.progressive.jpg?v=1730231824">
-                        <a href="#" class="item_play">
-                            <i class="ti ti-player-play-filled"></i>
-                        </a>
-                        <span class="item_rate">9.0</span>
-                        <button class="item_fav">
-                            <i class="ti ti-bookmark"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="item_cover">
-                        <img style="width: 222px; height: 350px;" class="swiper_slide_img"
-                            src="https://www.movieposters.com/cdn/shop/files/godzilla2_480x.progressive.jpg?v=1729789153">
-                        <a href="#" class="item_play">
-                            <i class="ti ti-player-play-filled"></i>
-                        </a>
-                        <span class="item_rate">7.8</span>
-                        <button class="item_fav">
-                            <i class="ti ti-bookmark"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="item_cover">
-                        <img style="width: 222px; height: 350px;" class="swiper_slide_img"
-                            src="https://www.movieposters.com/cdn/shop/products/inglourious-basterds-style4_37d01d94-318d-4840-a290-6fc5aa7b8072_480x.progressive.jpg?v=1615396029">
-                        <a href="#" class="item_play">
-                            <i class="ti ti-player-play-filled"></i>
-                        </a>
-                        <span class="item_rate">8.3</span>
-                        <button class="item_fav">
-                            <i class="ti ti-bookmark"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="item_cover">
-                        <img style="width: 220px; height: 354px;" class="swiper_slide_img"
-                            src="https://www.movieposters.com/cdn/shop/files/Terminator_480x.progressive.jpg?v=1730233995">
-                        <a href="#" class="item_play">
-                            <i class="ti ti-player-play-filled"></i>
-                        </a>
-                        <span class="item_rate">9.5</span>
-                        <button class="item_fav">
-                            <i class="ti ti-bookmark"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="item_cover">
-                        <img style="width: 222px; height: 350px;" class="swiper_slide_img"
-                            src="https://www.movieposters.com/cdn/shop/files/ROMAN-HOLIDAY_480x.progressive.jpg?v=1730233162">
-                        <a href="#" class="item_play">
-                            <i class="ti ti-player-play-filled"></i>
-                        </a>
-                        <span class="item_rate">8.7</span>
-                        <button class="item_fav">
-                            <i class="ti ti-bookmark"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="item_cover">
-                        <img style="width: 222px; height: 350px;" class="swiper_slide_img"
-                            src="https://www.movieposters.com/cdn/shop/files/FIGHT-CLUB_480x.progressive.jpg?v=1730231824">
-                        <a href="#" class="item_play">
-                            <i class="ti ti-player-play-filled"></i>
-                        </a>
-                        <span class="item_rate">9.0</span>
-                        <button class="item_fav">
-                            <i class="ti ti-bookmark"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="item_cover">
-                        <img style="width: 222px; height: 350px;" class="swiper_slide_img"
-                            src="https://www.movieposters.com/cdn/shop/files/godzilla2_480x.progressive.jpg?v=1729789153">
-                        <a href="#" class="item_play">
-                            <i class="ti ti-player-play-filled"></i>
-                        </a>
-                        <span class="item_rate">7.8</span>
-                        <button class="item_fav">
-                            <i class="ti ti-bookmark"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="item_cover">
-                        <img style="width: 222px; height: 350px;" class="swiper_slide_img"
-                            src="https://www.movieposters.com/cdn/shop/products/inglourious-basterds-style4_37d01d94-318d-4840-a290-6fc5aa7b8072_480x.progressive.jpg?v=1615396029">
-                        <a href="#" class="item_play">
-                            <i class="ti ti-player-play-filled"></i>
-                        </a>
-                        <span class="item_rate">8.3</span>
-                        <button class="item_fav">
-                            <i class="ti ti-bookmark"></i>
-                        </button>
-                    </div>
-                </div>
+                <% if (moviesNew && moviesNew.length > 0) { %>
+                    <% moviesNew.forEach(movie => { %>
+                        <div class="swiper-slide">
+                            <div class="item_cover">
+                                <a href="/movie_detail?id=<%= movie.id %>">
+                                    <img style="width: 220px; height: 354px;" src="<%= movie.img || '/default.jpg' %>" alt="<%= movie.title %>">
+                                    <span class="item_play">
+                                        <i class="ti ti-player-play-filled"></i>
+                                    </span>
+                                </a>
+                                <span class="item_rate">
+                                    <%= movie.rating %>
+                                </span>
+                                <form method="POST"
+                                    action="<%= favoriteMovieIds.includes(movie.id) ? '/favorite/remove' : '/favorite/add' %>">
+                                    <input type="hidden" name="movieId" value="<%= movie.id %>">
+                                    <button type="submit"
+                                        class="item_fav <%= favoriteMovieIds.includes(movie.id) ? 'active' : '' %>">
+                                        <i class="ti ti-bookmark"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <div>Không có phim mới</div>
+                <% } %>
             </div>
             <div class="swiper-pagination"></div>
             <div class="swiper-button-prev"></div>
@@ -266,10 +160,17 @@
                                                 <i class="ti ti-player-play-filled"></i>
                                             </span>
                                         </a>
-                                        <span class="item_rate"><%= movie.rating %></span>
-                                        <button class="item_fav">
-                                            <i class="ti ti-bookmark"></i>
-                                        </button>
+                                        <span class="item_rate">
+                                            <%= movie.rating %>
+                                        </span>
+                                        <form method="POST"
+                                            action="<%= favoriteMovieIds.includes(movie.id) ? '/favorite/remove' : '/favorite/add' %>">
+                                            <input type="hidden" name="movieId" value="<%= movie.id %>">
+                                            <button type="submit"
+                                                class="item_fav <%= favoriteMovieIds.includes(movie.id) ? 'active' : '' %>">
+                                                <i class="ti ti-bookmark"></i>
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -313,6 +214,30 @@
     </footer>
 
     <script src="/js/homepage.js"></script>
+
+    <% if (typeof success !=='undefined' && success) { %>
+        <div class="popup-alert">
+            <div class="popup-title"><i class="fa-solid fa-circle-check"></i> Thành công</div>
+            <div>
+                <%= success %>
+            </div>
+            <div class="popup-btns">
+                <button class="popup-btn" onclick="this.parentElement.parentElement.style.display='none'">Đóng</button>
+            </div>
+        </div>
+        <% } %>
+            <% if (typeof error !=='undefined' && error) { %>
+                <div class="popup-alert">
+                    <div class="popup-title"><i class="fa-solid fa-circle-exclamation"></i> Lỗi</div>
+                    <div>
+                        <%= error %>
+                    </div>
+                    <div class="popup-btns">
+                        <button class="popup-btn"
+                            onclick="this.parentElement.parentElement.style.display='none'">Đóng</button>
+                    </div>
+                </div>
+                <% } %>
 
 
 </body>

@@ -10,9 +10,12 @@ require('dotenv').config();
 let app = express();
 
 app.use(session({
-    secret: 'your_secret_key', // thay bằng chuỗi bí mật của bạn
+    secret: 'your-secret',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 24 * 60 * 60 * 1000 // 1 ngày
+    }
 }));
 // Cấu hình Express để phục vụ file tĩnh từ thư mục 'public'
 app.use(express.static(path.join(__dirname, 'public')));

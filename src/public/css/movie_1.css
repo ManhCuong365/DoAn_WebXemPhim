@@ -129,7 +129,7 @@ section.movie {
 .comments-and-recommendations {
     display: flex;
     gap: 30px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .comments-section {
@@ -167,7 +167,7 @@ section.movie {
 .user-comment {
     font-size: 15px;
     margin-bottom: 10px;
-    max-width: 710px;
+    max-width: 695px;
     width: 100%; ;
     background-color: transparent;
     line-height: 25px;
@@ -273,4 +273,17 @@ section.movie {
 .movie-card span {
     font-size: 12px;
     color: #bbb;
+}
+.content_head_rec {
+    display: flex;
+    flex-direction: column;
+    background-color: #1a191f;
+    margin-bottom: 10px;
+    position: relative;
+    color: #fff;
+}
+.tab_content_rec {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px
 }

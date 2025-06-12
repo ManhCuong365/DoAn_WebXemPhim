@@ -26,3 +26,8 @@ window.onscroll = function () {
 function scrollToTop() {
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
+
+setTimeout(function () {
+    var popup = document.querySelector('.popup-alert');
+    if (popup) popup.style.display = 'none';
+}, 2500);

@@ -17,30 +17,55 @@
                 </h2>
             </a>
 
-            <form action="/login" method="post" class="login-form">
-                <label class="input_title" for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-
-                <label class="input_title" for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-
-                <div class="options">
-                    <div class="remember">
-                        <input type="checkbox" id="remember">
-                        <label for="remember">Remember Me</label>
+            <% if (error) { %>
+                <div class="popup-alert">
+                    <div class="popup-title"><i class="fa-solid fa-circle-exclamation"></i>Alert</div>
+                    <div>
+                        <%= error %>
                     </div>
-                    <a href="#" class="forgot-password">Forgot password?</a>
+                    <div class="popup-btns">
+                        <button class="popup-btn"
+                            onclick="this.parentElement.parentElement.style.display='none'">Dismiss</button>
+                    </div>
                 </div>
+                <% } %>
+                    <% if (success) { %>
+                        <div class="popup-alert">
+                            <div class="popup-title"><i class="fa-solid fa-circle-check"></i> Success</div>
+                            <div>
+                                <%= success %>
+                            </div>
+                            <div class="popup-btns">
+                                <button class="popup-btn"
+                                    onclick="this.parentElement.parentElement.style.display='none'">Dismiss</button>
+                            </div>
+                        </div>
+                        <% } %>
 
-                <button type="submit">Sign in</button>
-                <button type="button" class="google-signin">
-                    <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google"
-                        style="width: 20px; height: 20px; margin-right: 10px">
-                    Sign in with Google
-                </button>
-            </form>
+                            <form action="/login" method="post" class="login-form">
+                                <label class="input_title" for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
 
-            <p class="create-account">Don't have an account? <a href="/crud">Sigh up!</a></p>
+                                <label class="input_title" for="password">Password</label>
+                                <input type="password" id="password" name="password" required>
+
+                                <div class="options">
+                                    <div class="remember">
+                                        <input type="checkbox" id="remember">
+                                        <label for="remember">Remember Me</label>
+                                    </div>
+                                    <a href="#" class="forgot-password">Forgot password?</a>
+                                </div>
+
+                                <button type="submit">Sign in</button>
+                                <button type="button" class="google-signin">
+                                    <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google"
+                                        style="width: 20px; height: 20px; margin-right: 10px">
+                                    Sign in with Google
+                                </button>
+                            </form>
+
+                            <p class="create-account">Don't have an account? <a href="/crud">Sigh up!</a></p>
         </div>
     </section>
 
@@ -57,6 +82,12 @@
         </div>
     </footer>
 
+    <script>
+        setTimeout(function () {
+            var popup = document.querySelector('.popup-alert');
+            if (popup) popup.style.display = 'none';
+        }, 5000);
+    </script>
 </body>
 
 </html>

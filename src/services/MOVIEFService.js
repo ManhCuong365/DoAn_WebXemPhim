@@ -11,6 +11,7 @@ let addFavorite = async (userId, movieId) => {
 
 let removeFavorite = async (userId, movieId) => {
     let deleted = await db.Favorite.destroy({ where: { userId, movieId } });
+    if (!deleted) return { success: false, message: 'Không tìm thấy phim yêu thích.' };
     return { success: !!deleted, favorited: false };
 };
 
@@ -22,5 +23,5 @@ let getFavoriteMovieIds = async (userId) => {
 module.exports = {
     addFavorite: addFavorite,
     removeFavorite: removeFavorite,
-    getFavoriteMovieIds: getFavoriteMovieIds
+    getFavoriteMovieIds: getFavoriteMovieIds,
 };

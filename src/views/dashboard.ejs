@@ -47,15 +47,15 @@
             </a>
           </li>
           <li class="side_bar">
-            <a href="#">
+            <a href="/displayComment">
               <i class="fa-solid fa-tags"></i>
-              <span>CATEGORY</span>
+              <span>COMMENT</span>
             </a>
           </li>
           <li class="side_bar"><a href="/">
-            <i class="fa-solid fa-arrow-left"></i>
-            <span>BACK TO SITE</span>
-          </a></li>
+              <i class="fa-solid fa-arrow-left"></i>
+              <span>BACK TO SITE</span>
+            </a></li>
         </ul>
       </nav>
     </aside>
@@ -75,16 +75,20 @@
           <div class="card-header">
             <div>
               <div class="label">Users this month</div>
-              <div class="value"><%= usersThisMonth %></div>
+              <div class="value">
+                <%= usersThisMonth %>
+              </div>
             </div>
             <i class="fa-solid fa-gem icon-yellow"></i>
           </div>
         </div>
-        <div class="card">  
+        <div class="card">
           <div class="card-header">
             <div>
               <div class="label">Items added this month</div>
-              <div class="value"><%= itemsAddedThisMonth %></div>
+              <div class="value">
+                <%= itemsAddedThisMonth %>
+              </div>
             </div>
             <i class="fa-solid fa-film icon-yellow"></i>
           </div>
@@ -101,8 +105,10 @@
         <div class="card">
           <div class="card-header">
             <div>
-              <div class="label">Reviews this month</div>
-              <div class="value">642 <span class="positive">+8</span></div>
+              <div class="label">Favorite this month</div>
+              <div class="value">
+                <%= favoritesThisMonth %>
+              </div>
             </div>
             <i class="fa-solid fa-star icon-yellow"></i>
           </div>
@@ -243,7 +249,7 @@
 
         <div class="card table-card">
           <div class="table-header">
-            <div class="title"><i class="fa-solid fa-star"></i> Latest reviews</div>
+            <div class="title"><i class="fa-solid fa-star"></i> Latest favorite</div>
             <div class="actions">
               <button class="icon-btn"><i class="fa-solid fa-rotate-right"></i></button>
               <button class="view-btn">View All</button>
@@ -252,43 +258,31 @@
           <table>
             <thead>
               <tr>
-                <th>ID</th>
                 <th>ITEM</th>
-                <th>AUTHOR</th>
+                <th>USER</th>
                 <th>RATING</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>824</td>
-                <td>I Dream in Another Language</td>
-                <td>Eliza Josceline</td>
-                <td><span class="rating">7.2</span></td>
-              </tr>
-              <tr>
-                <td>602</td>
-                <td>Benched</td>
-                <td>Ketut</td>
-                <td><span class="rating">6.3</span></td>
-              </tr>
-              <tr>
-                <td>538</td>
-                <td>Whitney</td>
-                <td>Brian Cranston</td>
-                <td><span class="rating">8.4</span></td>
-              </tr>
-              <tr>
-                <td>129</td>
-                <td>Blindspotting</td>
-                <td>Quang</td>
-                <td><span class="rating">9.0</span></td>
-              </tr>
-              <tr>
-                <td>360</td>
-                <td>Another</td>
-                <td>Jackson Brown</td>
-                <td><span class="rating">7.7</span></td>
-              </tr>
+              <% if (latestFavorite && latestFavorite.length> 0) { %>
+                <% latestFavorite.forEach(function(favorite) { %>
+                  <tr>
+                    <td>
+                      <%= favorite.Movie ? favorite.Movie.title : '' %>
+                    </td>
+                    <td>
+                      <%= favorite.User ? favorite.User.username : '' %>
+                    </td>
+                    <td><span class="rating">
+                        <%= favorite.Movie ? favorite.Movie.rating : '' %>
+                      </span></td>
+                  </tr>
+                  <% }) %>
+                    <% } else { %>
+                      <tr>
+                        <td colspan="4">Không có dữ liệu</td>
+                      </tr>
+                      <% } %>
             </tbody>
           </table>
         </div>

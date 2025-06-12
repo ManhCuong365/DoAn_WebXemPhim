@@ -276,3 +276,52 @@ footer {
     color: #ffbe00;
 }
 
+/* Popup alert giữa màn hình */
+.popup-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    background: #181824;
+    color: #fff;
+    padding: 32px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    min-width: 320px;
+    max-width: 90vw;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid #222;
+    animation: fadeIn 0.3s;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -60%);}
+    to { opacity: 1; transform: translate(-50%, -50%);}
+}
+.popup-alert .popup-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #ffbe00;
+}
+.popup-alert .popup-btns {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+.popup-alert .popup-btn {
+    padding: 8px 24px;
+    border-radius: 6px;
+    border: 1px solid #ffbe00;
+    background: transparent;
+    color: #ffbe00;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.popup-alert .popup-btn:hover {
+    background: #ffbe00;
+    color: #181824;
+}
