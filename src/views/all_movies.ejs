@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-    <title>Document</title>
+    <title>AllMovie</title>
 </head>
 
 <body>
@@ -54,10 +54,13 @@
 
                     <div class="header_right">
                         <div class="header_search_era">
-                            <input class="header_search-right" type="text" placeholder="Search...">
-                            <button class="header_button-right" type="button">
-                                <i class="ti ti-search"></i>
-                            </button>
+                            <form action="/all_movies" method="GET" style="display: flex; align-items: center;">
+                                <input class="header_search-right" type="text" name="search" placeholder="Search..."
+                                    value="<%= typeof search !== 'undefined' ? search : '' %>">
+                                <button class="header_button-right" type="submit">
+                                    <i class="ti ti-search"></i>
+                                </button>
+                            </form>
                         </div>
 
                         <div class="header_lang">
@@ -76,9 +79,6 @@
                                 <span style="text-overflow: ellipsis; white-space: nowarp; overflow: hidden;">
                                     <%= user ? user.username : 'Nickname' %>
                                 </span>
-                                <% if (user) { %>
-                                    <i class="ti ti-chevron-down"></i>
-                                    <% } %>
                             </a>
                             <% if (user) { %>
                                 <ul class="dropdown_menu">

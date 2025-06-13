@@ -3,7 +3,9 @@ section.movie {
     padding-top: 40px;
     padding-bottom: 10px;
 }
-
+:root {
+    --plyr-color-main: #ffbe00;
+}
 .title_and_button {
     align-items: center;
     display: flex;

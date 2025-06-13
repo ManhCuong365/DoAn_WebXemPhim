@@ -37,7 +37,7 @@
                             <i class="ti ti-chevron-down"></i>
                             <ul class="dropdown-menu">
                                 <li><a href="#">About Us</a></li>
-                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="/profile">Profile</a></li>
                                 <li><a href="#">Actor</a></li>
                                 <li><a href="#">Contacts</a></li>
                                 <li><a href="#">Help center</a></li>
@@ -59,10 +59,13 @@
 
                     <div class="header_right">
                         <div class="header_search_era">
-                            <input class="header_search-right" type="text" placeholder="Search...">
-                            <button class="header_button-right" type="button">
-                                <i class="ti ti-search"></i>
-                            </button>
+                            <form action="/all_movies" method="GET" style="display: flex; align-items: center;">
+                                <input class="header_search-right" type="text" name="search" placeholder="Search..."
+                                    value="<%= typeof search !== 'undefined' ? search : '' %>">
+                                <button class="header_button-right" type="submit">
+                                    <i class="ti ti-search"></i>
+                                </button>
+                            </form>
                         </div>
 
                         <div class="header_lang">
@@ -80,9 +83,6 @@
                                 <span style="text-overflow: ellipsis; white-space: nowarp; overflow: hidden;">
                                     <%= user ? user.username : 'Nickname' %>
                                 </span>
-                                <% if (user) { %>
-                                    <i class="ti ti-chevron-down"></i>
-                                    <% } %>
                             </a>
                             <% if (user) { %>
                                 <ul class="dropdown_menu">

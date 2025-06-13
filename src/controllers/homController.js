@@ -5,9 +5,16 @@ import MOVIEFService from '../services/MOVIEFService.js';
 import COMService from '../services/COMService.js';
 import { Op } from 'sequelize';
 
-// 1. Trang chủ và Dashboard
+// 1. Trang chủ và Dashboard và profile
 let getHomPage = async (req, res) => {
-    let movies = await MOVIEService.getAllMovies();
+    let search = req.query.search || '';
+    let where = {};
+    if (search) {
+        where = {
+            title: { [Op.like]: `%${search}%` }
+        };
+    }
+    let movies = await db.Movie.findAll({ where, raw: true });
     let favoriteMovieIds = [];
     if (req.session.user) {
         let user = await db.User.findOne({ where: { email: req.session.user.email } });
@@ -17,7 +24,8 @@ let getHomPage = async (req, res) => {
     return res.render('homepage.ejs', {
         user: req.session.user || null,
         moviesNew: movies,
-        favoriteMovieIds
+        favoriteMovieIds,
+        search,
     });
 };
 let getDashboardPage = async (req, res) => {
@@ -88,21 +96,43 @@ let getDashboardPage = async (req, res) => {
         commentsThisMonth
     });
 };
-
-
-// 2. Phim (Movie))
-let viewAllMovies = async (req, res) => {
-    let movies = await db.Movie.findAll({ raw: true });
+let getProfilePage = async (req, res) => {
+    let movies = await MOVIEService.getAllMovies();
     let favoriteMovieIds = [];
     if (req.session.user) {
         let user = await db.User.findOne({ where: { email: req.session.user.email } });
         let favs = await db.Favorite.findAll({ where: { userId: user.id }, raw: true });
         favoriteMovieIds = favs.map(f => f.movieId);
     }
-    res.render('all_movies.ejs', {
+    return res.render('profile.ejs', {
+        user: req.session.user || null,
+        moviesNew: movies,
+        favoriteMovieIds
+    });
+}
+
+
+// 2. Phim (Movie))
+let viewAllMovies = async (req, res) => {
+    let search = req.query.search || '';
+    let where = {};
+    if (search) {
+        where = {
+            title: { [Op.like]: `%${search}%` }
+        };
+    }
+    let movies = await db.Movie.findAll({ where, raw: true });
+    let favoriteMovieIds = [];
+    if (req.session.user) {
+        let user = await db.User.findOne({ where: { email: req.session.user.email } });
+        let favs = await db.Favorite.findAll({ where: { userId: user.id }, raw: true });
+        favoriteMovieIds = favs.map(f => f.movieId);
+    }
+    return res.render('all_movies.ejs', {
         movies,
         user: req.session.user || null,
-        favoriteMovieIds
+        favoriteMovieIds,
+        search
     });
 }
 let getMoviePage = (req, res) => {
@@ -461,5 +491,6 @@ module.exports = {
     postComment: postComment,
     deleteComment: deleteComment,
     displayComment: displayComment,
+    getProfilePage: getProfilePage,
 
 }

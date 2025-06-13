@@ -229,7 +229,9 @@ header {
     color: #fff;
     font-size: 20px;
 }
-
+.header_search_right {
+    max-width: 215px;
+}
 
 .header_lang_link {
     color: #fff;
@@ -245,9 +247,9 @@ header {
 .header_right_sighin {
     display: inline-block;
     padding: 10px 20px;
-    border: 2px solid #ffbe00; /* Viền vàng */
-    border-radius: 8px; /* Bo góc */
-    color: #fff; /* Chữ trắng */
+    border: 2px solid #ffbe00;
+    border-radius: 8px; 
+    color: #fff; 
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none !important;
@@ -258,10 +260,10 @@ header {
 }
 .header_right_sighin span {
     display: inline-block;
-    max-width: 85px;      /* Giới hạn chiều rộng tối đa */
-    white-space: nowrap;   /* Không xuống dòng */
-    overflow: hidden;      /* Ẩn phần vượt quá */
-    text-overflow: ellipsis; /* Hiện dấu ... */
+    max-width: 70px;      
+    white-space: nowrap;  
+    overflow: hidden;   
+    text-overflow: ellipsis; 
     vertical-align: middle;
 }
 .header_right_sighin:hover {

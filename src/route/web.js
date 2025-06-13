@@ -46,6 +46,7 @@ let initWebRoutes = (app) => {
 
     router.get('/login_page', homController.getLoginPage);
     router.get('/movie_detail', homController.getMovieDetail);
+    router.get('/profile', homController.getProfilePage);
 
     return app.use("/", router);
 };
