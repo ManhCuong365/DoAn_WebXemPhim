@@ -12,9 +12,6 @@
     <title>
         <%= movie.title %>
     </title>
-    <style>
-
-    </style>
 </head>
 
 <body>
@@ -52,10 +49,16 @@
                             </ul>
                         </li>
 
-                        <li class="header_nav_item">
+                        <li class="header_nav_item has-dropdown">
                             <a class="button_dot">
                                 <i class="ti ti-dots"></i>
                             </a>
+                            <% if (!user) { %>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/login_page">Sign in</a></li>
+                                    <li><a href="/crud">Sign up</a></li>
+                                </ul>
+                                <% } %>
                         </li>
                     </ul>
 
@@ -75,20 +78,10 @@
 
                         <div class="header_right_profile header_profile has-dropdown"
                             style="position: relative; display: inline-block;">
-                            <a style="text-overflow: ellipsis;"
-                                href="<%= user ? 'javascript:void(0)' : '/login_page' %>" class="header_right_sighin"
+                            <a href="<%= user ? '/profile' : '/login_page' %>" class="header_right_sighin"
                                 id="profileDropdownBtn">
-                                <span style="text-overflow: ellipsis; white-space: nowarp; overflow: hidden;">
-                                    <%= user ? user.username : 'Nickname' %>
-                                </span>
-
+                                <span><%= user && user.username ? user.username : 'NICKNAME' %></span>
                             </a>
-                            <% if (user) { %>
-                                <ul class="dropdown_menu">
-                                    <li><a href='#'>PROFILE </a></li>
-                                    <li><a href="/logout">LOGOUT</a></li>
-                                </ul>
-                                <% } %>
                         </div>
                     </div>
                 </div>

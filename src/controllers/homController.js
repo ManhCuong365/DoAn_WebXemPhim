@@ -97,19 +97,39 @@ let getDashboardPage = async (req, res) => {
     });
 };
 let getProfilePage = async (req, res) => {
-    let movies = await MOVIEService.getAllMovies();
-    let favoriteMovieIds = [];
-    if (req.session.user) {
-        let user = await db.User.findOne({ where: { email: req.session.user.email } });
-        let favs = await db.Favorite.findAll({ where: { userId: user.id }, raw: true });
-        favoriteMovieIds = favs.map(f => f.movieId);
+    if (!req.session.user) {
+        return res.redirect('/login_page');
     }
-    return res.render('profile.ejs', {
-        user: req.session.user || null,
-        moviesNew: movies,
-        favoriteMovieIds
+    let userId = req.session.user.id;
+
+    let user = await db.User.findOne({ where: { id: userId }, raw: true });
+
+    let commentCount = await db.Comment.count({ where: { userId } });
+
+    let favoriteCount = await db.Favorite.count({ where: { userId } });
+
+    let topMovies = await db.Movie.findAll({
+        order: [['rating', 'DESC']],
+        limit: 6,
+        raw: true
     });
-}
+
+    let favorites = await db.Favorite.findAll({
+        where: { userId },
+        include: [{ model: db.Movie }],
+        raw: true,
+        nest: true
+    });
+
+    res.render('profile.ejs', {
+        user: req.session.user,
+        userJoin: user.createdAt,
+        commentCount,
+        favoriteCount,
+        topMovies,
+        favorites
+    });
+};
 
 
 // 2. Phim (Movie))
@@ -308,7 +328,11 @@ let postLogin = async (req, res) => {
     let { email, password } = req.body;
     let user = await CRUDService.checkLogin(email, password);
     if (user) {
-        req.session.user = { username: user.username, email: user.email };
+        req.session.user = {
+            id: user.id,
+            username: user.username,
+            email: user.email
+        };
         return res.redirect('/');
     } else {
         return res.render('login_page.ejs', { error: 'Wrong email or password', success: null, user: null });
