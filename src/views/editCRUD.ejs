@@ -5,26 +5,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Edit user</title>
-    <link rel="stylesheet" href="/css/login_page.css">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/add_movie.css">
 </head>
 
 <body>
     <div class="container">
-        <div class="row">
-            <div class="register-container">
-                <div class="register-box">
-                    <form class="register-form" action="/put-crud" method="post">
-                        <h2>Sửa thông tin người dùng</h2>
-                        <label> Tên người dùng</label>
-                        <input type="text" name="username" placeholder="Tên người dùng" required value="<%= user.username %>">
-                        <label> Mật Khẩu</label>
-                        <input type="text" name="password" placeholder="Mật khẩu" required value="<%= user.password %>">
-                        <input name="id" type="text" hidden value="<%= user.id %>">
-                        <button type="submit">Cập nhật</button>
-                    </form>
+        <aside class="sidebar">
+            <div class="logo">MOVIE
+                <span style="color: #ffbe00;">ZONE</span>
+            </div>
+            <div style="margin-left: 0;" class="side_bar1">
+                <div style="display: flex; align-items: center; gap: 12px; padding: 16px 0; padding-left: 20px;">
+                    <span class="icon_admin">
+                        <i class="ti ti-user"></i>
+                    </span>
+                    <div class="icon_admin1">
+                        <div class="title_admin">Admin</div>
+                        <div class="name_admin">ManhCuong</div>
+                    </div>
                 </div>
             </div>
-        </div>
+            <nav class="nav">
+                <ul>
+                    <li class="side_bar">
+                        <a href="/dashboard">
+                            <i class="fa-solid fa-table-cells-large"></i>
+                            <span>DASHBOARD</span>
+                        </a>
+                    </li>
+                    <li class="side_bar">
+                        <a href="/displayMovie">
+                            <i class="fa-solid fa-film"></i>
+                            <span>MOVIE</span>
+                        </a>
+                    </li>
+                    <li class="side_bar">
+                        <a href="#">
+                            <i class="fa-solid fa-user-tie"></i>
+                            <span>DIRECTOR</span>
+                        </a>
+                    </li>
+                    <li class="side_bar">
+                        <a href="#">
+                            <i class="fa-solid fa-users"></i>
+                            <span>ACTOR</span>
+                        </a>
+                    </li>
+                    <li class="side_bar active">
+                        <a style="color: #ffbe00;" href="/get-crud">
+                            <i class="fa-solid fa-user"></i>
+                            <span>USER</span>
+                        </a>
+                    </li>
+                    <li class="side_bar">
+                        <a href="/displayComment">
+                            <i class="fa-solid fa-tags"></i>
+                            <span>COMMENT</span>
+                        </a>
+                    </li>
+                    <li class="side_bar"><a href="/">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span>BACK TO SITE</span>
+                        </a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="main-header">
+                <div class="actions">
+                    <p style="color: white;">Edit Users</p>
+                </div>
+                <div style="padding: 10px;" class="actions">
+                    <a href="/get-crud" class="btn">BACK</a>
+                </div>
+            </header>
+
+            <div style="padding: 20px;" class="content-wrapper">
+                <form action="/put-crud" method="post">
+                    <input type="hidden" name="id" value="<%= user.id %>">
+                    <div style="display: flex; gap: 16px;">
+                        <input class="form-input" style="flex: 2;" type="text" name="username"
+                            placeholder="Tên người dùng" required value="<%= user.username %>">
+                        <input class="form-input" style="flex: 1;" type="text" name="password" placeholder="Mật khẩu"
+                            required value="<%= user.password %>">
+                    </div>
+                    <div style="display: flex; gap: 16px">
+                        <input class="form-input" style="flex: 1;" type="email" name="email" placeholder="Email"
+                            required value="<%= user.email %>">
+                    </div>
+                    <div style="display: flex; gap: 16px">
+                        <div class="custom-select" style="flex: 1;">
+                            <select name="status" class="form-input">
+                                <option value="active" <%=user.status==='active' ? 'selected' : '' %>>Active</option>
+                                <option value="inactive" <%=user.status==='inactive' ? 'selected' : '' %>>Inactive
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-actions">
+                        <button type="submit" class="publish-btn">UPDATE</button>
+                    </div>
+                </form>
+            </div>
+        </main>
     </div>
 </body>
 

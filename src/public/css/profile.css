@@ -179,3 +179,6 @@
 .movie-item .favorite-item {
     align-items: center;
 }
+::-webkit-scrollbar {
+    display: none;              /* Chrome, Safari */
+}

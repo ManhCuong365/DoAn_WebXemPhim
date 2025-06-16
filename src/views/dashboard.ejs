@@ -7,14 +7,28 @@
   <title>MovieZone Admin Dashboard</title>
   <link rel="stylesheet" href="/css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
 
 <body>
   <div class="container">
     <!-- Sidebar -->
     <aside class="sidebar">
-      <div class="logo">MOVIE<span style="color: #ffbe00;">ZONE</span></div>
-      <nav>
+      <div class="logo">
+        <a href="/dashboard">MOVIE<span style="color: #ffbe00;">ZONE</span></a>
+      </div>
+      <div style="margin-left: 0;" class="side_bar1">
+        <div style="display: flex; align-items: center; gap: 12px; padding: 16px 0; padding-left: 20px;">
+          <span class="icon_admin">
+            <i class="ti ti-user"></i>
+          </span>
+          <div class="icon_admin1">
+            <div class="title_admin">Admin</div>
+            <div class="name_admin">ManhCuong</div>
+          </div>
+        </div>
+      </div>
+      <nav class="nav">
         <ul>
           <li class="side_bar">
             <a style="color: #ffbe00;" href="/dashboard">
@@ -63,9 +77,8 @@
     <!-- Main -->
     <main class="main-content">
       <header class="main-header">
-        <p class="white-text">Dashboard</p>
-        <div class="admin white-text">
-          <i style="margin-right: 6px;" class="fa-solid fa-user-shield"></i> ManhCuong
+        <div class="actions">
+          <p style="color: white;">Dashboard</p>
         </div>
       </header>
 
@@ -127,7 +140,7 @@
               <a href="/displayMovie" class="view-btn">View All</a>
             </div>
           </div>
-          <table>
+          <table class="auto-width-table">
             <thead>
               <tr>
                 <th>ID</th>
@@ -150,6 +163,7 @@
                       <%= item.category %>
                     </td>
                     <td><span class="rating">
+                        <ti style="margin-right: 4px;" class="ti ti-star"></ti>
                         <%= item.rating %>
                       </span></td>
                   </tr>
@@ -171,7 +185,7 @@
               <a href="/displayMovie" class="view-btn">View All</a>
             </div>
           </div>
-          <table>
+          <table class="auto-width-table">
             <thead>
               <tr>
                 <th>ID</th>
@@ -194,6 +208,7 @@
                       <%= item.category %>
                     </td>
                     <td><span class="rating">
+                        <ti style="margin-right: 4px;" class="ti ti-star"></ti>
                         <%= item.rating %>
                       </span></td>
                   </tr>
@@ -217,7 +232,7 @@
               <a href="/get-crud" class="view-btn">View All</a>
             </div>
           </div>
-          <table>
+          <table class="auto-width-table">
             <thead>
               <tr>
                 <th>ID</th>
@@ -257,9 +272,10 @@
               <a href="/displayComment" class="view-btn">View All</a>
             </div>
           </div>
-          <table>
+          <table class="auto-width-table">
             <thead>
               <tr>
+                <th>ID</th>
                 <th>ITEM</th>
                 <th>USER</th>
                 <th>RATING</th>
@@ -270,12 +286,16 @@
                 <% latestFavorite.forEach(function(favorite) { %>
                   <tr>
                     <td>
+                      <%= favorite.Movie ? favorite.Movie.id : '' %>
+                    </td>
+                    <td>
                       <%= favorite.Movie ? favorite.Movie.title : '' %>
                     </td>
                     <td>
                       <%= favorite.User ? favorite.User.username : '' %>
                     </td>
                     <td><span class="rating">
+                        <ti style="margin-right: 4px;" class="ti ti-star"></ti>
                         <%= favorite.Movie ? favorite.Movie.rating : '' %>
                       </span></td>
                   </tr>

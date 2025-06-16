@@ -748,3 +748,6 @@ footer {
     background: #ffbe00;
     color: #181824;
 }
+::-webkit-scrollbar {
+    display: none;              /* Chrome, Safari */
+}

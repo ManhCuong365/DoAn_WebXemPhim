@@ -6,14 +6,27 @@
     <title>Danh sách người dùng</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
 
 <body>
     <div class="container">
-        <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="logo">MOVIE<span style="color: #ffbe00;">ZONE</span></div>
-            <nav>
+            <div class="logo">MOVIE
+                <span style="color: #ffbe00;">ZONE</span>
+            </div>
+            <div style="margin-left: 0;" class="side_bar1">
+                <div style="display: flex; align-items: center; gap: 12px; padding: 16px 0; padding-left: 20px;">
+                    <span class="icon_admin">
+                        <i class="ti ti-user"></i>
+                    </span>
+                    <div class="icon_admin1">
+                        <div class="title_admin">Admin</div>
+                        <div class="name_admin">ManhCuong</div>
+                    </div>
+                </div>
+            </div>
+            <nav class="nav">
                 <ul>
                     <li class="side_bar">
                         <a href="/dashboard">
@@ -61,15 +74,13 @@
         <!-- Main Content -->
         <main class="main-content">
             <header class="main-header">
-                <p style="color: white;">User</p>
-                <div style="color: white;" class="admin">
-                    <i class="fa-solid fa-user-shield" style="margin-right:6px;"></i> ManhCuong
+                <div class="actions">
+                    <p style="color: white;">User</p>
+                </div>
+                <div style="padding: 10px;" class="actions">
+                    <a href="/add-user" class="btn">ADD ITEM</a>
                 </div>
             </header>
-            <div class="actions">
-                <a href="/get-movie" class="btn">Add item</a>
-                <a href="/displayMovie" class="btn btn-refresh">Refresh</a>
-            </div>
             <div class="table-box">
                 <table>
                     <thead>
@@ -78,8 +89,8 @@
                             <th class="colu">USERNAME</th>
                             <th class="colu">EMAIL</th>
                             <th class="colu">PASSWORD</th>
+                            <th class="colu">STATUS</th>
                             <th class="colu">CREATE DATE</th>
-                            <th class="colu">UPDATE TIME</th>
                             <th class="colu">ACTION</th>
                         </tr>
                     </thead>
@@ -99,10 +110,13 @@
                                     <%= dataTable[i].password %>
                                 </td>
                                 <td>
+                                    <% if (dataTable[i].status==='active' ) { %>
+                                        <span class="status-tag active">Active</span>
+                                        <% } else if (dataTable[i].status==='inactive' ) { %>
+                                            <span class="status-tag inactive">Inactive</span>
+                                            <% } %>
+                                <td>
                                     <%= new Date(dataTable[i].createdAt).toLocaleDateString('de-DE') %>
-                                </td>
-                                <td style="text-align: left;">
-                                    <%= new Date(dataTable[i].updatedAt).toLocaleDateString('de-DE') %>
                                 </td>
                                 <td>
                                     <a href="/edit-crud?id=<%= dataTable[i].id %>" class="btn-edit" title="Sửa">

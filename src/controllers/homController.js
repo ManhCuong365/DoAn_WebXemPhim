@@ -47,11 +47,11 @@ let getDashboardPage = async (req, res) => {
         raw: true
     });
 
-    let latestFavorite = await db.Comment.findAll({
+    let latestFavorite = await db.Favorite.findAll({
         order: [['createdAt', 'DESC']],
         limit: 5,
         include: [
-            { model: db.Movie, attributes: ['title'] },
+            { model: db.Movie, attributes: ['title', 'rating','id'] },
             { model: db.User, attributes: ['username'] }
         ],
         raw: true,
@@ -262,7 +262,7 @@ let deleteMovie = async (req, res) => {
 
 // 4. CRUD người dùng
 let getCRUD = (req, res) => {
-    return res.render('crud.ejs');
+    return res.render('sighup.ejs');
 };
 
 let postCRUD = async (req, res) => {
@@ -322,6 +322,16 @@ let deleteCRUD = async (req, res) => {
         return res.send('User not found');
     }
 }
+
+let postUser = async (req, res) => {
+    let { username, email, password, status } = req.body;
+    let existed = await db.User.findOne({ where: { email } });
+    if (existed) {
+        return res.render('createUser.ejs', { error: 'Email đã tồn tại!' });
+    }
+    await db.User.create({ username, email, password, status });
+    res.redirect('/displayCRUD');
+};
 
 // 5. Đăng nhập và đăng xuất
 let postLogin = async (req, res) => {
@@ -498,6 +508,7 @@ module.exports = {
     getEditCRUD: getEditCRUD,
     putCRUD: putCRUD,
     deleteCRUD: deleteCRUD,
+    postUser: postUser,
     postLogin: postLogin,
     logout: logout,
     getMovie: getMovie,

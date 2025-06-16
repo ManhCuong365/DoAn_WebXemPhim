@@ -58,6 +58,8 @@ let updateUserData = (data) => {
             if(user){
                 user.username = data.username;
                 user.password = data.password;
+                user.email = data.email;
+                user.status = data.status;
                 await user.save(); // Lưu thay đổi vào cơ sở dữ liệu
 
                 let allUser = await db.User.findAll();

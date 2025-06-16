@@ -2,14 +2,17 @@ import express from "express";
 import homController from "../controllers/homController";
 import multer from 'multer';
 
-
 let router = express.Router();
 let upload = multer({ dest: 'uploads/' });
 
 let initWebRoutes = (app) => {
     router.get('/', homController.getHomPage);
     router.get('/all_movies', homController.viewAllMovies);
-    router.get('/crud', homController.getCRUD);
+    router.get('/sighup', homController.getCRUD);
+    router.post('/post-user', homController.postUser);
+    router.get('/add-user', (req, res) => {
+        res.render('createUser.ejs');
+    });
     router.post('/post-crud', homController.postCRUD);
     router.get('/movie_1', homController.getMoviePage);
     router.get('/dashboard', homController.getDashboardPage);

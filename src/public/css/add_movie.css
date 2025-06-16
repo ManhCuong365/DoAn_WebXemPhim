@@ -1,6 +1,5 @@
 /* Nền tối cho toàn bộ form */
 .content-wrapper, .form-section {
-    background: #181823 !important;
     border-radius: 12px;
     box-shadow: none;
     color: #fff;
@@ -158,4 +157,7 @@ textarea.form-input::placeholder {
     color: #aaa;
     pointer-events: none;
     font-size: 16px;
+}
+::-webkit-scrollbar {
+    display: none;              /* Chrome, Safari */
 }

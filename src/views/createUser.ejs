@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo User</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/add_movie.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">MOVIE
+                <span style="color: #ffbe00;">ZONE</span>
+            </div>
+            <div style="margin-left: 0;" class="side_bar1">
+                <div style="display: flex; align-items: center; gap: 12px; padding: 16px 0; padding-left: 20px;">
+                    <span class="icon_admin">
+                        <i class="ti ti-user"></i>
+                    </span>
+                    <div class="icon_admin1">
+                        <div class="title_admin">Admin</div>
+                        <div class="name_admin">ManhCuong</div>
+                    </div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li class="side_bar">
+                        <a href="/dashboard">
+                            <i class="fa-solid fa-table-cells-large"></i>
+                            <span>DASHBOARD</span>
+                        </a>
+                    </li>
+                    <li class="side_bar">
+                        <a href="/displayMovie">
+                            <i class="fa-solid fa-film"></i>
+                            <span>MOVIE</span>
+                        </a>
+                    </li>
+                    <li class="side_bar">
+                        <a href="#">
+                            <i class="fa-solid fa-user-tie"></i>
+                            <span>DIRECTOR</span>
+                        </a>
+                    </li>
+                    <li class="side_bar">
+                        <a href="#">
+                            <i class="fa-solid fa-users"></i>
+                            <span>ACTOR</span>
+                        </a>
+                    </li>
+                    <li class="side_bar active">
+                        <a style="color: #ffbe00;" href="/get-crud">
+                            <i class="fa-solid fa-user"></i>
+                            <span>USER</span>
+                        </a>
+                    </li>
+                    <li class="side_bar">
+                        <a href="/displayComment">
+                            <i class="fa-solid fa-tags"></i>
+                            <span>COMMENT</span>
+                        </a>
+                    </li>
+                    <li class="side_bar"><a href="/">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span>BACK TO SITE</span>
+                        </a></li>
+                </ul>
+            </nav>
+        </aside>
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="actions">
+                    <p style="color: white;">Add new item</p>
+                </div>
+                <div style="padding: 10px;" class="actions">
+                    <a href="/get-crud" class="btn">BACK</a>
+                </div>
+            </header>
+            <div style="padding: 20px;" class="content-wrapper">
+                <% if (typeof error !=='undefined' ) { %>
+                    <div style="color:red; margin-bottom: 16px;">
+                        <%= error %>
+                    </div>
+                    <% } %>
+                        <form action="/post-user" method="POST">
+                            <div style="display: flex; gap: 16px;">
+                                <input name="username" type="text" class="form-input" placeholder="Username"
+                                    style="flex:1;" required>
+                                <input name="email" type="email" class="form-input" placeholder="Email" style="flex:1;"
+                                    required>
+                            </div>
+                            <div style="display: flex; gap: 16px; margin-top: 16px;">
+                                <div class="custom-select" style="flex:1;">
+                                    <select name="status" class="form-input">
+                                        <option value="active">Active</option>
+                                        <option value="inactive">Inactive</option>
+                                    </select>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                                <input name="password" type="password" class="form-input" placeholder="Password"
+                                    style="flex:3;" required>
+                            </div>
+                            <div class="form-actions" style="margin-top: 24px;">
+                                <button type="submit" class="publish-btn">PUBLISH</button>
+                            </div>
+                        </form>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

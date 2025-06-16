@@ -6,14 +6,28 @@
   <title>Danh sách phim</title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 
 </head>
 
 <body>
   <div class="container">
     <aside class="sidebar">
-      <div class="logo">MOVIE<span style="color: #ffbe00;">ZONE</span></div>
-      <nav>
+      <div class="logo">MOVIE
+        <span style="color: #ffbe00;">ZONE</span>
+      </div>
+      <div style="margin-left: 0;" class="side_bar1">
+        <div style="display: flex; align-items: center; gap: 12px; padding: 16px 0; padding-left: 20px;">
+          <span class="icon_admin">
+            <i class="ti ti-user"></i>
+          </span>
+          <div class="icon_admin1">
+            <div class="title_admin">Admin</div>
+            <div class="name_admin">ManhCuong</div>
+          </div>
+        </div>
+      </div>
+      <nav class="nav">
         <ul>
           <li class="side_bar">
             <a href="/dashboard">
@@ -61,15 +75,13 @@
 
     <main class="main-content">
       <header class="main-header">
-        <p style="color: white;">Movie</p>
-        <div style="color: white;" class="admin">
-          <i class="fa-solid fa-user-shield" style="margin-right:6px;"></i> ManhCuong
-        </div>
-      </header>
-      <div class="actions">
-        <a href="/get-movie" class="btn">Add item</a>
-        <a href="/displayMovie" class="btn btn-refresh">Refresh</a>
-      </div>
+                <div class="actions">
+                    <p style="color: white;">Movies</p>
+                </div>
+                <div style="padding: 10px;" class="actions">
+                    <a href="/get-movie" class="btn">ADD ITEM</a>
+                </div>
+            </header>
 
       <div class="table-box">
         <table>
@@ -80,7 +92,7 @@
               <th>RATING</th>
               <th>CATEGORY</th>
               <th>ACTOR</th>
-              <th>STATUS</th> <!-- Thêm dòng này -->
+              <th>STATUS</th> 
               <th>CREATED AT</th>
               <th>ACTION</th>
             </tr>

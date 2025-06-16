@@ -23,15 +23,26 @@ a {
 /* Sidebar */
 .sidebar {
   width: 230px;
-  background-color: #2c2f48;
+  background-color: #1a191f;
   color: white;
+  border-right: 2px solid #222028;
+}
+
+.nav {
   padding: 20px;
 }
 
 .sidebar .logo {
   font-size: 28px;
+  justify-content: left;
   font-weight: bold;
-  margin-bottom: 25px;
+  padding-top: 20px;
+  padding-bottom: 28px;
+  border-bottom: 2px solid #222028;
+}
+
+.logo {
+  padding-left: 20px;
 }
 
 .sidebar nav ul {
@@ -39,7 +50,10 @@ a {
 }
 
 .sidebar nav ul li {
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 10px;
   cursor: pointer;
   border-radius: 4px;
 }
@@ -47,25 +61,19 @@ a {
 .side_bar a:hover {
   color: #ffbe00;
   transition: all 0.3s ease;
-
 }
 
-/* Main content */
-.main-content {
-  flex: 1;
-  padding: 20px;
-}
 
 .main-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 19px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #222028;
 }
 
 .main-header p {
-  font-size: 27px;
+  font-size: 30px;
   color: #ffffff;
-  margin-bottom: 20px;
   font-weight: 600;
 }
 
@@ -74,6 +82,13 @@ a {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 15px;
   margin-bottom: 25px;
+}
+
+.overview,
+.tables {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
 }
 
 .card {
@@ -146,7 +161,7 @@ a {
 
 .table-box {
   background-color: transparent;
-  padding: 15px;
+  padding: 12px 20px 20px 20px;
   border-radius: 8px;
 }
 
@@ -154,7 +169,6 @@ a {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0 10px;
-  /* tạo khoảng cách giữa các dòng */
   background: transparent;
 }
 
@@ -168,14 +182,13 @@ a {
 }
 
 .table-box tbody tr:hover td {
-  background: #23243a;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  background: #23243a !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important;
 }
 
 .table-box tbody tr {
-  border-radius: 8px;
-  overflow: hidden;
-  transition: background 0.2s;
+  background-color: #222028;
+  border-bottom: 10px solid #1a191f;
 }
 
 .table-box th {
@@ -287,7 +300,7 @@ a {
   color: white;
   border-radius: 8px;
   border: 2px solid #ffbe00;
-  padding: 8px 14px;
+  padding: 9px 20px;
   margin-right: 10px;
   border-radius: 5px;
   font-weight: 500;
@@ -479,7 +492,7 @@ a {
 
 .main-content {
   flex: 1;
-  padding: 20px;
+  padding-top: 20px;
 }
 
 .main-header {
@@ -539,7 +552,7 @@ a {
 .tables {
   display: flex;
   gap: 24px;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
 
 .table-card table {
@@ -598,10 +611,64 @@ a {
 
 }
 
+.side_bar1 {
+  border-bottom: 1px solid #222028;
+}
+
 .side_bar span {
   margin-left: 8px;
 }
 
 .side_bar i span {
   font-weight: 600;
+}
+
+.admin {
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.icon_admin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: #23243a;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1.7rem;
+}
+
+.icon_admin1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title_admin {
+  font-size: 0.95rem;
+  color: #ffbe00;
+  font-weight: bold;
+}
+
+.name_admin {
+  color: #fff;
+  font-weight: 700;
+}
+
+::-webkit-scrollbar {
+    display: none;             
+}
+
+.auto-width-table {
+    width: 100%;
+    table-layout: auto;
+}
+.auto-width-table th, .auto-width-table td {
+    padding: 10px 12px;
 }
