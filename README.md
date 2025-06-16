@@ -43,14 +43,23 @@ Mặc định, server sẽ chạy trên `http://localhost:3000/`.
 
 ## Cấu Trúc Thư Mục
 ```
+project-root/
 ├── src/
-│   ├── routes/         # Định nghĩa các route của ứng dụng
-│   ├── views/          # Templates EJS
-│   ├── public/         # CSS, JS client-side
-│   ├── models/         # Xử lý database
-├── .env.example        # File cấu hình môi trường
-├── package.json        # Dependencies và scripts
-├── README.md           # Hướng dẫn dự án
+│   ├── config/        
+│   ├── controllers/   
+│   ├── migrations/    
+│   ├── models/       
+│   ├── route/        
+│   ├── seeders/       
+│   ├── services/     
+│   ├── views/        
+│   └── server.js     
+├── public/            
+├── uploads/          
+├── .env.example       
+├── .babelrc           
+├── package.json       
+└── README.md 
 ```
 
 ## Ghi Chú Khác
