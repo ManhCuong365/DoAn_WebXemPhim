@@ -51,7 +51,7 @@ let getDashboardPage = async (req, res) => {
         order: [['createdAt', 'DESC']],
         limit: 5,
         include: [
-            { model: db.Movie, attributes: ['title', 'rating','id'] },
+            { model: db.Movie, attributes: ['title', 'rating', 'id'] },
             { model: db.User, attributes: ['username'] }
         ],
         raw: true,
@@ -266,21 +266,25 @@ let getCRUD = (req, res) => {
 };
 
 let postCRUD = async (req, res) => {
-    await CRUDService.createNewUser(req.body);
-    req.session.user = { username: req.body.username, email: req.body.email };
+    let user = await CRUDService.createNewUser(req.body);
+    req.session.user = {
+        id: user.id, // Thêm dòng này!
+        username: user.username,
+        email: user.email
+    };
     let movies = await MOVIEService.getAllMovies();
 
     let favoriteMovieIds = [];
     if (req.session.user) {
-        let user = await db.User.findOne({ where: { email: req.session.user.email } });
-        let favs = await db.Favorite.findAll({ where: { userId: user.id }, raw: true });
+        let userDb = await db.User.findOne({ where: { email: req.session.user.email } });
+        let favs = await db.Favorite.findAll({ where: { userId: userDb.id }, raw: true });
         favoriteMovieIds = favs.map(f => f.movieId);
     }
 
     return res.render('homepage.ejs', {
         user: req.session.user,
         moviesNew: movies,
-        favoriteMovieIds // truyền vào view
+        favoriteMovieIds
     });
 }
 
@@ -316,7 +320,7 @@ let deleteCRUD = async (req, res) => {
     let id = req.query.id;
     if (id) {
         await CRUDService.deleteUserById(id);
-        return res.send('Delete user succeed!');
+        return res.redirect('/displayCRUD', );
     }
     else {
         return res.send('User not found');
@@ -527,5 +531,4 @@ module.exports = {
     deleteComment: deleteComment,
     displayComment: displayComment,
     getProfilePage: getProfilePage,
-
 }

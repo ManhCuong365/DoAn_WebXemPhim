@@ -2,14 +2,16 @@ import db from '../models/index.js';
 
 let createNewUser = async (data) => {
     try {
-        await db.User.create({
+        let user = await db.User.create({
             username: data.username,
             email: data.email,
             password: data.password,
         });
         console.log('Tạo người dùng thành công!');
+        return user; // Thêm dòng này để trả về user vừa tạo
     } catch (error) {
         console.log('Lỗi khi tạo người dùng:', error);
+        return null; // Trả về null nếu lỗi
     }
 }
 
